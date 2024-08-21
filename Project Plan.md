@@ -50,12 +50,30 @@ Give users the ability to filter foods based on minimum and maximum nutritional 
 Streamline the process of diet planning by having features that allow users to plan their diet.
 
 ### 1.2 Project Stakeholders
-
-Identify all key stakeholders involved in the project, including internal teams and potential end-users.
+<!-- Identify all key stakeholders involved in the project, including internal teams and potential end-users. -->
+1. Project Sponsor\
+Project sponsor ensures that the project aligns with the company's vision, goals, and strategy.
+2. Project Manager\
+Manages the overall process of the project to ensure that the project can finish before the deadline while also accomplishing all of the goals.
+3. Software Developers and UI/UX Designers\
+Ensure smooth development and implementation of the tool with little to no technical issues.
+4. Nutrisionist and Dietitians
+While the database for this project is from a government body, it is important to get second opinions from certified nutritionists and dietitians.\
+They are also one of the end-user as they can use the tool to analyze and visualize nutritional information for foods.
+5. Regulatory Bodies\
+Ensures that the project and tool comply with relevant regulations and standards, such as FDA guidelines.
+6. Individuals with Dietary Needs\
+Users that have specific diets to multiple reasons, such as disease or allergies, can use the tool to track their nutritional intake.
+7. Caregivers\
+Caregivers can use the tool to ensure that the meals they prepared for their patients meet the nutritional requirements.
 
 ### 1.3 Project Scope
-
-Define and manage what is included or excluded in the project and product.
+<!-- Define and manage what is included or excluded in the project and product. -->
+- Ensure that the project and tool complies with the relevant regulations and standards.
+- Ensure that the tool have all of the required functionalities before the deadline.
+- Develop a mobile-based application for the tool to ensure accessibility.
+- Design and develop a user-friendly interface in order to enhance the overall user experience.
+- Cost modelling, breakdown of costings for implementation and maintenance, and customer support are out of this project's scope.
 
 ## 2. Work Breakdown Structure
 

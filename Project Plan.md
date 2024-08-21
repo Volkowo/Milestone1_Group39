@@ -42,11 +42,11 @@ Please Describe what you have accomplished in this group project.
 
 ### 1.1 Project Objectives
 <!-- Establish objectives or goals that the project aims to achieve. -->
-1. **Develop Data Analysis and Visualization Tool** /
+1. **Develop Data Analysis and Visualization Tool** \
 Create a tool that allows data analysis and visualization for both good and nutritional information, which enables user to gain insight into various foods' nutritional content.
-2. **Advanced Food Filtering** /
+2. **Advanced Food Filtering** \
 Give users the ability to filter foods based on minimum and maximum nutritional values or by predefined nutritional content levels. This feature help users find foods that meet certain dietary requirement.
-3. **Facilitate Diet Planning**
+3. **Facilitate Diet Planning** \
 Streamline the process of diet planning by having features that allow users to plan their diet.
 
 ### 1.2 Project Stakeholders

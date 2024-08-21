@@ -5,19 +5,19 @@ The overall goal of the group project is to develop a simple data analysis and v
 
 ## Database and Required Features
 ### Required Features
-1. Name: Food Search
+1. Name: Food Search\
 Description: Enable users to search for foods by name and display all the nutritional information;
-2. Name: Nutrition Breakdown
+2. Name: Nutrition Breakdown\
 Description: Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
-3. Name: Nutrition Range Filter
+3. Name: Nutrition Range Filter\
 Description: Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges.
-4. Name: Nutrition Level Filter
+4. Name: Nutrition Level Filter\
 Description: Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
 Low: Less than 33% of the highest value.
 Mid: Between 33% and 66% of the highest value.
 High: Greater than 66% of the highest value.
-5. Additional feature: you will need to come up with an appropriate feature for analysing and visualising this dataset.
-Name: ?
+5. Additional feature: you will need to come up with an appropriate feature for analysing and visualising this dataset.\
+Name: ?\
 Description: ?
 
 ### Database

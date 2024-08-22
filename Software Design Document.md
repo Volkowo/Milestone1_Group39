@@ -1,15 +1,14 @@
 # Software Design Document
 
 ## Project Name: XXXX
-## Group Number: 001
+## Group Number: 039
 
 ## Team members
 
 | Student Number | Name      | 
 |----------------|-----------|
-| s111111        | Full name |
-| s222222        | Full name | 
-| s333333        | Full name | 
+| s5340805        | Toby Nilson |
+| s5330262        | Jason Kenaz | 
 
 
 <div style="page-break-after: always;"></div>
@@ -48,25 +47,26 @@
 ## 1. System Vision
 
 ### 1.1 Problem Background
+<!-- - Problem Identification: What problem does this system solve?
+- Dataset: What is the dataset used?
+- Data Input/Output: What kind of data input and output is required?
+- Target Users: Who will use the system, and why? -->
 - Problem Identification\
 The problem addressed by this tool is the lack of comprehensive tools that integrate both analysis and visualization of nutritional information for a wide range of foods. The purpose of this tool is to combine both functionalities efficiently so that the users can get valuable insights from nutritional data.
 - Dataset\
 The dataset for this project is provided by the client in the ".csv" file format. It provides detailed nutritional information for a wide range of common food items. These information provide critical data that can help in understanding the nutritional content of various foods.
 - Data\
+<!-- TO DO: Don't forget to add this later -->
 - Target Users
   - People with specific dietary needs, such as disease, allergies, or personal preferences, can utilize the tool to track their nutritional intake and plan their diets.
   - Nutritionist and dietitians can use the tool to show the breakdown of different nutrients of various foods.
-  - Researchers can apply the tool for nutritional studies to help identify correlation between dietary habits and health markers in order to research how certain nutrients can affect an individual's health.\ <br>
+  - Researchers can apply the tool for nutritional studies to help identify correlation between dietary habits and health markers in order to research how certain nutrients can affect an individual's health. <br>
 In summary, anyone that have any interest in dietary, health, and/or medical research can take advantage of the system as it provides comprehensive analysis, visualization, and planning functionalities. The system aims to provide insights to these users which through said functionalities. 
 
-<!-- - Problem Identification: What problem does this system solve?
-- Dataset: What is the dataset used?
-- Data Input/Output: What kind of data input and output is required?
-- Target Users: Who will use the system, and why? -->
-
 ### 1.2 System capabilities/overview
-- System Functionality: What will the system do?
-
+- System Functionality\
+The tool will allow the user to search for foods by its name and breakdown its nutritional information through pie charts and bar graphs. The search function will also have filter that give users the ability to search for foods based on a defined range or the level of foods' nutritional content.\
+The tool will also facilitate diet planning by giving users the ability to plan their diet through the tool.
 - Features and Functionalities: Describe the key features and functionalities of the system.
 
 ### 1.3	Benefit Analysis

@@ -53,10 +53,10 @@ The problem addressed by this tool is the lack of comprehensive tools that integ
 - Dataset\
 The dataset for this project is provided by the client in the ".csv" file format. It provides detailed nutritional information for a wide range of common food items. These information provide critical data that can help in understanding the nutritional content of various foods.
 - Data\
-- Target Users\
+- Target Users
   - People with specific dietary needs, such as disease, allergies, or personal preferences, can utilize the tool to track their nutritional intake and plan their diets.
   - Nutritionist and dietitians can use the tool to show the breakdown of different nutrients of various foods.
-  - Researchers can apply the tool for nutritional studies to help identify correlation between dietary habits and health markers in order to research how certain nutrients can affect an individual's health.\
+  - Researchers can apply the tool for nutritional studies to help identify correlation between dietary habits and health markers in order to research how certain nutrients can affect an individual's health.\ <br>
 In summary, anyone that have any interest in dietary, health, and/or medical research can take advantage of the system as it provides comprehensive analysis, visualization, and planning functionalities. The system aims to provide insights to these users which through said functionalities. 
 
 <!-- - Problem Identification: What problem does this system solve?

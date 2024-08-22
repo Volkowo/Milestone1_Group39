@@ -54,18 +54,18 @@ Streamline the process of diet planning by having features that allow users to p
 1. Project Sponsor\
 Project sponsor ensures that the project aligns with the company's vision, goals, and strategy.
 2. Project Manager\
-Manages the overall process of the project to ensure that the project can finish before the deadline while also accomplishing all of the goals.
+Manages the overall process of the project to ensure the project's completion before the deadline while also accomplishing all of the objectives.
 3. Software Developers and UI/UX Designers\
 Ensure smooth development and implementation of the tool with little to no technical issues.
-4. Nutrisionist and Dietitians
-While the database for this project is from a government body, it is important to get second opinions from certified nutritionists and dietitians.\
-They are also one of the end-user as they can use the tool to analyze and visualize nutritional information for foods.
+4. Nutrisionist and Dietitians\
+As the dataset provided for this project comes from an external source, it is crucial to get opinions from certified nutritionists and dietitians about the accuracy of the provided database.\
+They are also one of the end-user as they can use the tool to analyze and visualize nutritional information for various foods.
 5. Regulatory Bodies\
 Ensures that the project and tool comply with relevant regulations and standards, such as FDA guidelines.
 6. Individuals with Dietary Needs\
-Users that have specific diets to multiple reasons, such as disease or allergies, can use the tool to track their nutritional intake.
+Users that have specific diets to multiple reasons, such as disease, allergies, or personal preferences. They can use the tool to track their nutritional intake.
 7. Caregivers\
-Caregivers can use the tool to ensure that the meals they prepared for their patients meet the nutritional requirements.
+Caregivers can use the tool to ensure that the meals they prepared for their patients to ensure that the foods meet the nutritional requirements.
 
 ### 1.3 Project Scope
 <!-- Define and manage what is included or excluded in the project and product. -->

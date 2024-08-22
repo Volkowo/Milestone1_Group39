@@ -7,8 +7,8 @@
 
 | Student No. | Full Name | GitHub Username | Contribution (sum to 100%) | 
 |-------------|-----------|-----------------|----------------------------|
-| s5340805     | Toby Nilson | Venrin-04             | 33.3% or Equal             |
-| s5330161     | Jason Kenaz | Volkowo             | 33.3% or Equal             | 
+| s5340805     | Toby Nilson | Venrin-04             | 50% or Equal             |
+| s5330161     | Jason Kenaz | Volkowo             | 50% or Equal             | 
 
 ### Brief Description of Contribution
 

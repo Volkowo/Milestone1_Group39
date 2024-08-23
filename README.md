@@ -16,9 +16,8 @@ Description: Enable users to filter foods by nutritional content levels—low, m
 Low: Less than 33% of the highest value.
 Mid: Between 33% and 66% of the highest value.
 High: Greater than 66% of the highest value.
-5. Additional feature: you will need to come up with an appropriate feature for analysing and visualising this dataset.\
-Name: ?\
-Description: ?
+5. Additional feature: Dietary Filter\
+Description: Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: Keto, low-carb, and low-cholestrol. Additional dietary needs will be added if the system can be finished before the due date.
 
 ### Database
 The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. Column Descriptions in this dataset are listed below. Each of these columns provides critical data that can help in understanding the nutritional content of various foods, supporting a wide range of dietary, health, and medical research applications.

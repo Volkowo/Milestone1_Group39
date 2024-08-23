@@ -86,11 +86,28 @@ Include the Work Breakdown Structure (WBS) for the entire project. WBS should be
 
 Define the activities required for your project based on the WBS, and assign responsibilities to team members. Each activity should be numbered and correspond with your Gantt chart. Provide estimated durations for each activity to facilitate Gantt chart preparation.
 
-| Activity #No | Activity Name | Brief Description | Duration | Responsible Team Members |
-|--------------|---------------|-------------------|----------|--------------------------|
-| xxx          | xxx           | xxx               | xxx      | xxx \& yyy               |
-| xxxx         | xxx           | xxx               | xxx      | All                      |
-| xxxx         | xxx           | xxx               | xxx      | xxx                      |
+| Activity #No |          Activity Name          | Brief Description | Duration | Responsible Team Members |
+|--------------|---------------------------------|-------------------|----------|--------------------------|
+| 1.1          | Collect data                    | gather info about pre existing nutrition apps | xxx      | xxx \& yyy               |
+| 1.2          | create scope                    | make the scope of what is to be done with the app| xxx      | All                      |
+| 1.3          | Prepare research                | collect research on what people want from a nutrition app| xxx      | xxx                      |
+| 1.4          | Map user flow                   | make the flow chart of how the user will navigate the app| xxx      | xxx                      |
+| 1.5          | Sketch screen wireframes        | sketch the screen wireframes| xxx      | xxx                      |
+| 1.6          | Test wireframes                 | have a person test the logic of the wireframes | xxx      | xxx                      |
+| 2.1          | Create user interface           | code the final screen designs| xxx      | xxx                      |
+| 2.2          | Develop screen interconnectivity| code the conectivity of all the screens | xxx      | xxx                      |
+| 2.3          | Implement provided database     | implament the data bade into the code to show on the app| xxx      | xxx                      |
+| 2.4          | Implement required features     | implament the reqiured feature into the app | xxx      | xxx                      |
+| 2.5          | Implement additional features   | implament the code for the aditional feature that was chosen | xxx      | xxx                      |
+| 3.1          | Unit testing                    | preform unit testing on the app| xxx      | xxx                      |
+| 3.2          | Alpha testing                   | preform Alpha testing on the app | xxx      | xxx                      |
+| 3.3          | Acceptence testing              | preform Acceptence testing  on the app | xxx      | xxx                      |
+| 4.1          | Fix bugs                        | fix the bugs in the code | xxx      | xxx                      |
+| 4.2          | Gather feedback                 | collect the feedback based on the testing | xxx      | xxx                      |
+| 4.3          | Enhance features                | enhance the features based on the tessting | xxx      | xxx                      |
+| 4.4          | Sanity test                     | sanity test the code to ensure there is no new bugs | xxx      | xxx                      |
+
+
 
 ## 4. Gantt Chart
 You have to use the provided Gantt chart template.  

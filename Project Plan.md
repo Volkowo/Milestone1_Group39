@@ -51,22 +51,22 @@ Streamline the diet-planning process by providing feature that allow users to fi
 
 ### 1.2 Project Stakeholders
 <!-- Identify all key stakeholders involved in the project, including internal teams and potential end-users. -->
-1. Project Sponsor\
+1. **Project Sponsor**\
 Project sponsor ensures that the project aligns with the company's vision, goals, and strategy.
-2. Project Manager\
+2. **Project Manager**\
 The project manager manages the overall process, ensuring that the project is completed on timw while achieving all the main objectives.
-3. Software Developers and UI/UX Designers\
+3. **Software Developers and UI/UX Designers**\
 Software developers and UI/UX designers ensure smooth development and implementation of the tool in order to minimize technical issues.
-4. Nutrisionist and Dietitians\
+4. **Nutrisionist and Dietitians**\
 As the dataset provided for this project comes from an external source, it is crucial to get opinions from certified nutritionists and dietitians to ensure the accuracy of the database.\
 They are also one of the end-users as they can utilize the tool to analyze and visualize nutritional information for various foods.
-5. Regulatory Bodies\
+5. **Regulatory Bodies**\
 Ensures that the project and tool comply with relevant regulations and standards, such as FDA guidelines.
-6. Individuals with Dietary Needs\
+6. **Individuals with Dietary Needs**\
 Users that have specific diets, due to reason such as disease, allergies, or personal preferences, can use the tool to track their nutritional intake and make informed food choices.
-7. Caregivers\
+7. **Caregivers**\
 Caregivers can use the tool to ensure that the meals they prepare for their patients meet the nutritional requirements.
-8. Chefs
+8. **Chefs**\
 Chefs can utilize the tool to create or plan meals with specific nutritional goals in mind.
 
 ### 1.3 Project Scope

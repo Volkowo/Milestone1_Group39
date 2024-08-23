@@ -44,8 +44,6 @@
 
 
 
-## 1. System Vision
-
 ### 1.1 Problem Background
 <!-- - Problem Identification: What problem does this system solve?
 - Dataset: What is the dataset used?
@@ -58,20 +56,47 @@ The dataset for this project is provided by the client in the ".csv" file format
 - Data\
 <!-- TO DO: Don't forget to add this later -->
 - Target Users
-  - People with specific dietary needs, such as disease, allergies, or personal preferences, can utilize the tool to track their nutritional intake and plan their diets.
-  - Nutritionist and dietitians can use the tool to show the breakdown of different nutrients of various foods.
-  - Researchers can apply the tool for nutritional studies to help identify correlation between dietary habits and health markers in order to research how certain nutrients can affect an individual's health. <br>
-In summary, anyone that have any interest in dietary, health, and/or medical research can take advantage of the system as it provides comprehensive analysis, visualization, and planning functionalities. The system aims to provide insights to these users which through said functionalities. 
+  - **People with Specific Dietary Needs**\
+  Individuals with dietary restrictions because of disease, allergies, or personal preferences can utilize the tool to track their nutritional intake and plan their diets.
+  - **Nutritionist and Dietitians**
+  These professionals can utilize the tool to analyze and visualize the nutritional breakdown of various foods either for their clients or research purposes.
+  - **Researchers**
+  Researchers can apply the tool for nutritional studies, helping them identify correlations between dietary habits and health markers in order to research how certain nutrients can affect an individual's health. <br>
+In summary, the system provides detailed analysis, visualization, and filtering functionalities for anyone interested in dietary, health and medical research. The primary goal of this tool is to offer insights that support better dietary decisions and health outcomes.
 
 ### 1.2 System capabilities/overview
 - System Functionality\
-The tool will allow the user to search for foods by its name and breakdown its nutritional information through pie charts and bar graphs. The search function will also have filter that give users the ability to search for foods based on a defined range or the level of foods' nutritional content.\
-The tool will also facilitate diet planning by giving users the ability to plan their diet through the tool.
-- Features and Functionalities: Describe the key features and functionalities of the system.
+The tool will let users search for foods by name and break down their nutritional information through visualizations. These visualizations come in the form of pie charts and bar graphs. The search function will also include filters that enable users to find foods based on defined nutritional ranges, specific levels of nutritional content, and/or specific dietary needs (e.g., ketogenic diet, low sodium, low cholesterol) to facilitate diet planning.
+- Features and Functionalities\
+<!-- Describe the key features and functionalities of the system. -->
+1. **Food Search**\
+Enable users to search for foods by name and display all the nutritional information;
+2. **Nutrition Breakdown**\
+Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
+3. **Nutrition Range Filter**\
+Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges.
+4. **Nutrition Level Filter**\
+Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
+- Low: Less than 33% of the highest value.
+- Mid: Between 33% and 66% of the highest value.
+- High: Greater than 66% of the highest value.
+5. **Dietary Filter**\
+Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
+- Ketogenic (Keto) Diet \
+Low in carbohydrates, which is less than 5-10% of caloric intake.
+- Low Sodium Diet \
+Foods with low sodium content, which usually is less than 140mg per serving.
+- Low Cholesterol Diet \
+Low cholestrol foods that have less than 20mg per serving. \
+Additional dietary needs will be added if the system can be finished before the due date.
 
 ### 1.3	Benefit Analysis
+<!-- How will this system provide value or benefit? -->
+- The system assists users in meal preparation based on their dietary needs with the help of the in-depth filters. This leads to a more personalized nutrition management for each user as they can plan their diet and food choices through the provided filters.
+- Advanced filtering options enable users to quickly find foods that meet their dietary needs and/or nutritional goals, which helps them save time in meal planning and grocery shopping. The dietary filter also helps users in identifying foods that are suitable to their diet.
+- The system helps users make informed decision about their food choices through detailed nutritional data and visualizations.
+- Nutritional breakdowns can also be presented in visual formats, such as pie charts and bar graphs, to help users in understanding key information through a format that is more understandable and digestible.
 
-How will this system provide value or benefit?
 
 ## 2. Requirements
 

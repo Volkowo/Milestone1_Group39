@@ -17,7 +17,14 @@ Low: Less than 33% of the highest value.
 Mid: Between 33% and 66% of the highest value.
 High: Greater than 66% of the highest value.
 5. Additional feature: Dietary Filter\
-Description: Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: Keto, low-carb, and low-cholestrol. Additional dietary needs will be added if the system can be finished before the due date.
+Description: Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
+- Ketogenic (Keto) Diet \
+Low in carbohydrates, which is less than 5-10% of caloric intake.
+- Low Sodium Diet \
+Foods with low sodium content, which usually is less than 140mg per serving.
+- Low Cholesterol Diet \
+Low cholestrol foods that have less than 20mg per serving. \
+Additional dietary needs will be added if the system can be finished before the due date.
 
 ### Database
 The Comprehensive Nutritional Food Database provides detailed nutritional information for a wide range of food items commonly consumed around the world. Column Descriptions in this dataset are listed below. Each of these columns provides critical data that can help in understanding the nutritional content of various foods, supporting a wide range of dietary, health, and medical research applications.

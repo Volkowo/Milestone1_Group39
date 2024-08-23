@@ -88,24 +88,24 @@ Define the activities required for your project based on the WBS, and assign res
 
 | Activity #No |          Activity Name          | Brief Description | Duration | Responsible Team Members |
 |--------------|---------------------------------|-------------------|----------|--------------------------|
-| 1.1          | Collect data                    | gather info about pre existing nutrition apps                | 1 day      | xxx \& yyy               |
-| 1.2          | create scope                    | make the scope of what is to be done with the app            | 1 day      | All                      |
-| 1.3          | Prepare research                | collect research on what people want from a nutrition app    | 1 day      | xxx                      |
-| 1.4          | Map user flow                   | make the flow chart of how the user will navigate the app    | 1 day      | xxx                      |
-| 1.5          | Sketch screen wireframes        | sketch the screen wireframes                                 | 2 day      | xxx                      |
-| 1.6          | Test wireframes                 | have a person test the logic of the wireframes               | 1 day      | xxx                      |
-| 2.1          | Create user interface           | code the final screen designs                                | 2 day      | xxx                      |
-| 2.2          | Develop screen interconnectivity| code the conectivity of all the screens                      | 2 days     | xxx                      |
-| 2.3          | Implement provided database     | implament the data bade into the code to show on the app     | 2 days     | xxx                      |
-| 2.4          | Implement required features     | implament the reqiured feature into the app                  | 5 days     | xxx                      |
-| 2.5          | Implement additional features   | implament the code for the aditional feature that was chosen | 2 days     | xxx                      |
-| 3.1          | Unit testing                    | preform unit testing on the app                              | 1 day      | xxx                      |
-| 3.2          | Alpha testing                   | preform Alpha testing on the app                             | 1 day      | xxx                      |
-| 3.3          | Acceptence testing              | preform Acceptence testing  on the app                       | 1 day      | xxx                      |
-| 4.1          | Fix bugs                        | fix the bugs in the code                                     | 2 days     | xxx                      |
-| 4.2          | Gather feedback                 | collect the feedback based on the testing                    | 2 days     | xxx                      |
-| 4.3          | Enhance features                | enhance the features based on the tessting                   | 3 days     | xxx                      |
-| 4.4          | Sanity test                     | sanity test the code to ensure there is no new bugs          | 2 days     | xxx                      |
+| 1.1          | Collect data                    | Gather info about pre existing nutrition apps                | 1 day      | All              |
+| 1.2          | create scope                    | Make the scope of what is to be done with the app            | 1 day      | Jason                      |
+| 1.3          | Prepare research                | Collect research on what people want from a nutrition app    | 1 day      | Jason                      |
+| 1.4          | Map user flow                   | Make the flow chart of how the user will navigate the app    | 1 day      | Toby                      |
+| 1.5          | Sketch screen wireframes        | Sketch the screen wireframes                                 | 2 day      | Toby                      |
+| 1.6          | Test wireframes                 | Have a person test the logic of the wireframes               | 1 day      | Json                      |
+| 2.1          | Create user interface           | Code the final screen designs                                | 2 day      | All                      |
+| 2.2          | Develop screen interconnectivity| Code the conectivity of all the screens                      | 2 days     | All                      |
+| 2.3          | Implement provided database     | Implament the data bade into the code to show on the app     | 2 days     | All                      |
+| 2.4          | Implement required features     | Implament the reqiured feature into the app                  | 5 days     | All                      |
+| 2.5          | Implement additional features   | Implament the code for the aditional feature that was chosen | 2 days     | All                      |
+| 3.1          | Unit testing                    | Preform unit testing on the app                              | 1 day      | All                      |
+| 3.2          | Alpha testing                   | Preform Alpha testing on the app                             | 1 day      | Jason                      |
+| 3.3          | Acceptence testing              | Preform Acceptence testing  on the app                       | 1 day      | Toby                      |
+| 4.1          | Fix bugs                        | Fix the bugs in the code                                     | 2 days     | Toby                      |
+| 4.2          | Gather feedback                 | Collect the feedback based on the testing                    | 2 days     | Jason                      |
+| 4.3          | Enhance features                | Enhance the features based on the tessting                   | 3 days     | Toby                      |
+| 4.4          | Sanity test                     | Sanity test the code to ensure there is no new bugs          | 2 days     | Jason                      |
 
 
 

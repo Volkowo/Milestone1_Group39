@@ -88,24 +88,27 @@ Define the activities required for your project based on the WBS, and assign res
 
 | Activity #No |          Activity Name          | Brief Description | Duration | Responsible Team Members |
 |--------------|---------------------------------|-------------------|----------|--------------------------|
-| 1.1          | Collect data                    | Gather info about pre existing nutrition apps                | 1 day      | All              |
-| 1.2          | create scope                    | Make the scope of what is to be done with the app            | 1 day      | Jason                      |
-| 1.3          | Prepare research                | Collect research on what people want from a nutrition app    | 1 day      | Jason                      |
-| 1.4          | Map user flow                   | Make the flow chart of how the user will navigate the app    | 1 day      | Toby                      |
-| 1.5          | Sketch screen wireframes        | Sketch the screen wireframes                                 | 2 day      | Toby                      |
-| 1.6          | Test wireframes                 | Have a person test the logic of the wireframes               | 1 day      | Json                      |
-| 2.1          | Create user interface           | Code the final screen designs                                | 2 day      | All                      |
-| 2.2          | Develop screen interconnectivity| Code the conectivity of all the screens                      | 2 days     | All                      |
-| 2.3          | Implement provided database     | Implament the data bade into the code to show on the app     | 2 days     | All                      |
-| 2.4          | Implement required features     | Implament the reqiured feature into the app                  | 5 days     | All                      |
-| 2.5          | Implement additional features   | Implament the code for the aditional feature that was chosen | 2 days     | All                      |
-| 3.1          | Unit testing                    | Preform unit testing on the app                              | 1 day      | All                      |
-| 3.2          | Alpha testing                   | Preform Alpha testing on the app                             | 1 day      | Jason                      |
-| 3.3          | Acceptence testing              | Preform Acceptence testing  on the app                       | 1 day      | Toby                      |
-| 4.1          | Fix bugs                        | Fix the bugs in the code                                     | 2 days     | Toby                      |
-| 4.2          | Gather feedback                 | Collect the feedback based on the testing                    | 2 days     | Jason                      |
-| 4.3          | Enhance features                | Enhance the features based on the tessting                   | 3 days     | Toby                      |
-| 4.4          | Sanity test                     | Sanity test the code to ensure there is no new bugs          | 2 days     | Jason                      |
+| 1.1          | Collect data                    | Gather information about existing nutrition apps that have data analysis and/or visualization tools in it                | 1 day      | All              |
+| 1.2          | Create scope                    | Define the scope, required features, and objectives of the tool            | 1 day      | Jason                      |
+| 1.3          | Conduct user research                | Collect user needs and preferences from a nutrition app that provides data analysis and visualization tools   | 1 day      | Jason                      |
+| 1.4          | Map user flow                   | Create a flowchart of how users will interact with the tool    | 1 day      | Toby                     |
+| 1.5          | Design screen wireframes        | Sketch the screen wireframes for the user interface                             | 2 day      | Toby                     |
+| 1.6          | Validate wireframes                 | Test the logic and flow of the wireframes with potential users              | 1 day      | Jason                      |
+| 2.1          | Develop user interface           | Code the final screen designs based on wireframes                               | 3 day      | All                      |
+| 2.2          | Develop screen interconnectivity| Code and connect the screens                      | 3 days     | All                      |
+| 2.3          | Implement provided database     | Implement the database into the app     | 2 days     | All                      |
+| 2.4          | Implement food search feature     | Develop and implement the search function to retrieve food items and display related data    | 2 days     | All                      |
+| 2.5          | Implement nutrition breakdown feature     | Develop and implement the feature to display nutritional breakdowns and visualize it                 | 4 days     | All                      |
+| 2.6          | Implement nutrition range feature     | Develop and implement the filter to display foods within specified nutritional values                 | 2 days     | All                      |
+| 2.7          | Implement nutrition level filter     | Develop and implement the filter to display foods based on its level of nutritional contents                  | 2 days     | All                      |
+| 2.8          | Implement dietary filter features   | Develop and implement the filter for dietary needs |3 days     | All                      |
+| 3.1          | Unit testing                    | Perform unit testing on all features                              | 1 day      | All                      |
+| 3.2          | Alpha testing                   | Perform alpha testing on the app to find bugs and issues                            | 1 day      | Jason                      |
+| 3.3          | Acceptence testing              | Perform acceptence testing on the app to ensure it meets the defined requirements                       | 1 day      | Toby                     |
+| 4.1          | Fix bugs                        | Fix bugs and issues in the code                                     | 3 days     | Toby                     |
+| 4.2          | Gather feedback                 | Gather feedback from users and stakeholders from the testing                    | 2 days     | Jason                      |
+| 4.3          | Enhance features                | Enhance the features based on feedback and add additional dietary filters if possible.                   | 3 days     | Toby                     |
+| 4.4          | Sanity test                     | Conduct sanity testing to ensure no new bugs were introduced         | 2 days     | Jason                      |
 
 
 

@@ -148,6 +148,41 @@ List all key functions within the software. For each function, provide:
 - Input Parameters: List parameters, their data types, and their use.
 - Return Value: Describe what the function returns.
 - Side Effects: Note any side effects, such as changes to global variables or data passed by reference.
+1. **Food Search**\
+- Description: Enable users to search for foods by name and display all the nutritional information.
+- Input Parameters:
+- Return Value:
+- Side Effects:
+2. **Nutrition Breakdown**\
+- Description: Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
+- Input Parameters:
+- Return Value:
+- Side Effects:
+3. **Nutrition Range Filter**\
+- Description: Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges.
+- Input Parameters:
+- Return Value:
+- Side Effects:
+4. **Nutrition Level Filter**\
+- Description: Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
+  - Low: Less than 33% of the highest value.
+  - Mid: Between 33% and 66% of the highest value.
+  - High: Greater than 66% of the highest value.
+- Input Parameters:
+- Return Value:
+- Side Effects:
+5. **Dietary Filter**\
+- Description: Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
+  - Ketogenic (Keto) Diet \
+  Low in carbohydrates, which is less than 5-10% of caloric intake.
+  - Low Sodium Diet \
+  Foods with low sodium content, which usually is less than 140mg per serving.
+  - Low Cholesterol Diet \
+  Low cholestrol foods that have less than 20mg per serving. \
+  Additional dietary needs will be added if the system can be finished before the due date.
+- Input Parameters:
+- Return Value:
+- Side Effects:
 
 #### 3.2.2 Data Structures / Data Sources
 List all data structures or sources used in the software. For each, provide:

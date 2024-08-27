@@ -58,9 +58,9 @@ The dataset for this project is provided by the client in the ".csv" file format
 - Target Users
   - **People with Specific Dietary Needs**\
   Individuals with dietary restrictions because of disease, allergies, or personal preferences can utilize the tool to track their nutritional intake and plan their diets.
-  - **Nutritionist and Dietitians**
+  - **Nutritionist and Dietitians**\
   These professionals can utilize the tool to analyze and visualize the nutritional breakdown of various foods either for their clients or research purposes.
-  - **Researchers**
+  - **Researchers**\
   Researchers can apply the tool for nutritional studies, helping them identify correlations between dietary habits and health markers in order to research how certain nutrients can affect an individual's health. <br>
 In summary, the system provides detailed analysis, visualization, and filtering functionalities for anyone interested in dietary, health and medical research. The primary goal of this tool is to offer insights that support better dietary decisions and health outcomes.
 

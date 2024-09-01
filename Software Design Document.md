@@ -100,13 +100,13 @@ Additional dietary needs will be added if the system can be finished before the 
 
 ## 2. Requirements
 
-### 2.1 User Requirements - WIP (i plan to add narrative descriptions for each one)
+### 2.1 User Requirements - 
 Due to the nature of this type of system there can be a variety of different people that could use it but as stated previously the main 3 that are focused on are people with specific dietary needs, nutritionists/ dietitians, and researchers. To fit the needs of all these different groups of people the user requirements are listed below. 
-- Display a list of food items and their nutritional information:
-- Allow the user to search for specific food items:
-- Allow the user to select tags to filter the types of food items:
-- Display more detailed information based on a food item:
-- Allow the user to search for food items by nutrition levels:
+- Display a list of food items and their nutritional information.
+- Allow the user to search for specific food items.
+- Allow the user to select tags to filter the types of food items.
+- Display more detailed information based on a food item.
+- Allow the user to search for food items by nutrition levels.
 
 ### 2.2	Software Requirements
 Define the functionality the software will provide. This section should list requirements formally, often using the word "shall" to describe functionalities.
@@ -129,14 +129,45 @@ Example:
 Include at least 5 use cases, each corresponding to a specific function.
 
 
-| Use Case ID    | xxx  |
+| Use Case ID    | UC-01  |
+|----------------|------|
+| Use Case Name  | Search food by name |
+| Actors         | User |
+| Description    | The user Searchs for a food item by its name |
+| Flow of Events | 1) the user open the app. 2) the user enters the name of the food item they want. 3) user gets a table of all food items matching the the searched name.|
+| Alternate Flow | entered name dosent exist and an error is returned. |
+
+| Use Case ID    | UC-02  |
+|----------------|------|
+| Use Case Name  | Search food by tag |
+| Actors         | User |
+| Description    | The user Searchs for a food item by a tag  |
+| Flow of Events | 1) the user open the app. 2) the user tag they want. 3) user gets a table of all food items matching the the searched tag. |
+| Alternate Flow | user dosent want to search by the tag anymore and clears the search requirements. |
+
+| Use Case ID    | UC-03  |
+|----------------|------|
+| Use Case Name  | Search food by nutrition level |
+| Actors         | User |
+| Description    | The user Searchs for a food item by its nutrition level |
+| Flow of Events | 1) the user open the app. 2) the user selects to search by nutrition value. 3)The user selects the level of nutrition level. 4) user gets a table of all food items matching the the searched nutrion level. |
+| Alternate Flow | user dosent want to search by the tag anymore and clears the search requirements. |
+
+| Use Case ID    | UC-04  |
+|----------------|------|
+| Use Case Name  | User selects a food item  |
+| Actors         | User |
+| Description    | The user selects a food item and looks at the nutrition values and further information |
+| Flow of Events | 1) The user opens the app. 2) Selects a food item from the table of food items. |
+| Alternate Flow | the user searches for a food item before selecting it |
+
+| Use Case ID    | UC-05  |
 |----------------|------|
 | Use Case Name  | xxxx |
 | Actors         | xxxx |
 | Description    | xxxx |
 | Flow of Events | xxxx |
 | Alternate Flow | xxxx |
-
 
 
 ## 3.	Software Design and System Components 

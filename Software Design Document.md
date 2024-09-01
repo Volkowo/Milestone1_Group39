@@ -134,9 +134,7 @@ Include at least 5 use cases, each corresponding to a specific function.
 | Use Case Name  | Search food by name |
 | Actors         | User |
 | Description    | The user Searchs for a food item by its name |
-| Flow of Events | 1) the user open the app. 
-2) the user enters the name of the food item they want. 
-3) user gets a table of all food items matching the the searched name.|
+| Flow of Events | 1) the user open the app. 2) the user enters the name of the food item they want. 3) user gets a table of all food items matching the the searched name.|
 | Alternate Flow | entered name dosent exist and an error is returned. |
 
 | Use Case ID    | UC-02  |

@@ -100,20 +100,24 @@ Additional dietary needs will be added if the system can be finished before the 
 
 ## 2. Requirements
 
-### 2.1 User Requirements
-
-Detail how users are expected to interact with or use the program. What functionalities must the system provide from the end-user perspective? This can include both narrative descriptions and a listing of user needs.
-
-Note: Since no specific client or user is assigned, you may create a fictional user. Who do you envision using your software?
+### 2.1 User Requirements - WIP (i plan to add narrative descriptions for each one)
+Due to the nature of this type of system there can be a variety of different people that could use it but as stated previously the main 3 that are focused on are people with specific dietary needs, nutritionists/ dietitians, and researchers. To fit the needs of all these different groups of people the user requirements are listed below. 
+- Display a list of food items and their nutritional information:
+- Allow the user to search for specific food items:
+- Allow the user to select tags to filter the types of food items:
+- Display more detailed information based on a food item:
+- Allow the user to search for food items by nutrition levels:
 
 ### 2.2	Software Requirements
 Define the functionality the software will provide. This section should list requirements formally, often using the word "shall" to describe functionalities.
 
 Example Functional Requirements:  
-- R1.1 The program shall accept multiple file names as arguments from the command line.  
-- R1.2 Each file name can be a simple file name or include the full path of the file with one or more levels.  
-
-- etc …
+For the system to perform all the requirements stated above the following will be a list of all the requirements that the system will have for the software. 
+- The system shall connect to a data base of food items and their nutritional information. 
+- The system shall  query data from a database using inputs given by user. 
+- The system shall  generate bar and pie charts for nutritional values. 
+- The system shall create a table of food items with the information retrieved from the database. 
+- The system shall have a connecting system of screens. 
 
 ### 2.3 Use Case Diagram
 Provide a system-level Use Case Diagram illustrating all required features.

@@ -7,7 +7,7 @@
 
 | Student Number | Name      | 
 |----------------|-----------|
-| s5340805        | Toby Nilson |
+| s5340805        | Toby Nilsson |
 | s5330262        | Jason Kenaz | 
 
 
@@ -108,10 +108,7 @@ Due to the nature of this type of system there can be a variety of different peo
 - Display more detailed information based on a food item.
 - Allow the user to search for food items by nutrition levels.
 
-### 2.2	Software Requirements
-Define the functionality the software will provide. This section should list requirements formally, often using the word "shall" to describe functionalities.
-
-Example Functional Requirements:  
+### 2.2	Software Requirements 
 For the system to perform all the requirements stated above the following will be a list of all the requirements that the system will have for the software. 
 - The system shall connect to a data base of food items and their nutritional information. 
 - The system shall  query data from a database using inputs given by user. 
@@ -120,13 +117,11 @@ For the system to perform all the requirements stated above the following will b
 - The system shall have a connecting system of screens. 
 
 ### 2.3 Use Case Diagram
-Provide a system-level Use Case Diagram illustrating all required features.
 
-Example:  
 ![Use Case Diagram](./UCD.png)
 
 ### 2.4 Use Cases
-Include at least 5 use cases, each corresponding to a specific function.
+
 
 
 | Use Case ID    | UC-01  |
@@ -163,10 +158,10 @@ Include at least 5 use cases, each corresponding to a specific function.
 
 | Use Case ID    | UC-05  |
 |----------------|------|
-| Use Case Name  | xxxx |
-| Actors         | xxxx |
-| Description    | xxxx |
-| Flow of Events | xxxx |
+| Use Case Name  | User search and brows |
+| Actors         | Useer |
+| Description    | the user searches for a food item and looks at its information |
+| Flow of Events | 1) User opens the app. 2) rhe user enters the food item name they want. 3) they select the food item from the results. 4) the user views the food item info |
 | Alternate Flow | xxxx |
 
 
@@ -259,26 +254,19 @@ Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that 
 
 ## 4. User Interface Design
 
-### 4.1 Structural Design
-Present a structural design, a hierarchy chart, showing the overall interface’s structure. Address:
-
-- Structure: How will the software be structured?
-- Information Grouping: How will information be organized?
-- Navigation: How will users navigate through the software?
-- Design Choices: Explain why these design choices were made.
-
-Example:  
+### 4.1 Structural Design  
 ![Structural Design](./Structural_Design.png)
 
 ### 4.2	Visual Design
-Include all wireframes or mock-ups of the interface. Provide a discussion, explanation, and justification for your design choices. Hand-drawn wireframes are acceptable.
+<!--Include all wireframes or mock-ups of the interface. Provide a discussion, explanation, and justification for your design choices. Hand-drawn wireframes are acceptable.
 
 - Interface Components: Clearly label all components.
 - Screens/Menus: Provide wireframes for different screens, menus, and options.
 - Design Details: Focus on the layout and size of components; color and graphics are not required. 
 
-Example:  
-![Visual Design](./visual_design.png)
+Example:  -->
+![Visual Design](./visual_design1.png)
+![Visual Design](./visual_design2.png)
 
 
 

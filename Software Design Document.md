@@ -274,77 +274,90 @@ For the system to perform all the requirements stated above the following will b
 #### 3.2.3 Detailed Design
 <!-- Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function. -->
 1. foodSearch(foodName) \
-if(foodNutrition[i][foodName] == userInput):\
-	  return foodOutput = foodNutrition[i]\
-	else:\
-		return “No food found.”\
+```
+if(foodNutrition[i][foodName] == userInput):
+	  return foodOutput = foodNutrition[i]
+	else:
+		return “No food found.”
+```
 
-2. displayPieChart(foodName)\
-foodData = {}\
-foodData = foodNutrition[foodName]\
-\
-labels = list(foodData.keys())\
-sizes = list(foodData.values())\
-color = colorList\
-explode = explodeList\
-pieChart = pie(sizes, explode=explode, labels=labels, colors=coloes, autopct=”%1.1f%%”, shadow=True)\
-return pieChart\
+2. displayPieChart(foodName)
+```
+foodData = {}
+foodData = foodNutrition[foodName]
 
-3. displayBarChart(foodName)\
-foodData = {}\
-foodData = foodNutrition[foodName]\
-\
-labels = list(foodData.keys())\
-sizes = list(foodData.values())\
-color = colorList\
-barChart = bar(categories, values, colors= colors)\
-return barChart\
+labels = list(foodData.keys())
+sizes = list(foodData.values())
+color = colorList
+explode = explodeList
+pieChart = pie(sizes, explode=explode, labels=labels, colors=coloes, autopct=”%1.1f%%”, shadow=True)
+return pieChart
+```
 
-4. filter_nutritionRange(nutritionName, minVal, maxVal)\
-foodOutput = {}\
-for food in foodNutrition.keys():\
-  value = foodNutrition[food][nutritionName]\
-  if(value  >= minVal AND value <= MaxVal):\
-    foodOutput[food] = foodNutrition[food]\
-return foodOutput\
+3. displayBarChart(foodName)
+```
+foodData = {}
+foodData = foodNutrition[foodName]
 
-5. filter_nutritionLevel(nutritionName, nutritionLevel)\
-max_value = 0\
-foodOutput = {}\
-nutritionThreshold = {'low': None, 'mid': None, 'high': None}\
+labels = list(foodData.keys())
+sizes = list(foodData.values())
+color = colorList
+barChart = bar(categories, values, colors= colors)
+return barChart
+```
 
-for food in foodNutrition.keys():\
-  value = foodNutrition[food][nutritionName]\
-  if value > max_value:\
-  max_value = value\
+4. filter_nutritionRange(nutritionName, minVal, maxVal)
+```
+foodOutput = {}
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if(value  >= minVal AND value <= MaxVal):
+    foodOutput[food] = foodNutrition[food]
+
+return foodOutput
+```
+
+5. filter_nutritionLevel(nutritionName, nutritionLevel)
+```
+max_value = 0
+foodOutput = {}
+nutritionThreshold = {'low': None, 'mid': None, 'high': None}
+
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if value > max_value:
+  max_value = value
     
-nutritionThreshold ['low'] = 0.33 * max_value\
-nutritionThreshold ['mid'] = 0.66 * max_value\
-nutritionThreshold ['high'] = max_value\
+nutritionThreshold ['low'] = 0.33 * max_value
+nutritionThreshold ['mid'] = 0.66 * max_value
+nutritionThreshold ['high'] = max_value
 
-for food in foodNutrition.keys():\
-  value = foodNutrition[food][nutritionName]\
-  if nutritonLevel == 'low' AND value < nutritionThreshold ['low']:\
-    foodOutput[food] = foodNutrition[food]\
-  elif nutritonLevel == 'mid' AND nutritionThreshold ['low'] <= value <= nutritionThreshold ['mid']:\
-    foodOutput[food] = foodNutrition[food]\
-  elif nutritonLevel == 'high' AND value > nutritionThreshold ['high']:\
-    foodOutput[food] = foodNutrition[food]\
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if nutritonLevel == 'low' AND value < nutritionThreshold ['low']:
+    foodOutput[food] = foodNutrition[food]
+  elif nutritonLevel == 'mid' AND nutritionThreshold ['low'] <= value <= nutritionThreshold ['mid']:
+    foodOutput[food] = foodNutrition[food]
+  elif nutritonLevel == 'high' AND value > nutritionThreshold ['high']:
+    foodOutput[food] = foodNutrition[food]
 return foodOutput
+```
 
-6. filter_dietary(dietaryNeed)\
-foodOutput = {}\
-for food in foodNutrition.keys():\
-  minCaloricIntake = 5% * foodNutrition[food][‘Caloric Value’]\
-  maxCaloricIntake = 10% * foodNutrition[food][‘Caloric Value’]\
-  if dietaryNeed == “ketoDiet” AND minCaloricIntake <= foodNutrition[food][“Carbohydrate”] <= maxCaloricIntake:\
-    foodOutput[food] = foodNutrition[food]\
-  elif dietaryNeed == “lowSodium” AND foodNutrition[food][“Sodium”] < 140:\
-    foodOutput[food] = foodNutrition[food]\
-  elif dietaryNeed == “lowCholesterol” AND foodNutrition[food][“Cholesterol”] < 20:\
-    foodOutput[food] = foodNutrition[food]\
+6. filter_dietary(dietaryNeed)
+```
+foodOutput = {}
+for food in foodNutrition.keys():
+  minCaloricIntake = 5% * foodNutrition[food][‘Caloric Value’]
+  maxCaloricIntake = 10% * foodNutrition[food][‘Caloric Value’]
+  if dietaryNeed == “ketoDiet” AND minCaloricIntake <= foodNutrition[food][“Carbohydrate”] <= maxCaloricIntake):
+    foodOutput[food] = foodNutrition[food]
+  elif dietaryNeed == “lowSodium” AND foodNutrition[food][“Sodium”] < 140:
+    foodOutput[food] = foodNutrition[food]
+  elif dietaryNeed == “lowCholesterol” AND foodNutrition[food][“Cholesterol”] < 20:
+    foodOutput[food] = foodNutrition[food]
+
 return foodOutput
-
+```
 
 ## 4. User Interface Design
 

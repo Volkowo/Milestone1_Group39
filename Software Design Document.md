@@ -111,8 +111,8 @@ Due to the nature of this type of system there can be a variety of different peo
 ### 2.2	Software Requirements 
 For the system to perform all the requirements stated above the following will be a list of all the requirements that the system will have for the software. 
 - The system shall connect to a data base of food items and their nutritional information. 
-- The system shall  query data from a database using inputs given by user. 
-- The system shall  generate bar and pie charts for nutritional values. 
+- The system shall query data from a database using inputs given by user. 
+- The system shall generate bar and pie charts for nutritional values. 
 - The system shall create a table of food items with the information retrieved from the database. 
 - The system shall have a connecting system of screens. 
 
@@ -194,18 +194,18 @@ For the system to perform all the requirements stated above the following will b
   - foodName: string\
   The name of the food the user selects. This input will be used to return the corresponding nutritional data from the database.
 - Return Value:
-  - None for now. Will revise after next week's lecture.
+  - Returns the pie chart with the help of mathplotlib.
 - Side Effects:
-  - None for now. Will revise after next week's lecture.
+  - The pie chart is directly displayed to the user interface.
 3. **displayBarChart()**
 - Description: Display bar chart showing the breakdown of different nutrients for the food that the user chose.
 - Input Parameters:
   - foodName: string\
   The name of the food the user selects. This input will be used to return the corresponding nutritional data from the database.
 - Return Value:
-  - None for now. Will revise after next week's lecture.
+  - Returns the bar chart with the help of mathplotlib.
 - Side Effects:
-  - None for now. Will revise after next week's lecture.
+  - The bar chart is directly displayed to the user interface.
 4. **filter_nutritionRange()**
 - Description: Filters and display list of foods that are within a specified range of minimum & maximum values of a chosen nutrient. Users will select a nutrient and define the minimum and maximum value. The function will then search through the database to find foods that meet these criteria.
 - Input Parameters:
@@ -216,40 +216,138 @@ For the system to perform all the requirements stated above the following will b
   - maxVal: float\
   The maximum value of the nutrition value that the food must meet. \
 - Return Value:
-    - foodOutput: dict \
+  - foodOutput: dict \
   The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
 - Side Effects:
   - No side effects from this function.
-5. **Nutrition Level Filter**
-- Description: Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
-  - Low: Less than 33% of the highest value.
-  - Mid: Between 33% and 66% of the highest value.
-  - High: Greater than 66% of the highest value.
+5. **filter_nutritionLevel()**
+- Description: Filters and display list of foods by choosing a nutrient and its content level.
 - Input Parameters:
+  - nutritionName: string\
+  The name of the nutrition to filter by.
+  - nutritionLevel: string\
+  The level of nutrient content the food must meet.
 - Return Value:
+  - foodOutput: dict \
+  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
 - Side Effects:
-6. **Dietary Filter**
-- Description: Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
-  - Ketogenic (Keto) Diet \
-  Low in carbohydrates, which is less than 5-10% of caloric intake.
-  - Low Sodium Diet \
-  Foods with low sodium content, which usually is less than 140mg per serving.
-  - Low Cholesterol Diet \
-  Low cholestrol foods that have less than 20mg per serving. \
-  Additional dietary needs will be added if the system can be finished before the due date.
+  - No side effects from this function
+6. **filter_dietary()**
+- Description: Filters and display list of foods based on the three tags for dietary needs.
 - Input Parameters:
+  - dietaryNeed: string\
+  The dietary needs that the user chose.
 - Return Value:
+  - foodOutput: dict \
+  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
 - Side Effects:
-
+  - No side effects from this function
 #### 3.2.2 Data Structures / Data Sources
-List all data structures or sources used in the software. For each, provide:
+- foodNutrition
+  - Type: dict
+  - Usage: 
+    The main data that is used for this software. This contains the food name and all the nutritional content it have. The nutrition name will be the key, and whatever value inside each nutrition is the value.\
+    This data is used to display all the food in the main page, and will also be used to find food that matches the users' input and/or filter as well.
+  - Functions: foodSearch(), displayPieChart(), displayBarChart(), filter_nutritionRange(), filter_nutritionLevel(), filter_dietary()
+- userPreference_nutritionRange
+  - type: dict
+  - Usage:
+    Stores users' selected preference when they choose to filter food based on nutrition range. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name, minimum value, and maximum value will be the keys, while the users' input will be the value.
+  - Functions: filter_nutritionRange(), foodSearch()
+- userPreference_nutritionLevel
+  - type: dict
+  - Usage:
+    Stores users' selected preference when they choose to filter food based on nutrition level. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name and nutrition level will be the keys, while the users' input will be the value.
+  - Functions: filter_nutritionRange(), foodSearch()
+- userPreference_dietary
+  - type: dict
+  - Usage:
+    Stores users' selected preference when they choose to filter food based on their dietary needs. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference.
+  - Functions: filter_nutritionRange(), foodSearch()
+
+<!-- List all data structures or sources used in the software. For each, provide:
 
 - Type: Type of data structure (e.g., list, set, dictionary).
 - Usage: Describe where and how it is used.
-- Functions: List functions that utilize this structure.
+- Functions: List functions that utilize this structure. -->
 
 #### 3.2.3 Detailed Design
-Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function.
+<!-- Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function. -->
+1. foodSearch(foodName) \
+if(foodNutrition[i][foodName] == userInput):
+	  return foodOutput = foodNutrition[i]
+	else:
+		return “No food found.”
+
+2. displayPieChart(foodName)
+foodData = {}
+foodData = foodNutrition[foodName]
+
+labels = list(foodData.keys())
+sizes = list(foodData.values())
+color = colorList
+explode = explodeList
+pieChart = pie(sizes, explode=explode, labels=labels, colors=coloes, autopct=”%1.1f%%”, shadow=True)
+return pieChart
+
+3. displayBarChart(foodName)
+foodData = {}
+foodData = foodNutrition[foodName]
+
+labels = list(foodData.keys())
+sizes = list(foodData.values())
+color = colorList
+barChart = bar(categories, values, colors= colors)
+return barChart
+
+
+4. filter_nutritionRange(nutritionName, minVal, maxVal)
+foodOutput = {}
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if(value  >= minVal AND value <= MaxVal):
+    foodOutput[food] = foodNutrition[food]
+
+return foodOutput
+
+5. filter_nutritionLevel(nutritionName, nutritionLevel)
+max_value = 0
+foodOutput = {}
+nutritionThreshold = {'low': None, 'mid': None, 'high': None}
+
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if value > max_value:
+  max_value = value
+    
+nutritionThreshold ['low'] = 0.33 * max_value
+nutritionThreshold ['mid'] = 0.66 * max_value
+nutritionThreshold ['high'] = max_value
+
+for food in foodNutrition.keys():
+  value = foodNutrition[food][nutritionName]
+  if nutritonLevel == 'low' AND value < nutritionThreshold ['low']:
+    foodOutput[food] = foodNutrition[food]
+  elif nutritonLevel == 'mid' AND nutritionThreshold ['low'] <= value <= nutritionThreshold ['mid']:
+    foodOutput[food] = foodNutrition[food]
+  elif nutritonLevel == 'high' AND value > nutritionThreshold ['high']:
+    foodOutput[food] = foodNutrition[food]
+
+return foodOutput
+
+6. filter_dietary(dietaryNeed)
+foodOutput = {}
+for food in foodNutrition.keys():
+  minCaloricIntake = 5% * foodNutrition[food][‘Caloric Value’]
+  maxCaloricIntake = 10% * foodNutrition[food][‘Caloric Value’]
+  if dietaryNeed == “ketoDiet” AND minCaloricIntake <= foodNutrition[food][“Carbohydrate”] <= maxCaloricIntake):
+    foodOutput[food] = foodNutrition[food]
+  elif dietaryNeed == “lowSodium” AND foodNutrition[food][“Sodium”] < 140:
+    foodOutput[food] = foodNutrition[food]
+  elif dietaryNeed == “lowCholesterol” AND foodNutrition[food][“Cholesterol”] < 20:
+    foodOutput[food] = foodNutrition[food]
+
+return foodOutput
 
 
 ## 4. User Interface Design

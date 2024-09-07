@@ -1,6 +1,6 @@
 # Software Design Document
 
-## Project Name: XXXX
+## Project Name: Food Nutrition Breakdown App
 ## Group Number: 039
 
 ## Team members

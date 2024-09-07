@@ -1,22 +1,25 @@
 # Project Plan
 
-## Project Name: XXXX
-## Group Number: 001
+## Project Name: Food Nutrition Breakdown App
+## Group Number: 039
 
 ### Team members
 
 | Student No. | Full Name | GitHub Username | Contribution (sum to 100%) | 
 |-------------|-----------|-----------------|----------------------------|
 | s5340805     | Toby Nilson | Venrin-04             | 50%             |
-| s5330161     | Jason Kenaz | Volkowo             | 50%             | 
+| s5330262     | Jason Kenaz | Volkowo             | 50%             | 
 
 ### Brief Description of Contribution
 
 Please Describe what you have accomplished in this group project.
-- s111111, Full name
+- s5340805, Toby Nilson
   - Accomplishments: Describe what you have completed or achieved
-- s222222, Full name
-  - Accomplishments: Describe what you have completed or achieved
+- s5330262, Jason Kenaz
+  - Started the initial meeting with Toby to decide which part each of us will do for both project plan and software design document.
+  - Wrote project overview and gantt chart for the project plan.
+  - Wrote system vision and software design and software component for software design document.
+  - Gave feedback to Toby and also revised my part based on his feedback.
 
 <div style="page-break-after: always;"></div>
 
@@ -78,13 +81,13 @@ Chefs can utilize the tool to create or plan meals with specific nutritional goa
 
 ## 2. Work Breakdown Structure
 
-Include the Work Breakdown Structure (WBS) for the entire project. WBS should be presented as a hierarchical diagram. Use the elements from the WBS to define activities in Section 3, and schedule these activities in the Gantt Chart in Section 4. Ensure all project activities are considered and included in the WBS.
+<!-- Include the Work Breakdown Structure (WBS) for the entire project. WBS should be presented as a hierarchical diagram. Use the elements from the WBS to define activities in Section 3, and schedule these activities in the Gantt Chart in Section 4. Ensure all project activities are considered and included in the WBS. -->
 
 ![WBS](./WBS.jpg)
 
 ## 3. Activity Definition Estimation
 
-Define the activities required for your project based on the WBS, and assign responsibilities to team members. Each activity should be numbered and correspond with your Gantt chart. Provide estimated durations for each activity to facilitate Gantt chart preparation.
+<!-- Define the activities required for your project based on the WBS, and assign responsibilities to team members. Each activity should be numbered and correspond with your Gantt chart. Provide estimated durations for each activity to facilitate Gantt chart preparation. -->
 
 | Activity #No |          Activity Name          | Brief Description | Duration | Responsible Team Members |
 |--------------|---------------------------------|-------------------|----------|--------------------------|
@@ -115,10 +118,11 @@ Define the activities required for your project based on the WBS, and assign res
 
 
 ## 4. Gantt Chart
-You have to use the provided Gantt chart template.  
+Below is the gantt chart for this project based on the WBS and activity estimation. "Actual start", "Actual duration", and "Percent completition" have also been filled for activities that are currently finished.
+<!-- You have to use the provided Gantt chart template.  
 
 Use the provided Gantt chart template to list all items from the Activity Definition along with relevant estimates 
 and scheduling. Ensure that the Gantt chart reflects the activity definitions from Section 3. Track actual start 
-times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately.
+times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately. -->
 ![Gantt Chart](./Gantt_chart.png)
 

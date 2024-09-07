@@ -89,26 +89,28 @@ Define the activities required for your project based on the WBS, and assign res
 | Activity #No |          Activity Name          | Brief Description | Duration | Responsible Team Members |
 |--------------|---------------------------------|-------------------|----------|--------------------------|
 | 1.1          | Collect data                    | Gather information about existing nutrition apps that have data analysis and/or visualization tools in it                | 1 day      | All              |
-| 1.2          | Create scope                    | Define the scope, required features, and objectives of the tool            | 1 day      | Jason                      |
-| 1.3          | Conduct user research                | Collect user needs and preferences from a nutrition app that provides data analysis and visualization tools   | 1 day      | Jason                      |
-| 1.4          | Map user flow                   | Create a flowchart of how users will interact with the tool    | 1 day      | Toby                     |
-| 1.5          | Design screen wireframes        | Sketch the screen wireframes for the user interface                             | 2 day      | Toby                     |
-| 1.6          | Validate wireframes                 | Test the logic and flow of the wireframes with potential users              | 1 day      | Jason                      |
-| 2.1          | Develop user interface           | Code the final screen designs based on wireframes                               | 3 day      | All                      |
-| 2.2          | Develop screen interconnectivity| Code and connect the screens                      | 3 days     | All                      |
-| 2.3          | Implement provided database     | Implement the database into the app     | 2 days     | All                      |
-| 2.4          | Implement food search feature     | Develop and implement the search function to retrieve food items and display related data    | 2 days     | All                      |
-| 2.5          | Implement nutrition breakdown feature     | Develop and implement the feature to display nutritional breakdowns and visualize it                 | 4 days     | All                      |
-| 2.6          | Implement nutrition range feature     | Develop and implement the filter to display foods within specified nutritional values                 | 2 days     | All                      |
-| 2.7          | Implement nutrition level filter     | Develop and implement the filter to display foods based on its level of nutritional contents                  | 2 days     | All                      |
-| 2.8          | Implement dietary filter features   | Develop and implement the filter for dietary needs |3 days     | All                      |
-| 3.1          | Unit testing                    | Perform unit testing on all features                              | 1 day      | All                      |
-| 3.2          | Alpha testing                   | Perform alpha testing on the app to find bugs and issues                            | 1 day      | Jason                      |
-| 3.3          | Acceptence testing              | Perform acceptence testing on the app to ensure it meets the defined requirements                       | 1 day      | Toby                     |
-| 4.1          | Fix bugs                        | Fix bugs and issues in the code                                     | 3 days     | Toby                     |
-| 4.2          | Gather feedback                 | Gather feedback from users and stakeholders from the testing                    | 2 days     | Jason                      |
-| 4.3          | Enhance features                | Enhance the features based on feedback and add additional dietary filters if possible.                   | 3 days     | Toby                     |
-| 4.4          | Sanity test                     | Conduct sanity testing to ensure no new bugs were introduced         | 2 days     | Jason                      |
+| 1.2          | Create Project Plan                    | Develop a detailed plan with the project's overview, deliverables, and timeline/schedule             | 3 days      | All                      |
+| 1.3          | Create WBS and schedule         | Create work breakdown structure (WBS) in the form of hierarchical diagram to define high-level activities that must be done for the project  | 1 day      | Toby                      |
+| 1.4          | Conduct user research           | Collect user needs and preferences from a nutrition app that provides data analysis and visualization tools   | 1 day      | Jason                      |
+| 1.5          | Create Software Design Document  | Create a document detailing the overview of the system, users' requirements, the component and specification of the system, and overall system design.   | 4 days      | All                      |
+| 1.6          | Map user flow                   | Create a flowchart of how users will interact with the tool    | 1 day      | Toby                     |
+| 1.7          | Design screen wireframes        | Sketch the screen wireframes for the user interface                             | 2 days      | Toby                     |
+| 1.8          | Validate wireframes             | Test the logic and flow of the wireframes with potential users              | 1 day      | Jason                      |
+| 2.1          | Develop user interface                     | Code the final screen designs based on wireframes                               | 3 day      | All                      |
+| 2.2          | Develop screen interconnectivity           | Code and connect the screens                      | 3 days     | All                      |
+| 2.3          | Implement provided database                | Implement the database into the app     | 2 days     | All                      |
+| 2.4          | Implement food search feature              | Develop and implement the search function to retrieve food items and display related data    | 2 days     | All                      |
+| 2.5          | Implement nutrition breakdown feature      | Develop and implement the feature to display nutritional breakdowns and visualize it                 | 4 days     | All                      |
+| 2.6          | Implement nutrition range feature          | Develop and implement the filter to display foods within specified nutritional values                 | 3 days     | All                      |
+| 2.7          | Implement nutrition level filter           | Develop and implement the filter to display foods based on its level of nutritional contents                  | 2 days     | All                      |
+| 2.8          | Implement dietary filter features          | Develop and implement the filter for dietary needs |3 days     | All                      |
+| 3.1          | Unit testing                               | Perform unit testing on all features                              | 1 day      | All                      |
+| 3.2          | Alpha testing                              | Perform alpha testing on the app to find bugs and issues                            | 1 day      | Jason                      |
+| 3.3          | Acceptence testing                         | Perform acceptence testing on the app to ensure it meets the defined requirements                       | 1 day      | Toby                     |
+| 4.1          | Fix bugs                                   | Fix bugs and issues in the code                                     | 3 days     | Toby                     |
+| 4.2          | Gather feedback                            | Gather feedback from users and stakeholders from the testing                    | 2 days     | Jason                      |
+| 4.3          | Enhance features                           | Enhance the features based on feedback and add additional dietary filters if possible.                   | 3 days     | Toby                     |
+| 4.4          | Sanity test                                | Conduct sanity testing to ensure no new bugs were introduced         | 2 days     | Jason                      |
 
 
 

@@ -273,15 +273,15 @@ For the system to perform all the requirements stated above the following will b
 
 #### 3.2.3 Detailed Design
 <!-- Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function. -->
-1. foodSearch(foodName) \
+1. foodSearch(foodName)\
 ```
 if(foodNutrition[i][foodName] == userInput):
-	  return foodOutput = foodNutrition[i]
+    return foodOutput = foodNutrition[i]
 	else:
-		return “No food found.”
+    return “No food found.”
 ```
 
-2. displayPieChart(foodName)
+2. displayPieChart(foodName)\
 ```
 foodData = {}
 foodData = foodNutrition[foodName]
@@ -294,7 +294,7 @@ pieChart = pie(sizes, explode=explode, labels=labels, colors=coloes, autopct=”
 return pieChart
 ```
 
-3. displayBarChart(foodName)
+3. displayBarChart(foodName)\
 ```
 foodData = {}
 foodData = foodNutrition[foodName]
@@ -306,7 +306,7 @@ barChart = bar(categories, values, colors= colors)
 return barChart
 ```
 
-4. filter_nutritionRange(nutritionName, minVal, maxVal)
+4. filter_nutritionRange(nutritionName, minVal, maxVal)\
 ```
 foodOutput = {}
 for food in foodNutrition.keys():
@@ -317,7 +317,7 @@ for food in foodNutrition.keys():
 return foodOutput
 ```
 
-5. filter_nutritionLevel(nutritionName, nutritionLevel)
+5. filter_nutritionLevel(nutritionName, nutritionLevel)\
 ```
 max_value = 0
 foodOutput = {}
@@ -343,7 +343,7 @@ for food in foodNutrition.keys():
 return foodOutput
 ```
 
-6. filter_dietary(dietaryNeed)
+6. filter_dietary(dietaryNeed)\
 ```
 foodOutput = {}
 for food in foodNutrition.keys():

@@ -117,12 +117,11 @@ For the system to perform all the requirements stated above the following will b
 - The system shall have a connecting system of screens. 
 
 ### 2.3 Use Case Diagram
-
+Below is the use case diagram it depicts how the users will interact with the system.
 ![Use Case Diagram](./UCD.png)
 
 ### 2.4 Use Cases
-
-
+The following is a series of different use cases that can happen when a user it to try using this system.
 
 | Use Case ID    | UC-01  |
 |----------------|------|
@@ -361,7 +360,8 @@ return foodOutput
 
 ## 4. User Interface Design
 
-### 4.1 Structural Design  
+### 4.1 Structural Design 
+Below is the structural design chart is show how the flow of the page will be as a user moves through the system.
 ![Structural Design](./Structural_Design.png)
 
 ### 4.2	Visual Design
@@ -372,8 +372,15 @@ return foodOutput
 - Design Details: Focus on the layout and size of components; color and graphics are not required. 
 
 Example:  -->
+Below is the wireframes for the ui components of the system will be made to look.
+This is the first screen the user will see it has a collection of images of food items along with the name of that food item, it also has a button to open a popup screen for searching.
 ![Visual Design](./visual_design1.png)
+this is that popup screen that was mentioned earlier it allows for the user to search for a food name using several different features like searching by name, a set of tags or by a nutrition level.
 ![Visual Design](./visual_design2.png)
+when a user selects a food item this is the screen they will see and it lists some of the more commonly needed info about a food item along with some things that food item can be used in. lastly it has an option to open a chart page that will show some more information about the 
+![Visual Design](./visual_design3.png)
+this is the chart screen mentioned earlier is holds the chats a bar chart and a pie chart The bar chart will consist of all the different vitamins that the food item contains while the pie chart will show all other values about the food item that haven’t already been shown.
+![Visual Design](./visual_design4.png)
 
 
 

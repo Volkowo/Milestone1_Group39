@@ -75,7 +75,6 @@ In summary, the system provides detailed analysis, visualization, and filtering 
 - System Functionality\
 The tool will let users search for foods by name and break down their nutritional information through visualizations. These visualizations come in the form of pie charts and bar graphs. The search function will also include filters that enable users to find foods based on defined nutritional ranges, specific levels of nutritional content, and/or specific dietary needs (e.g., ketogenic diet, low sodium, low cholesterol) to facilitate diet planning.
 - Features and Functionalities
-<!-- Describe the key features and functionalities of the system. -->
   - **Food Search**\
   Enable users to search for foods by name and display all the nutritional information;
   - **Nutrition Breakdown**\

@@ -128,14 +128,8 @@ The following is a series of different use cases that can happen when a user it 
 | Use Case Name  | Search Food by Name |
 | Actors         | User |
 | Description    | The user searches for food by typing in the search bar. |
-| Flow of Events | 
-1. The user opens the app. 
-2. The user clicks the search button and enter the name of the food item they want to look for. 
-3. The system searches through the database based on user's input 
-4. The system returns a list of food according to user's input. 
-5. The user gets a table of all food items matching the searched name.|
-| Alternate Flow | 
-- Entered name does not exist and an error is returned instead by the system. |
+| Flow of Events | 1. The user opens the app. \ 2. The user clicks the search button and enter the name of the food item they want to look for. \ 3. The system searches through the database based on user's input.\ 4. The system returns a list of food according to user's input. \5. The user gets a table of all food items matching the searched name.|
+| Alternate Flow | Entered name does not exist and an error is returned instead by the system. |
 
 | Use Case ID    | UC-02  |
 |----------------|------|

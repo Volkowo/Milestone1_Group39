@@ -14,7 +14,10 @@
 
 Please Describe what you have accomplished in this group project.
 - s5340805, Toby Nilson
-  - Accomplishments: Describe what you have completed or achieved
+  - Participated in the inital meeting set up by jason to plan the parts of the project we will both undertake.
+  - Wrote adn designed the Work breakdown structure and the activity definition estemation for the project plan.
+  - Wrote and designed the system requirements section and the user interface section for the software design documement.
+  - Gave feedback to jason throughout th procces as he requested and also revised and fixt parts of my sections baseed on feedback provided by jason.
 - s5330262, Jason Kenaz
   - Started the initial meeting with Toby to decide which part each of us will do for both project plan and software design document.
   - Wrote project overview and gantt chart for the project plan.

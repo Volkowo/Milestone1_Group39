@@ -1,0 +1,68 @@
+* 4351fa9 2024-09-08 by [Volkowo] | Final touches. Project Plan and Software Design Document have been finished. (HEAD -> main, origin/main, origin/jasonBranch, origin/HEAD, jasonBranch)
+* 4964af0 2024-09-08 by [Volkowo] | Fixed more markdown formatting.
+* ba4e36f 2024-09-08 by [Volkowo] | MORE MARKDOWN FIXES
+* 7d1be6a 2024-09-08 by [Volkowo] | again more typo fixes
+* db7f0bc 2024-09-08 by [Volkowo] | more typo fixes
+* 803fe77 2024-09-08 by [Volkowo] | walahi brother i forgot to add data until now
+* 76f665c 2024-09-08 by [Volkowo] | again, typo fixes
+* ae4ed03 2024-09-08 by [Volkowo] | Final changes (PLEASE)
+* 5e5e284 2024-09-08 by [Volkowo] | testing
+* 9c4e623 2024-09-08 by [Volkowo] | switched to branch. changed more stuff
+* 20743b9 2024-09-08 by [Volkowo] | (still on-progress) adding final touches
+* bb48cd2 2024-09-08 by [venrin-04] | Updated UDC
+* b32ea18 2024-09-08 by [venrin-04] | fixed some spacing issues
+* 81c4acd 2024-09-08 by [venrin-04] | image info
+* fd96d03 2024-09-08 by [venrin-04] | added achievements
+* bb0d19a 2024-09-07 by [Volkowo] | Changed project name, group number, and brief description of contribution.
+* c4bdec3 2024-09-07 by [Volkowo] | final revision. hopefully
+* b2d8c60 2024-09-07 by [Volkowo] | 3rd revision walahi
+* 50abf03 2024-09-07 by [Volkowo] | 2nd revision
+* ea8a414 2024-09-07 by [Volkowo] | Revision
+* bbfd436 2024-09-07 by [Volkowo] | Finished my part for project plan and software design document
+* a87a524 2024-09-07 by [venrin-04] | all wireframes updated
+*   6dd3cfb 2024-09-07 by [Volkowo] | Merge branch 'main' of https://github.com/Volkowo/Milestone1_Group39
+|\  
+| * af5c4cd 2024-09-07 by [venrin-04] | updated WBS
+* | 9293691 2024-09-07 by [Volkowo] | Forgot to add the actual picture of the revised Gantt Chart lol
+|/  
+* 3b3eea7 2024-09-07 by [Volkowo] | Revised Gantt Chart and activity definition estimation
+* 921e9f7 2024-09-03 by [venrin-04] | Add files via upload
+* a240d3f 2024-09-03 by [venrin-04] | touch ups and fixes to some of my parts
+* 4cf723c 2024-09-02 by [venrin-04] | added the structural design  png
+* 8c2e6d5 2024-09-01 by [venrin-04] | test did in fact not work
+* 10ea9e7 2024-09-01 by [venrin-04] | testing the layout of the use case diagrams
+* 0f45572 2024-09-01 by [venrin-04] | got section 2 mostly done
+* 70e1626 2024-09-01 by [venrin-04] | UCD
+* c21d844 2024-09-01 by [venrin-04] | Update Software Design Document.md
+* 41ea730 2024-08-27 by [Volkowo] | Revision on section 3.2.1 (Not finished)
+* f4bb354 2024-08-27 by [Volkowo] | Added 3.2.1 (only the description for now lol)
+* 0f4e252 2024-08-27 by [Volkowo] | fixed merging conflicts (part 2)
+*   0dc1e7e 2024-08-27 by [Volkowo] | Merge branch 'main' of https://github.com/Volkowo/Milestone1_Group39 into jasonBranch
+|\  
+| * eedb7a2 2024-08-27 by [Volkowo] | Added flowchart and deleted a file.
+| * a8957e5 2024-08-26 by [Volkowo] | Added gantt chart (both PNG and Excel file)
+| * 431f59c 2024-08-26 by [Volkowo] | Revised Project Plan's section 3
+| * 3effbf9 2024-08-23 by [venrin-04] | finished section 3
+| * 4b587db 2024-08-23 by [venrin-04] | worked on section 3
+| * 18d0b91 2024-08-23 by [venrin-04] | section 3 WIP
+| * b69e258 2024-08-23 by [Volkowo] | revision for markdown syntax for some part. The content is still the same.
+| *   0a8a1cf 2024-08-23 by [Volkowo] | Merge branch 'main' of https://github.com/Volkowo/Milestone1_Group39 well uhhh the merge is necessary since im pushing my branch?? thats it lol
+| |\  
+| | * 010996d 2024-08-22 by [venrin-04] | Add files via upload
+| | * 2a13fa0 2024-08-22 by [venrin-04] | Update Project Plan.md
+* | | 7ca65be 2024-08-27 by [Volkowo] | fixed a typo
+|/ /  
+* | cf3b53f 2024-08-23 by [Volkowo] | Revised project plan, readme, and software design document. First section of both document is complete basically yippeeeeeeee
+* | ab83719 2024-08-23 by [Volkowo] | slight revision for project plan and readme. Additional revision will be added later
+* | a7ad52f 2024-08-22 by [Volkowo] | Added more to software design document
+* | bb17dae 2024-08-22 by [Volkowo] | fixed some typo on software design
+* | 5cf7595 2024-08-22 by [Volkowo] | Slight revision on project plan. Started with software design document.
+|/  
+* 58ec7c2 2024-08-21 by [Volkowo] | Added the first part of project plan. Will revise later if there is anything else I'd like to add.
+* e9b4124 2024-08-21 by [Volkowo] | again
+* 3ac0a88 2024-08-21 by [Volkowo] | Added project objectives
+* 2654120 2024-08-21 by [Volkowo] | Fixed some typo at README
+* 4badf86 2024-08-21 by [Volkowo] | Added assignment description in README.md
+* 69ac9b2 2024-08-20 by [Volk] | Adding milestone1.zip files
+* 9aa9296 2024-08-20 by [Volk] | Update .gitignore
+* 627e713 2024-08-20 by [Volk] | Initial commit

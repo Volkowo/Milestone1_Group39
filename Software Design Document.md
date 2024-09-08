@@ -106,7 +106,7 @@ The tool will let users search for foods by name and break down their nutritiona
 
 ## 2. Requirements
 
-### 2.1 User Requirements - 
+### 2.1 User Requirements 
 Due to the nature of this type of system, there can be a variety of different people that can use it. But as stated previously, the main user targets are people with specific dietary needs, nutritionists/ dietitians, and researchers. To fit the needs of all these different groups of people the user requirements are listed below. 
 - Display a list of food items and their nutritional information.
 - Allow the users to search for specific food items.
@@ -256,27 +256,27 @@ The following is a series of different use cases that can happen when a user it 
 - Side Effects:
   - No side effects from this function
 #### 3.2.2 Data Structures / Data Sources
-- foodNutrition
-  - Type: dict
-  - Usage: 
+- **foodNutrition**
+  - **Type**: dict
+  - **Usage**: 
     The main data that is used for this software. This contains the food name and all the nutritional content it have. The nutrition name will be the key, and whatever value inside each nutrition is the value.\
     This data is used to display all the food in the main page, and will also be used to find food that matches the users' input and/or filter as well.
-  - Functions: foodSearch(), displayPieChart(), displayBarChart(), filter_nutritionRange(), filter_nutritionLevel(), filter_dietary()
-- userPreference_nutritionRange
-  - type: dict
-  - Usage:
+  - **Functions**: foodSearch(), displayPieChart(), displayBarChart(), filter_nutritionRange(), filter_nutritionLevel(), filter_dietary()
+- **userPreference_nutritionRange**
+  - **type****: dict
+  - **Usage**:
     Stores users' selected preference when they choose to filter food based on nutrition range. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name, minimum value, and maximum value will be the keys, while the users' input will be the value.
-  - Functions: filter_nutritionRange(), foodSearch()
-- userPreference_nutritionLevel
-  - type: dict
-  - Usage:
+  - **Functions**: filter_nutritionRange(), foodSearch()
+- **userPreference_nutritionLevel**
+  - **type**: dict
+  - **Usage**:
     Stores users' selected preference when they choose to filter food based on nutrition level. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name and nutrition level will be the keys, while the users' input will be the value.
-  - Functions: filter_nutritionRange(), foodSearch()
-- userPreference_dietary
-  - type: dict
-  - Usage:
+  - **Functions**: filter_nutritionRange(), foodSearch()
+- **userPreference_dietary**
+  - **type**: dict
+  - **Usage**:
     Stores users' selected preference when they choose to filter food based on their dietary needs. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference.
-  - Functions: filter_nutritionRange(), foodSearch()
+  - **Functions**: filter_nutritionRange(), foodSearch()
 
 <!-- List all data structures or sources used in the software. For each, provide:
 

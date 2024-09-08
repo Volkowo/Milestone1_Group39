@@ -54,7 +54,14 @@ The problem addressed by this tool is the lack of comprehensive tools that integ
 - Dataset\
 The dataset for this project is provided by the client in the ".csv" file format. It provides detailed nutritional information for a wide range of common food items. These information provide critical data that can help in understanding the nutritional content of various foods.
 - Data\
-<!-- TO DO: Don't forget to add this later -->
+  - Data Input
+    - User input: User's input from the search bar.
+    - User's preference: Stores user's filter choices at the system so it remember's the users' preference throughout the session.
+  - Data Output
+    - List of food: List of foods based on the data that was given. The list of foods can change depending on users' input and filter choices.
+    - Nutritional breakdown: List of nutritional values that will be displayed when the user clicks on a food name.
+    - Pie Chart: Visualized version of the nutritional breakdown in the form of pie chart.
+    - Bar Chart: Visualized version of the nutritional breakdown in the form of bar chart.
 - Target Users
   - **People with Specific Dietary Needs**\
   Individuals with dietary restrictions because of disease, allergies, or personal preferences can utilize the tool to track their nutritional intake and plan their diets.
@@ -68,27 +75,28 @@ In summary, the system provides detailed analysis, visualization, and filtering 
 - System Functionality\
 The tool will let users search for foods by name and break down their nutritional information through visualizations. These visualizations come in the form of pie charts and bar graphs. The search function will also include filters that enable users to find foods based on defined nutritional ranges, specific levels of nutritional content, and/or specific dietary needs (e.g., ketogenic diet, low sodium, low cholesterol) to facilitate diet planning.
 - Features and Functionalities
+Below are the key features and functionalities of the system:
 <!-- Describe the key features and functionalities of the system. -->
-  1. **Food Search**\
-  Enable users to search for foods by name and display all the nutritional information;
-  2. **Nutrition Breakdown**\
-  Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
-  3. **Nutrition Range Filter**\
-  Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges.
-  4. **Nutrition Level Filter**\
-  Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
-    - Low: Less than 33% of the highest value.
-    - Mid: Between 33% and 66% of the highest value.
-    - High: Greater than 66% of the highest value.
-  5. **Dietary Filter**\
-  Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
-    - Ketogenic (Keto) Diet \
-    Low in carbohydrates, which is less than 5-10% of caloric intake.
-    - Low Sodium Diet \
-    Foods with low sodium content, which usually is less than 140mg per serving.
-    - Low Cholesterol Diet \
-    Low cholestrol foods that have less than 20mg per serving. \
-  Additional dietary needs will be added if the system can be finished before the due date.
+1. **Food Search**\
+Enable users to search for foods by name and display all the nutritional information;
+2. **Nutrition Breakdown**\
+Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
+3. **Nutrition Range Filter**\
+Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges.
+4. **Nutrition Level Filter**\
+Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density. The three levels are defined as follows:
+- Low: Less than 33% of the highest value.
+- Mid: Between 33% and 66% of the highest value.
+- High: Greater than 66% of the highest value.
+5. **Dietary Filter**\
+Enable users to filter foods based on the three dietary needs that the software have provided. The three dietary needs are: keto, low-sodium, and low-cholesterol diet. The requirements for these dietary needs are defined as follow:
+- Ketogenic (Keto) Diet \
+Low in carbohydrates, which is less than 5-10% of caloric intake.
+- Low Sodium Diet \
+Foods with low sodium content, which usually is less than 140mg per serving.
+- Low Cholesterol Diet \
+Low cholestrol foods that have less than 20mg per serving. \
+Additional dietary needs will be added if the system can be finished before the due date.
 
 ### 1.3	Benefit Analysis
 <!-- How will this system provide value or benefit? -->

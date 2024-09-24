@@ -21,10 +21,10 @@ _ = gettext.gettext
 class NutritionApp ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 900,800 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1200,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
-        self.SetBackgroundColour( wx.Colour( 235, 237, 233 ) )
+        self.SetBackgroundColour( wx.Colour( 255, 255, 255 ) )
 
         everything = wx.BoxSizer( wx.VERTICAL )
 
@@ -49,22 +49,22 @@ class NutritionApp ( wx.Frame ):
 
         filter_nutritionValue = wx.BoxSizer( wx.HORIZONTAL )
 
-        choiceMacroChoices = [ _(u"Macronutrients"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Fiber") ]
+        choiceMacroChoices = [ _(u"Macronutrients"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Dietary Fiber") ]
         self.choiceMacro = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMacroChoices, 0 )
         self.choiceMacro.SetSelection( 0 )
         filter_nutritionValue.Add( self.choiceMacro, 0, wx.ALL, 5 )
 
-        choiceVitaminChoices = [ _(u"Vitamins"), _(u"Vitamin B1"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K") ]
+        choiceVitaminChoices = [ _(u"Vitamins"), _(u"Vitamin A"), _(u"Vitamin B1"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K") ]
         self.choiceVitamin = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceVitaminChoices, 0 )
         self.choiceVitamin.SetSelection( 0 )
         filter_nutritionValue.Add( self.choiceVitamin, 0, wx.ALL, 5 )
 
-        choiceMineralChoices = [ _(u"Minerals"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosporus"), _(u"Potassium"), _(u"Selenium"), _(u"Zinc") ]
+        choiceMineralChoices = [ _(u"Minerals"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosphorus"), _(u"Potassium"), _(u"Selenium"), _(u"Sodium"), _(u"Zinc") ]
         self.choiceMineral = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMineralChoices, 0 )
-        self.choiceMineral.SetSelection( 5 )
+        self.choiceMineral.SetSelection( 0 )
         filter_nutritionValue.Add( self.choiceMineral, 0, wx.ALL, 5 )
 
-        choiceOtherChoices = [ _(u"Others"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density") ]
+        choiceOtherChoices = [ _(u"Others"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density"), _(u"Caloric Value") ]
         self.choiceOther = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceOtherChoices, 0 )
         self.choiceOther.SetSelection( 3 )
         filter_nutritionValue.Add( self.choiceOther, 0, wx.ALL, 5 )
@@ -111,6 +111,10 @@ class NutritionApp ( wx.Frame ):
 
         everything.Add( filter_dietaryNeeds, 0, wx.EXPAND, 5 )
 
+        tableAndChart = wx.BoxSizer( wx.HORIZONTAL )
+
+        table = wx.BoxSizer( wx.VERTICAL )
+
         self.foodData = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
 
         # Grid
@@ -133,18 +137,24 @@ class NutritionApp ( wx.Frame ):
 
         # Cell Defaults
         self.foodData.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-        everything.Add( self.foodData, 1, wx.ALL, 5 )
-
-        bSizer10 = wx.BoxSizer( wx.VERTICAL )
-
-        self.m_panel1 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        bSizer10.Add( self.m_panel1, 1, wx.EXPAND |wx.ALL, 5 )
-
-        self.m_panel2 = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        bSizer10.Add( self.m_panel2, 1, wx.EXPAND |wx.ALL, 5 )
+        table.Add( self.foodData, 1, wx.ALL, 5 )
 
 
-        everything.Add( bSizer10, 1, wx.EXPAND, 5 )
+        tableAndChart.Add( table, 0, 0, 5 )
+
+        chart = wx.BoxSizer( wx.VERTICAL )
+
+        self.pieChartPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        chart.Add( self.pieChartPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+        self.barChartPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        chart.Add( self.barChartPanel, 1, wx.EXPAND |wx.ALL, 5 )
+
+
+        tableAndChart.Add( chart, 1, wx.EXPAND, 5 )
+
+
+        everything.Add( tableAndChart, 1, wx.EXPAND, 5 )
 
 
         self.SetSizer( everything )
@@ -155,6 +165,7 @@ class NutritionApp ( wx.Frame ):
         # Connect Events
         self.searchButton.Bind( wx.EVT_BUTTON, self.searchFood )
         self.filterButton.Bind( wx.EVT_BUTTON, self.filterFood )
+        self.foodData.Bind( wx.grid.EVT_GRID_CELL_LEFT_CLICK, self.test )
 
     def __del__( self ):
         pass
@@ -165,6 +176,9 @@ class NutritionApp ( wx.Frame ):
         event.Skip()
 
     def filterFood( self, event ):
+        event.Skip()
+
+    def test( self, event ):
         event.Skip()
 
 

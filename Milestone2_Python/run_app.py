@@ -43,10 +43,15 @@ class CalcFrame(Frame1):
         super().__init__(parent)
 
         self.df = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
-        self.df = self.df[["food"]]
+
+        # Remove/comment Line 47 if you want to see every column.
+        # self.df = self.df[["food"]]
         self.table = DataTable(self.df)
 
         self.foodData.SetTable(self.table, takeOwnership=True)
+
+        # Change every line that has "self.foodData.SetColSize(0, 350)" to "self.foodData.AutoSize()"
+        # self.foodData.AutoSize()
         self.foodData.SetColSize(0, 350)
 
         self.Show(True)
@@ -69,6 +74,8 @@ class CalcFrame(Frame1):
         tabel = DataTable(search_result)
         self.foodData.ClearGrid()
         self.foodData.SetTable(tabel,True)
+
+        # self.foodData.AutoSize()
         self.foodData.SetColSize(0, 350)
 
         num_rows = sum(loc)

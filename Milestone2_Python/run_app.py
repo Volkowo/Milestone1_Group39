@@ -51,7 +51,6 @@ colorPie = [
     '#B8860B'
 ]
 
-
 class DataTable(wx.grid.GridTableBase):
     def __init__(self, data=None):
         wx.grid.GridTableBase.__init__(self)
@@ -87,14 +86,14 @@ class CalcFrame(Frame1):
 
         self.df = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
 
-        # Start from the index number 1 since index 0 doesn't count as Macronutrient, Vitamin, and/or Mineral.
+        # Start from the index number 1 since index 0 doesn't count as the value for index 0 are Macronutrient, Vitamin, and/or Mineral.
         self.labelPie = self.choiceMacro.GetStrings()[1::]
         self.labelBar = self.choiceVitamin.GetStrings()[1::] + self.choiceMineral.GetStrings()[1::] + self.choiceOther.GetStrings()[1::]
 
         self.label = self.df.columns[1::]
         self.value = []
 
-        # Remove/comment Line 61 if you want to see every column.
+        # Remove/comment the line below if you want to see every column.
         self.df = self.df[["food"]]
         self.table = DataTable(self.df)
 
@@ -123,32 +122,34 @@ class CalcFrame(Frame1):
         row = event.GetRow()
         col = event.GetCol()
 
+        # "Highlights" the current column that's being chosen
         self.foodData.SetGridCursor(row, col)
 
         # [row, 0] ensures that we only get the food name.
         foodName = self.df.iloc[row, 0]
 
+        # Searches for the food(s) based on user's input
         dataFrame = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
-        test = DataTable(dataFrame)
-        test = test.data
-
-        searchData = test["food"]
-
+        tableForSearch = DataTable(dataFrame)
+        tableForSearch = tableForSearch.data
+        searchData = tableForSearch["food"]
         loc = []
         for item in searchData:
             if re.findall(foodName, item):
                 loc.append(True)
             else:
                 loc.append(False)
-
         search_result = dataFrame[loc]
-        labelAll = self.label
 
+        # Iterate and store each nutrient to the appropriate place.
+        # Anything related to Vitamin goes to the array that's for pie chart, while the rest goes to the bar chart.
+        labelAll = self.label
         percentageBar = []
         percentagePie = []
-
         valueBar = []
         valuePie = []
+
+        # print(search_result.iloc[0])
 
         for i in range(len(labelAll)):
             if labelAll[i] in self.labelBar:
@@ -163,30 +164,19 @@ class CalcFrame(Frame1):
         My initial plan for valueBar is to include all values for the Vitamin first and then Minerals after that.
         """
         valueBar = np.concatenate((valueBar[1:-1], valueBar[0], valueBar[-1]), axis=None)
+
+        # Creates the label for pie chart
         for i in range(len(valuePie)):
             percentagePie.append(f"{self.labelPie[i]}: {(round((valuePie[i]/sum(valuePie))* 100, 2))}%")
+        self.createChart(self.pieChartPlot(percentagePie, valuePie, colorPie), self.pieChartPanel)
+        self.createChart(self.barChartPlot(percentageBar, valueBar, colorBar), self.barChartPanel)
 
-        self.createPieChart(self, percentagePie, valuePie, colorPie)
-        self.createBarChart(self, percentageBar, valueBar, colorBar)
-
-    # def countPercentage(self, values):
-    #     for value in values:
-    #         percentage = [value/sum(values)] * 100
-    #     return percentage
-
-    def createPieChart(self, event, labelArray, valueArray, colorArray):
-        pieChart = self.pieChartPlot(labelArray, valueArray, colorArray)
-        h, w = self.pieChartPanel.GetSize()
-        pieChart.set_size_inches(h / pieChart.get_dpi(), w / pieChart.get_dpi())
-        canvas = FigureCanvasWxAgg(self.pieChartPanel, -1, pieChart)
-        canvas.SetSize(self.pieChartPanel.GetSize())
-
-    def createBarChart(self, event, labelArray, valueArray, colorArray):
-        barChart = self.barChartPlot(labelArray, valueArray, colorArray)
-        h, w = self.barChartPanel.GetSize()
-        barChart.set_size_inches(h / barChart.get_dpi(), w / barChart.get_dpi())
-        canvas = FigureCanvasWxAgg(self.barChartPanel, -1, barChart)
-        canvas.SetSize(self.barChartPanel.GetSize())
+    def createChart(self, plotChart, panel):
+        chart = plotChart
+        h, w = panel.GetSize()
+        chart.set_size_inches(h / chart.get_dpi(), w / chart.get_dpi())
+        canvas = FigureCanvasWxAgg(panel, -1, chart)
+        canvas.SetSize(panel.GetSize())
 
     def barChartPlot(self, labelArray, valueArray, colorArray):
         x = self.labelBar
@@ -197,8 +187,14 @@ class CalcFrame(Frame1):
         barChart.subplots_adjust(top=0.93, bottom=0.25)
 
         bars = ax1.bar(x, y, color=colors)
-        print(len(bars))
+        # print(len(bars))
 
+        """
+        The code to set the text above the bars were mostly obtained from Stackoverflow:
+        https://stackoverflow.com/questions/40489821/how-to-write-text-above-the-bars-on-a-bar-plot-python
+        
+        However, I modified the code to fit it into the context of this software.
+        """
         for i in range(len(bars)):
             bar = bars[i]
             value = valueArray[i]
@@ -206,8 +202,10 @@ class CalcFrame(Frame1):
             plt.text(bar.get_x() + bar.get_width() / 2.0, value, f'{height:.0f}', ha='center', va='bottom', fontsize="6")
 
         plt.yticks(fontsize=6)
-        plt.xticks(rotation=90, fontsize=5.5)
-        ax1.set_title(u'Bar', fontsize=7)
+
+        # Rotates the label in x axis by 90 degress
+        plt.xticks(rotation=90, fontsize=7)
+        ax1.set_title('Vitamins, Macronutrients, and Others', fontsize=7)
         return barChart
 
     def pieChartPlot(self, labelArray, valueArray, colorArray):
@@ -224,6 +222,8 @@ class CalcFrame(Frame1):
 
         ax1.set_title('Minerals')
         ax1.pie(sizes, explode=explode, colors=colors, shadow=True)
+
+        # This let's us set the legend to the right side of the chart.
         ax1.legend(labels, loc="center left", bbox_to_anchor=(1, 0.5), fontsize=8)
 
         ax1.axis('equal')
@@ -231,6 +231,7 @@ class CalcFrame(Frame1):
 
     def searchFood( self, event ):
         key_word = self.searchInput.GetValue()
+        key_word = key_word.lower()
 
         # Ensures that only the food row is shown in the table.
         df = pd.read_csv(r".\Food_Nutrition_Dataset.csv")

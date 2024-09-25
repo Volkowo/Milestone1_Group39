@@ -28,94 +28,34 @@ class NutritionApp ( wx.Frame ):
 
         everything = wx.BoxSizer( wx.VERTICAL )
 
+        self.m_notebook1 = wx.Notebook( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_panel4 = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer10 = wx.BoxSizer( wx.VERTICAL )
+
         searchBarAndTable = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.searchInput = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 350,-1 ), 0 )
+        self.searchInput = wx.TextCtrl( self.m_panel4, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 350,-1 ), 0 )
         searchBarAndTable.Add( self.searchInput, 0, wx.ALL|wx.EXPAND, 5 )
 
 
         searchBarAndTable.Add( ( 10, 0), 0, 0, 5 )
 
-        self.searchButton = wx.Button( self, wx.ID_ANY, _(u"Search"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.searchButton = wx.Button( self.m_panel4, wx.ID_ANY, _(u"Search"), wx.DefaultPosition, wx.DefaultSize, 0 )
         searchBarAndTable.Add( self.searchButton, 0, wx.ALL, 5 )
 
-        self.extraInfo = wx.StaticText( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.extraInfo = wx.StaticText( self.m_panel4, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         self.extraInfo.Wrap( -1 )
 
         searchBarAndTable.Add( self.extraInfo, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
-        everything.Add( searchBarAndTable, 0, wx.EXPAND, 5 )
-
-        filter_nutritionValue = wx.BoxSizer( wx.HORIZONTAL )
-
-        choiceMacroChoices = [ _(u"Macronutrients"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Dietary Fiber") ]
-        self.choiceMacro = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMacroChoices, 0 )
-        self.choiceMacro.SetSelection( 0 )
-        filter_nutritionValue.Add( self.choiceMacro, 0, wx.ALL, 5 )
-
-        choiceVitaminChoices = [ _(u"Vitamins"), _(u"Vitamin A"), _(u"Vitamin B1"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K") ]
-        self.choiceVitamin = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceVitaminChoices, 0 )
-        self.choiceVitamin.SetSelection( 0 )
-        filter_nutritionValue.Add( self.choiceVitamin, 0, wx.ALL, 5 )
-
-        choiceMineralChoices = [ _(u"Minerals"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosphorus"), _(u"Potassium"), _(u"Selenium"), _(u"Sodium"), _(u"Zinc") ]
-        self.choiceMineral = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMineralChoices, 0 )
-        self.choiceMineral.SetSelection( 0 )
-        filter_nutritionValue.Add( self.choiceMineral, 0, wx.ALL, 5 )
-
-        choiceOtherChoices = [ _(u"Others"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density"), _(u"Caloric Value") ]
-        self.choiceOther = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceOtherChoices, 0 )
-        self.choiceOther.SetSelection( 3 )
-        filter_nutritionValue.Add( self.choiceOther, 0, wx.ALL, 5 )
-
-        self.minValueText = wx.StaticText( self, wx.ID_ANY, _(u"Min Value"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.minValueText.Wrap( -1 )
-
-        filter_nutritionValue.Add( self.minValueText, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
-
-        self.minValueInput = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        filter_nutritionValue.Add( self.minValueInput, 0, wx.ALL, 5 )
-
-        self.maxValueText = wx.StaticText( self, wx.ID_ANY, _(u"Max Value"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.maxValueText.Wrap( -1 )
-
-        filter_nutritionValue.Add( self.maxValueText, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
-
-        self.maxValueInput = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-        filter_nutritionValue.Add( self.maxValueInput, 0, wx.ALL, 5 )
-
-
-        everything.Add( filter_nutritionValue, 0, wx.EXPAND, 5 )
-
-        filter_nutritionLevel = wx.BoxSizer( wx.HORIZONTAL )
-
-        nutritionLevelFilterChoices = [ _(u"None"), _(u"Low"), _(u"Medium"), _(u"High") ]
-        self.nutritionLevelFilter = wx.RadioBox( self, wx.ID_ANY, _(u"Nutrition Level Filter"), wx.DefaultPosition, wx.DefaultSize, nutritionLevelFilterChoices, 1, wx.RA_SPECIFY_COLS )
-        self.nutritionLevelFilter.SetSelection( 0 )
-        filter_nutritionLevel.Add( self.nutritionLevelFilter, 1, wx.ALL, 5 )
-
-
-        everything.Add( filter_nutritionLevel, 0, wx.TOP|wx.EXPAND, 5 )
-
-        filter_dietaryNeeds = wx.BoxSizer( wx.HORIZONTAL )
-
-        choiceDietChoices = [ _(u"Dietary Needs"), _(u"Ketogenic Diet"), _(u"Low Sodium Diet"), _(u"Low Cholesterol Diet") ]
-        self.choiceDiet = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceDietChoices, 0 )
-        self.choiceDiet.SetSelection( 0 )
-        filter_dietaryNeeds.Add( self.choiceDiet, 0, wx.ALL, 5 )
-
-        self.filterButton = wx.Button( self, wx.ID_ANY, _(u"Filter"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        filter_dietaryNeeds.Add( self.filterButton, 0, wx.ALL, 5 )
-
-
-        everything.Add( filter_dietaryNeeds, 0, wx.EXPAND, 5 )
+        bSizer10.Add( searchBarAndTable, 0, wx.EXPAND, 5 )
 
         tableAndChart = wx.BoxSizer( wx.HORIZONTAL )
 
         table = wx.BoxSizer( wx.VERTICAL )
 
-        self.foodData = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+        self.foodData = wx.grid.Grid( self.m_panel4, wx.ID_ANY, wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
 
         # Grid
         self.foodData.CreateGrid( 5, 5 )
@@ -140,21 +80,101 @@ class NutritionApp ( wx.Frame ):
         table.Add( self.foodData, 1, wx.ALL, 5 )
 
 
-        tableAndChart.Add( table, 0, 0, 5 )
+        tableAndChart.Add( table, 0, wx.EXPAND, 5 )
 
         chart = wx.BoxSizer( wx.VERTICAL )
 
-        self.pieChartPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.pieChartPanel = wx.Panel( self.m_panel4, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         chart.Add( self.pieChartPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
-        self.barChartPanel = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.barChartPanel = wx.Panel( self.m_panel4, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         chart.Add( self.barChartPanel, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         tableAndChart.Add( chart, 1, wx.EXPAND, 5 )
 
 
-        everything.Add( tableAndChart, 1, wx.EXPAND, 5 )
+        bSizer10.Add( tableAndChart, 1, wx.EXPAND, 5 )
+
+
+        self.m_panel4.SetSizer( bSizer10 )
+        self.m_panel4.Layout()
+        bSizer10.Fit( self.m_panel4 )
+        self.m_notebook1.AddPage( self.m_panel4, _(u"a page"), True )
+        self.m_panel3 = wx.Panel( self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer9 = wx.BoxSizer( wx.VERTICAL )
+
+        filter_nutritionValue = wx.BoxSizer( wx.HORIZONTAL )
+
+        choiceMacroChoices = [ _(u"Macronutrients"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Dietary Fiber") ]
+        self.choiceMacro = wx.Choice( self.m_panel3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMacroChoices, 0 )
+        self.choiceMacro.SetSelection( 0 )
+        filter_nutritionValue.Add( self.choiceMacro, 0, wx.ALL, 5 )
+
+        choiceVitaminChoices = [ _(u"Vitamins"), _(u"Vitamin A"), _(u"Vitamin B1"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K") ]
+        self.choiceVitamin = wx.Choice( self.m_panel3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceVitaminChoices, 0 )
+        self.choiceVitamin.SetSelection( 0 )
+        filter_nutritionValue.Add( self.choiceVitamin, 0, wx.ALL, 5 )
+
+        choiceMineralChoices = [ _(u"Minerals"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosphorus"), _(u"Potassium"), _(u"Selenium"), _(u"Sodium"), _(u"Zinc") ]
+        self.choiceMineral = wx.Choice( self.m_panel3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceMineralChoices, 0 )
+        self.choiceMineral.SetSelection( 0 )
+        filter_nutritionValue.Add( self.choiceMineral, 0, wx.ALL, 5 )
+
+        choiceOtherChoices = [ _(u"Others"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density"), _(u"Caloric Value") ]
+        self.choiceOther = wx.Choice( self.m_panel3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceOtherChoices, 0 )
+        self.choiceOther.SetSelection( 3 )
+        filter_nutritionValue.Add( self.choiceOther, 0, wx.ALL, 5 )
+
+        self.minValueText = wx.StaticText( self.m_panel3, wx.ID_ANY, _(u"Min Value"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.minValueText.Wrap( -1 )
+
+        filter_nutritionValue.Add( self.minValueText, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+        self.minValueInput = wx.TextCtrl( self.m_panel3, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        filter_nutritionValue.Add( self.minValueInput, 0, wx.ALL, 5 )
+
+        self.maxValueText = wx.StaticText( self.m_panel3, wx.ID_ANY, _(u"Max Value"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.maxValueText.Wrap( -1 )
+
+        filter_nutritionValue.Add( self.maxValueText, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
+
+        self.maxValueInput = wx.TextCtrl( self.m_panel3, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        filter_nutritionValue.Add( self.maxValueInput, 0, wx.ALL, 5 )
+
+
+        bSizer9.Add( filter_nutritionValue, 0, wx.EXPAND, 5 )
+
+        filter_nutritionLevel = wx.BoxSizer( wx.HORIZONTAL )
+
+        nutritionLevelFilterChoices = [ _(u"None"), _(u"Low"), _(u"Medium"), _(u"High") ]
+        self.nutritionLevelFilter = wx.RadioBox( self.m_panel3, wx.ID_ANY, _(u"Nutrition Level Filter"), wx.DefaultPosition, wx.DefaultSize, nutritionLevelFilterChoices, 1, wx.RA_SPECIFY_COLS )
+        self.nutritionLevelFilter.SetSelection( 0 )
+        filter_nutritionLevel.Add( self.nutritionLevelFilter, 1, wx.ALL, 5 )
+
+
+        bSizer9.Add( filter_nutritionLevel, 0, wx.TOP|wx.EXPAND, 5 )
+
+        filter_dietaryNeeds = wx.BoxSizer( wx.HORIZONTAL )
+
+        choiceDietChoices = [ _(u"Dietary Needs"), _(u"Ketogenic Diet"), _(u"Low Sodium Diet"), _(u"Low Cholesterol Diet") ]
+        self.choiceDiet = wx.Choice( self.m_panel3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceDietChoices, 0 )
+        self.choiceDiet.SetSelection( 0 )
+        filter_dietaryNeeds.Add( self.choiceDiet, 0, wx.ALL, 5 )
+
+        self.filterButton = wx.Button( self.m_panel3, wx.ID_ANY, _(u"Filter"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        filter_dietaryNeeds.Add( self.filterButton, 0, wx.ALL, 5 )
+
+
+        bSizer9.Add( filter_dietaryNeeds, 0, wx.EXPAND, 5 )
+
+
+        self.m_panel3.SetSizer( bSizer9 )
+        self.m_panel3.Layout()
+        bSizer9.Fit( self.m_panel3 )
+        self.m_notebook1.AddPage( self.m_panel3, _(u"a page"), False )
+
+        everything.Add( self.m_notebook1, 1, wx.EXPAND |wx.ALL, 5 )
 
 
         self.SetSizer( everything )
@@ -164,8 +184,8 @@ class NutritionApp ( wx.Frame ):
 
         # Connect Events
         self.searchButton.Bind( wx.EVT_BUTTON, self.searchFood )
-        self.filterButton.Bind( wx.EVT_BUTTON, self.filterFood )
         self.foodData.Bind( wx.grid.EVT_GRID_CELL_LEFT_CLICK, self.test )
+        self.filterButton.Bind( wx.EVT_BUTTON, self.filterFood )
 
     def __del__( self ):
         pass
@@ -175,10 +195,10 @@ class NutritionApp ( wx.Frame ):
     def searchFood( self, event ):
         event.Skip()
 
-    def filterFood( self, event ):
+    def test( self, event ):
         event.Skip()
 
-    def test( self, event ):
+    def filterFood( self, event ):
         event.Skip()
 
 

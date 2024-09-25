@@ -88,11 +88,13 @@ class CalcFrame(Frame1):
         global FilterVitamin
         global FilterMineral
         global FilterOther
+        global diet
 
         FilterMacro = ""
         FilterVitamin = ""
         FilterMineral = ""
         FilterOther = ""
+        diet = 0
 
         self.df = pd.read_csv(r"Food_Nutrition_Dataset.csv")
 
@@ -289,7 +291,21 @@ class CalcFrame(Frame1):
         if FilterMacro != "":
             filter_condition &= (df[FilterMacro] >= minValueInput) & (df[FilterMacro] <= maxValueInput)
 
-        # searchess based on the key word uses strip and lower to remove case sensitivity
+
+        #Diet option filters
+        if diet != 0:
+            #filter for keto diets
+            if diet == 1:
+                filter_condition &= ((df["Carbohydrates"]) <= ((df["Caloric Value"])*0.1))
+            #filter for low sodium diets
+            if diet == 2:
+                filter_condition &= (df["Sodium"] < 140)
+            #for the low colesterol diets
+            if diet == 3:
+                filter_condition &= (df["Cholesterol"] < 20)
+
+
+                # searchess based on the key word uses strip and lower to remove case sensitivity
         key_word = self.searchInput.GetValue().strip().lower()
         # runs only if key word is not empty
         if key_word:
@@ -337,6 +353,12 @@ class CalcFrame(Frame1):
             for i in maxValueInput:
                 if i.isalpha():
                     maxValueInput = 99999
+
+
+        global diet
+        diet = self.choiceDiet.GetSelection()
+
+
 
         self.makeSerchStatment(Macro, Vitamin, Mineral, Other, minValueInput, maxValueInput, nutritionLevel, choiceDiet)
 
@@ -387,6 +409,8 @@ class CalcFrame(Frame1):
 
             # sets the filtered macro for later use in the search function
             FilterMacro = Macro
+        else:
+            FilterMacro = ""
 
         # sets what Vitamin is selected
         if Vitamin != 0:
@@ -413,11 +437,15 @@ class CalcFrame(Frame1):
             elif Vitamin == 11:
                 Vitamin = "Vitamin K"
 
+
             # sets the filtered Vitamin for later use in the search function
             FilterVitamin = Vitamin
 
             # addes the selected Vitamin to the console so you can see the result
             print("Selected Vitamin: ", Vitamin)
+
+        else:
+            FilterVitamin = ""
 
         # sets what Vitamin is selected
         if Mineral != 0:
@@ -446,6 +474,9 @@ class CalcFrame(Frame1):
             # addes the selected Mineral to the console so you can see the result
             print("Selected Mineral: ", Mineral)
 
+        else:
+            FilterMineral = ""
+
         # sets what Other is selected
         if Other != 0:
             if Other == 1:
@@ -455,12 +486,15 @@ class CalcFrame(Frame1):
             elif Other == 3:
                 Other = "Nutrition Density"
 
+
              # sets the filtered Other for later use in the search function
             FilterOther = Other
 
             # addes the selected Other to the console so you can see the result
             print("Selected Other: ", Other)
 
+        else:
+            FilterOther = ""
 
 if __name__ == "__main__":
     app = wx.App()

@@ -89,12 +89,14 @@ class CalcFrame(Frame1):
         global FilterMineral
         global FilterOther
         global diet
+        global FilterNutritionLevel
 
         FilterMacro = ""
         FilterVitamin = ""
         FilterMineral = ""
         FilterOther = ""
         diet = 0
+        FilterNutritionLevel = ""
 
         self.df = pd.read_csv(r"Food_Nutrition_Dataset.csv")
 
@@ -297,15 +299,60 @@ class CalcFrame(Frame1):
             #filter for keto diets
             if diet == 1:
                 filter_condition &= ((df["Carbohydrates"]) <= ((df["Caloric Value"])*0.1))
-            #filter for low sodium diets
+            #filter for low sodium diets (set to a lower value than 140 as all item are already below 140)
             if diet == 2:
                 filter_condition &= (df["Sodium"] < 140)
             #for the low colesterol diets
             if diet == 3:
                 filter_condition &= (df["Cholesterol"] < 20)
 
+        #nutrition level
+        if FilterNutritionLevel != "":
+            if FilterNutritionLevel == "low":
+                if FilterOther != "":
+                    maxOther = df[FilterOther].max()
+                    filter_condition &= (df[FilterOther] < (maxOther * 0.33))
+                if FilterMineral != "":
+                    maxMineral = df[FilterMineral].max()
+                    filter_condition &= (df[FilterMineral] < (maxMineral * 0.33))
+                if FilterVitamin != "":
+                    maxVitamin = df[FilterVitamin].max()
+                    filter_condition &= (df[FilterVitamin] < (maxVitamin * 0.33))
+                if FilterMacro != "":
+                    maxMacro = df[FilterMacro].max()
+                    filter_condition &= (df[FilterMacro] < (maxMacro * 0.33))
 
-                # searchess based on the key word uses strip and lower to remove case sensitivity
+
+            if FilterNutritionLevel == "medium":
+                if FilterOther != "":
+                    maxOther = df[FilterOther].max()
+                    filter_condition &= (df[FilterOther] >= (maxOther * 0.33)) & (df[FilterOther] <= (maxOther * 0.66))
+                if FilterMineral != "":
+                    maxMineral = df[FilterMineral].max()
+                    filter_condition &= (df[FilterMineral] >= (maxMineral * 0.33)) & (df[FilterMineral] <= (maxMineral * 0.66))
+                if FilterVitamin != "":
+                    maxVitamin = df[FilterVitamin].max()
+                    filter_condition &= (df[FilterVitamin] >= (maxVitamin * 0.33)) & (df[FilterVitamin] <= (maxVitamin * 0.66))
+                if FilterMacro != "":
+                    maxMacro = df[FilterMacro].max()
+                    filter_condition &= (df[FilterMacro] >= (maxMacro * 0.33)) & (df[FilterMacro] <= (maxMacro * 0.66))
+
+
+            if FilterNutritionLevel == "high":
+                if FilterOther != "":
+                    maxOther = df[FilterOther].max()
+                    filter_condition &= (df[FilterOther] > (maxOther * 0.66))
+                if FilterMineral != "":
+                    maxMineral = df[FilterMineral].max()
+                    filter_condition &= (df[FilterMineral] > (maxMineral * 0.66))
+                if FilterVitamin != "":
+                    maxVitamin = df[FilterVitamin].max()
+                    filter_condition &= (df[FilterVitamin] > (maxVitamin * 0.66))
+                if FilterMacro != "":
+                    maxMacro = df[FilterMacro].max()
+                    filter_condition &= (df[FilterMacro] > (maxMacro * 0.66))
+
+            # searchess based on the key word uses strip and lower to remove case sensitivity
         key_word = self.searchInput.GetValue().strip().lower()
         # runs only if key word is not empty
         if key_word:
@@ -384,6 +431,7 @@ class CalcFrame(Frame1):
         global FilterVitamin
         global FilterMineral
         global FilterOther
+        global FilterNutritionLevel
 
         # sets what mactro is selected
         if Macro != 0:
@@ -415,26 +463,28 @@ class CalcFrame(Frame1):
         # sets what Vitamin is selected
         if Vitamin != 0:
             if Vitamin == 1:
-                Vitamin = "Vitamin B1"
+                Vitamin = "Vitamin A"
             elif Vitamin == 2:
-                Vitamin = "Vitamin B2"
+                Vitamin = "Vitamin B1"
             elif Vitamin == 3:
-                Vitamin = "Vitamin B3"
+                Vitamin = "Vitamin B2"
             elif Vitamin == 4:
-                Vitamin = "Vitamin B5"
+                Vitamin = "Vitamin B3"
             elif Vitamin == 5:
-                Vitamin = "Vitamin B6"
+                Vitamin = "Vitamin B5"
             elif Vitamin == 6:
-                Vitamin = "Vitamin B11"
+                Vitamin = "Vitamin B6"
             elif Vitamin == 7:
-                Vitamin = "Vitamin B12"
+                Vitamin = "Vitamin B11"
             elif Vitamin == 8:
-                 Vitamin = "Vitamin C"
+                Vitamin = "Vitamin B12"
             elif Vitamin == 9:
-                Vitamin = "Vitamin D"
+                 Vitamin = "Vitamin C"
             elif Vitamin == 10:
-                Vitamin = "Vitamin E"
+                Vitamin = "Vitamin D"
             elif Vitamin == 11:
+                Vitamin = "Vitamin E"
+            elif Vitamin == 12:
                 Vitamin = "Vitamin K"
 
 
@@ -485,6 +535,8 @@ class CalcFrame(Frame1):
                 Other = "Water"
             elif Other == 3:
                 Other = "Nutrition Density"
+            elif Other == 4:
+                Other = "Caloric Value"
 
 
              # sets the filtered Other for later use in the search function
@@ -495,6 +547,22 @@ class CalcFrame(Frame1):
 
         else:
             FilterOther = ""
+
+
+        #sets the level filter
+        if nutritionLevel == 0:
+            FilterNutritionLevel = ""
+        if nutritionLevel == 1:
+            FilterNutritionLevel = "low"
+        if nutritionLevel == 2:
+            FilterNutritionLevel = "medium"
+        if nutritionLevel == 3:
+            FilterNutritionLevel = "high"
+
+        if nutritionLevel != 0:
+            print("Selected level", FilterNutritionLevel)
+
+
 
 if __name__ == "__main__":
     app = wx.App()

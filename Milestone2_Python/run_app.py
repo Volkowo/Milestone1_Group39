@@ -84,10 +84,20 @@ class CalcFrame(Frame1):
     def __init__(self,parent=None):
         super().__init__(parent)
 
-        global FilterMacro
-        global FilterVitamin
-        global FilterMineral
-        global FilterOther
+        self.dfMacro_value = []
+        self.dfVitamin_value = []
+        self.dfMineral_value = []
+        self.dfOther_value = []
+
+        self.searchResult_value = []
+        self.searchResult_valueFinal = []
+        self.searchResult_level = []
+        self.searchResult_diet = []
+
+        global filterMacro
+        global filterVitamin
+        global filterMineral
+        global filterOther
         global diet
 
         FilterMacro = ""
@@ -96,28 +106,75 @@ class CalcFrame(Frame1):
         FilterOther = ""
         diet = 0
 
-        self.df = pd.read_csv(r"Food_Nutrition_Dataset.csv")
+        # Remove/comment the line below if you want to see every column.
+        self.df = self.loadData(r"Food_Nutrition_Dataset.csv", True)
+        self.loadTable(self.df)
 
         # Start from the index number 1 since index 0 doesn't count as the value for index 0 are Macronutrient, Vitamin, and/or Mineral.
         self.labelPie = self.choiceMacro.GetStrings()[1::]
         self.labelBar = self.choiceVitamin.GetStrings()[1::] + self.choiceMineral.GetStrings()[1::] + self.choiceOther.GetStrings()[1::]
 
-        self.label = self.df.columns[1::]
+        dataForLabel = pd.read_csv(r"Food_Nutrition_Dataset.csv")
+        self.label = list(dataForLabel.columns[1::])
+
         self.value = []
-
-        # Remove/comment the line below if you want to see every column.
-        self.df = self.df[["food"]]
-        self.table = DataTable(self.df)
-
-        self.foodData.SetTable(self.table, takeOwnership=True)
-        self.foodData.EnableEditing(False)
-
-        # Change SetColSize() to AutoSize() for testing
-        self.foodData.SetColSize(0, 350)
-        # self.foodData.AutoSize()
 
         self.Show(True)
         self.Layout()
+
+        self.maxValueDict = self.findNutritionValue()
+
+    def findNutritionValue(self):
+        maxDict = dict()
+        dataFrame = self.loadData(r"Food_Nutrition_Dataset.csv")
+        labelAll = self.label
+        for label in labelAll:
+            maxDict[label] = dataFrame[label].max()
+        return maxDict
+
+
+    def explanationText( self, event ):
+        labelText = self.checkRadio()
+        self.text_filterResult.SetLabel(labelText)
+
+    def explanationText_diet( self, event ):
+        labelText = self.checkDiet()
+        self.text_filterResult.SetLabel(labelText)
+
+    def checkDiet(self):
+        dietDropdown = self.choiceDiet.GetStringSelection()
+        if(dietDropdown == "Dietary Needs"):
+            return ""
+        elif dietDropdown == "Ketogenic Diet":
+            return "Ketogenic Diet - Searches for foods that are low in carbohydrates. (Less than 5-10% of the caloric intake)"
+        elif dietDropdown == "Low Sodium Diet":
+            return "Low Sodium Diet - Searches for foods that are low in sodium content. (Less than 140mg per serving) "
+        elif dietDropdown == "Low Cholesterol Diet":
+            return "Low Cholesterol Diet - Searches for foods that have less than 20mg of cholesterol per serving."
+    
+    def checkRadio(self):
+        radioValue = self.nutritionLevelFilter.GetStringSelection()
+        if(radioValue == "None"):
+            return ""
+        elif(radioValue == "Low"):
+            return "Nutrition Level: Low - Searches for foods that have less than 33% of the highest value for the selected nutrient."
+        elif(radioValue == "Medium"):
+            return "Nutrition Level: Medium - Searches for foods that have between 33% and 66% of the highest value for the selected nutrient."
+        else:
+            return "Nutrition Level: High - Searches for foods that have greater than 66% of the highest value for the selected nutrient."
+    def loadData(self, file, optionalLine = False):
+        dataFrame = pd.read_csv(file)
+        if optionalLine:
+            dataFrame = dataFrame[["food"]]
+        dataFrame = DataTable(dataFrame)
+        dataFrame = dataFrame.data
+        return dataFrame
+
+    def loadTable(self, dataFrame):
+        table = DataTable(dataFrame)
+        self.foodData.SetTable(table, takeOwnership=True)
+        self.foodData.EnableEditing(False)
+        self.foodData.SetColSize(0, 350)
 
     def test(self, event):
         """
@@ -139,12 +196,12 @@ class CalcFrame(Frame1):
 
         # [row, 0] ensures that we only get the food name.
         foodName = self.df.iloc[row, 0]
+        # print(foodName)
 
-        # Searches for the food(s) based on user's input
-        dataFrame = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
-        tableForSearch = DataTable(dataFrame)
-        tableForSearch = tableForSearch.data
-        searchData = tableForSearch["food"]
+        # Searches for the food(s) based on user's CLICK input
+        dataFrame = self.loadData(r".\Food_Nutrition_Dataset.csv", False)
+        searchData = dataFrame["food"]
+
         loc = []
         for item in searchData:
             if re.findall(foodName, item):
@@ -235,7 +292,7 @@ class CalcFrame(Frame1):
         ax1.set_title('Minerals')
         ax1.pie(sizes, explode=explode, colors=colors, shadow=True)
 
-        # This let's us set the legend to the right side of the chart.
+        # This lets us set the legend to the right side of the chart.
         ax1.legend(labels, loc="center left", bbox_to_anchor=(1, 0.5), fontsize=8)
 
         ax1.axis('equal')
@@ -361,21 +418,111 @@ class CalcFrame(Frame1):
         self.Layout()
 
     def filterFood(self, event):
-        Macro = self.choiceMacro.GetSelection()
-        Vitamin = self.choiceVitamin.GetSelection()
-        Mineral = self.choiceMineral.GetSelection()
-        Other = self.choiceOther.GetSelection()
-        minValueInput = self.minValueInput.GetValue()
-        maxValueInput = self.maxValueInput.GetValue()
-        nutritionLevel = self.nutritionLevelFilter.GetSelection()
+        # .GetStringCollection() -> Gets the string
+        # .GetSelection() -> gets the number
+
+        # Resets the value everytime the filter button is clicked
+        self.searchResult_value = []
+        self.searchResult_valueFinal = pd.DataFrame(self.searchResult_value, columns=["food"])
+        self.searchResult_level = pd.DataFrame(self.searchResult_level, columns=["food"])
+        self.searchResult_diet = pd.DataFrame(self.searchResult_diet, columns=["food"])
+
+        mergeResult = []
+
+        macro = self.choiceMacro.GetStringSelection()
+        vitamin = self.choiceVitamin.GetStringSelection()
+        mineral = self.choiceMineral.GetStringSelection()
+        other = self.choiceOther.GetStringSelection()
+        nutritionLevel = self.nutritionLevelFilter.GetStringSelection()
+        nutrientFilter = self.choiceNutrient.GetStringSelection()
+        diet = self.choiceDiet.GetStringSelection()
+
+        # Only 1 filter is allowed
+        filterCounter = 0
+
+        # ARRAY AND VARIABLES FOR NUTRITION LEVEL
+        errorRadio = ""
+        errorDropdown = ""
+
+        # MIN/MAX VALUE - NUTRITION VALUE
+        minMacro = self.minValueInput_macro.GetValue()
+        maxMacro = self.maxValueInput_macro.GetValue()
+
+        minVitamin = self.minValueInput_vitamin.GetValue()
+        maxVitamin = self.maxValueInput_vitamin.GetValue()
+
+        minMineral = self.minValueInput_mineral.GetValue()
+        maxMineral = self.maxValueInput_mineral.GetValue()
+
+        minOther = self.minValueInput_other.GetValue()
+        maxOther = self.maxValueInput_other.GetValue()
+
+        # ARRAY AND VARIABLES FOR NUTRITION VALUE (Error messages, the actual filter, etc)
+        errorMsgOne = ""
+        errorMsgTwo = ""
+        errorMsgThree = ""
+        isError_filterValue = True
+        isError_filterLevel = True
+        isNotChosen_filterDiet = True
+        dropdownArray = [macro, vitamin, mineral, other]
+        minArray = [minMacro, minVitamin, minMineral, minOther]
+        maxArray = [maxMacro, maxVitamin, maxMineral, maxOther]
+
+        errorNutrient = []
+        errorValue = []
+        errorComparison = []
+
+        minValueInput = self.minValueInput_macro.GetValue()
+        maxValueInput = self.maxValueInput_macro.GetValue()
         choiceDiet = self.choiceDiet.GetSelection()
+
+        # ERROR CHECKING
+            # A. Nutrition Value
+        print(dropdownArray, minArray, maxArray)
+        errorNutrient, errorValue, errorComparison, isError_filterValue, filterCounter = self.checkDropdownAndInput_value(dropdownArray, minArray, maxArray, isError_filterValue, filterCounter)
+        errorMsgOne, errorMsgTwo, errorMsgThree = self.generateErrorMessage_value(errorNutrient, errorValue, errorComparison)
+
+            # B. Nutrition Level
+        errorRadio, errorDropdown, isError_filterLevel, filterCounter = self.checkRadioAndDropdown_level(nutritionLevel, nutrientFilter, filterCounter)
+
+            # C. Diet Level
+        isNotChosen_filterDiet, filterCounter = self.checkDropdown_diet(diet, filterCounter)
+
+
+        # SETTING THE ERROR MESSAGE
+        self.errorMsg_filterValue1.SetLabel(errorMsgOne)
+        self.errorMsg_filterValue2.SetLabel(errorMsgTwo)
+        self.errorMsg_filterValue3.SetLabel(errorMsgThree)
+        self.errorMsg_level1.SetLabel(errorRadio)
+        self.errorMsg_level2.SetLabel(errorDropdown)
+
+        # Ensures that the filters only happen if there are no errors
+        if not isError_filterValue:
+            self.searchResult_valueFinal = self.mergeResult_filterRange(self.searchResult_value)
+            # print("FILTER VALUE:", self.searchResult_value)
+        elif not isError_filterLevel:
+            self.searchResult_level = self.filterLevel(self.maxValueDict, nutrientFilter, nutritionLevel)
+            # print("FILTER LEVEL:", self.searchResult_level)
+        elif not isNotChosen_filterDiet:
+            self.searchResult_diet = self.filterDiet(diet)
+            # print("FILTER DIET:", self.searchResult_diet)
+        else:
+            pass
+
+        mergeResult = self.mergeResult_everything(self.searchResult_valueFinal, self.searchResult_level, self.searchResult_diet)
+
+        print("FINAL RESULT:", mergeResult)
+
+        # DISPLAY SEARCH RESULT TO TABLE
+
+        # PRINT RESULT
+
+        # ARRAY AND VARIABLES FOR NUTRITION LEVEL
+        errorRadio = False
+        errorDropdown = False
 
         if minValueInput == "":
             minValueInput = 0
-        else:
-            for i in minValueInput:
-                if i.isalpha():
-                    minValueInput = 0
 
         if maxValueInput == "":
             maxValueInput = 99999
@@ -386,27 +533,200 @@ class CalcFrame(Frame1):
                     maxValueInput = 99999
 
 
-        global diet
+        # global diet
         diet = self.choiceDiet.GetSelection()
 
+        self.makeSerchStatment(macro, vitamin, mineral, other, minValueInput, maxValueInput, nutritionLevel, choiceDiet)
 
+    def checkDropdownAndInput_value(self, dropdownArray, minArray, maxArray, isError, counter):
+        defaultDropdown = ["Macronutrients", "Vitamins", "Minerals", "Others"]
+        errorChooseNutrient = []
+        errorInputValue = []
+        errorComparisonValue = []
 
-        self.makeSerchStatment(Macro, Vitamin, Mineral, Other, minValueInput, maxValueInput, nutritionLevel, choiceDiet)
+        # ERROR HANDLING
+        if dropdownArray != defaultDropdown:
+            for i in range(len(dropdownArray)):
+                # checks if the value for said dropdown is default or not
+                if dropdownArray[i] in defaultDropdown and (minArray[i] or maxArray[i]):
+                    errorChooseNutrient.append(dropdownArray[i])
 
+                # checks if the min/max value is empty or not
+                elif dropdownArray[i] not in defaultDropdown and (not minArray[i] or not maxArray[i]):
+                    errorInputValue.append(dropdownArray[i])
 
+                elif dropdownArray[i] not in defaultDropdown and (minArray[i] and maxArray[i]):
+                    if minArray[i].isalpha() or maxArray[i].isalpha():
+                        errorInputValue.append(dropdownArray[i])
+                    elif float(minArray[i]) > float(maxArray[i]):
+                        errorComparisonValue.append(dropdownArray[i])
+                    else:
+                        self.filterRange(dropdownArray[i], float(minArray[i]), float(maxArray[i]), self.searchResult_value)
+                        counter += 1
+                        isError = False
+
+        return errorChooseNutrient, errorInputValue, errorComparisonValue, isError, counter
+
+    def generateErrorMessage_value(self, nutrientError, inputError, comparisonError):
+        nutrientMsg = ""
+        inputMsg = ""
+        comparisonMsg = ""
+        if len(nutrientError) > 0:
+            nutrientMsg = "Please choose a nutrient for " + ", ".join(nutrientError)
+        if len(inputError) > 0:
+            inputMsg = "Please fill the min/max value (Numerical values) for " + ", ".join(inputError)
+        if len(comparisonError) > 0:
+            comparisonMsg = "Please make sure the min value is not higher than the max value for " + ", ".join(comparisonError)
+        return nutrientMsg, inputMsg, comparisonMsg
+
+    def checkRadioAndDropdown_level(self, radioValue, dropdownValue, counter):
+        errorMsgRadio = ""
+        errorMsgDropdown = ""
+        isError = True
+        if radioValue == "None" and dropdownValue != "Choose a nutrient":
+            errorMsgRadio = "Nutrition level cannot be none!"
+        if radioValue != "None" and dropdownValue == "Choose a nutrient":
+            errorMsgDropdown = "Please choose a nutrient to filter the nutrition level with."
+        if radioValue != "None" and dropdownValue != "Choose a nutrient":
+            isError = False
+            counter += 1
+        return errorMsgRadio, errorMsgDropdown, isError, counter
+
+    def checkDropdown_diet(self, dropdownValue, counter):
+        if dropdownValue != "Dietary Needs":
+            counter += 1
+            return False, counter
+        else:
+            return True, counter
+
+    def filterDiet(self, dropdownValue):
+        dataFrame = self.loadData(r".\Food_Nutrition_Dataset.csv")
+        loc = []
+
+        if dropdownValue == "Ketogenic Diet":
+            nutrientsCarbo = dataFrame["Carbohydrates"]
+            nutrientsCal = dataFrame["Caloric Value"]
+            for i in range(len(nutrientsCarbo)):
+                if nutrientsCarbo[i] < (nutrientsCal[i] * 0.10):
+                    loc.append(True)
+                else:
+                    loc.append(False)
+
+        if dropdownValue == "Low Sodium Diet":
+            nutrients = dataFrame["Sodium"]
+            for nutrient in nutrients:
+                if nutrient < 140:
+                    loc.append(True)
+                else:
+                    loc.append(False)
+
+        if dropdownValue == "Low Cholesterol Diet":
+            nutrients = dataFrame["Cholesterol"]
+            for nutrient in nutrients:
+                if nutrient < 20:
+                    loc.append(True)
+                else:
+                    loc.append(False)
+
+        searchResult = dataFrame[loc]
+        searchResult = searchResult[["food"]]
+        return searchResult
+
+    def filterRange(self, dropdownArrayIndex, minValueIndex, maxValueIndex, searchResult_filter):
+        dataFrame = self.loadData(r".\Food_Nutrition_Dataset.csv")
+
+        nutrients = dataFrame[dropdownArrayIndex]
+        loc = []
+
+        for nutrient in nutrients:
+            if minValueIndex <= nutrient <= maxValueIndex:
+                loc.append(True)
+            else:
+                loc.append(False)
+
+        searchResult = dataFrame[loc]
+        searchResult = searchResult[["food"]]
+        searchResult_filter.append(searchResult)
+        return searchResult
+        # ^ This is still a DataFrame
+
+        # Updates self.df to the current result, so it works :)))))
+        # self.df = searchResult
+        # self.foodData.ClearGrid()
+        # self.loadTable(self.df)
+        # self.Layout()
+
+    def filterLevel(self, maxValueDict, dropdownValue, levelFilter):
+        # print(maxValueDict, dropdownValue)
+        # print("Max for", dropdownValue, ":", maxValueDict[dropdownValue])
+        maxValueNutrient = maxValueDict[dropdownValue]
+        lowThreshold = 0.33 * maxValueNutrient
+        highThreshold = 0.66 * maxValueNutrient
+        dataFrame = self.loadData(r".\Food_Nutrition_Dataset.csv")
+        nutrients = dataFrame[dropdownValue]
+        loc = []
+
+        for nutrient in nutrients:
+            if levelFilter == "Low" and nutrient < lowThreshold:
+                loc.append(True)
+            elif levelFilter == "Medium" and (lowThreshold <= nutrient <= highThreshold):
+                loc.append(True)
+            elif levelFilter == "High" and nutrient > highThreshold:
+                loc.append(True)
+            else:
+                loc.append(False)
+
+        searchResult = dataFrame[loc]
+        searchResult = searchResult[["food"]]
+        return searchResult
+
+    def mergeResult_filterRange(self, searchResultArray_value):
+        mergedResult = []
+        if len(searchResultArray_value) > 1:
+            for i in range(1, len(searchResultArray_value)):
+                mergedResult = searchResultArray_value[0].merge(searchResultArray_value[i], on="food", how="inner")
+        else:
+            mergedResult = searchResultArray_value[0]
+        return mergedResult
+
+    def mergeResult_everything(self, searchResult_value, searchResult_level, searchResult_diet):
+        # Basically prevents empty array being used as the "base" for the merge
+        mergedDataframe = []
+        print("1", searchResult_value.columns)
+        print("2", searchResult_level.columns)
+        print("3", searchResult_diet.columns)
+
+        if not searchResult_value.empty:
+            mergedDataframe.append(searchResult_value)
+        if not searchResult_level.empty:
+            mergedDataframe.append(searchResult_level)
+        if not searchResult_diet.empty:
+            mergedDataframe.append(searchResult_diet)
+
+        if len(mergedDataframe) > 1:
+            for i in range(1, len(mergedDataframe)):
+                mergedDataframe = mergedDataframe[0].merge(mergedDataframe[i], on="food", how="inner")
+        elif len(mergedDataframe) == 0:
+            return None
+        else:
+            mergedDataframe = mergedDataframe[0]
+        return mergedDataframe
+
+    # def checkCounter(self):
+    #     if counter > 1
 
     def makeSerchStatment(self, Macro, Vitamin, Mineral, Other, minValueInput, maxValueInput, nutritionLevel, choiceDiet):
         # comment/Uncomment the below prints to see the value of each when filter button is pressed
-        print("===========================")
-        print("Macro: ", Macro)
-        print("Vitamin :", Vitamin)
-        print("Mineral :", Mineral)
-        print("Other :", Other)
-        print("minValueInput :", minValueInput)
-        print("maxValueInput :", maxValueInput)
-        print("nutritionLevel :", nutritionLevel)
-        print("choiceDiet :", choiceDiet)
-        print("===========================")
+        # print("===========================")
+        # print("Macro: ", Macro)
+        # print("Vitamin :", Vitamin)
+        # print("Mineral :", Mineral)
+        # print("Other :", Other)
+        # print("minValueInput :", minValueInput)
+        # print("maxValueInput :", maxValueInput)
+        # print("nutritionLevel :", nutritionLevel)
+        # print("choiceDiet :", choiceDiet)
+        # print("===========================")
 
         self.searchText = ""
 

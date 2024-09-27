@@ -151,7 +151,7 @@ class CalcFrame(Frame1):
             return "Low Sodium Diet - Searches for foods that are low in sodium content. (Less than 140mg per serving) "
         elif dietDropdown == "Low Cholesterol Diet":
             return "Low Cholesterol Diet - Searches for foods that have less than 20mg of cholesterol per serving."
-    
+
     def checkRadio(self):
         radioValue = self.nutritionLevelFilter.GetStringSelection()
         if(radioValue == "None"):
@@ -298,124 +298,124 @@ class CalcFrame(Frame1):
         ax1.axis('equal')
         return pieChart
 
-    # def searchFood( self, event ):
-    #     key_word = self.searchInput.GetValue()
-    #     key_word = key_word.lower()
-    #
-    # Ensures that only the food row is shown in the table.
-    # df = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
-    # df = df[["food"]]
-    #
-    #     foods = df["food"]
-    #     loc = []
-    #     for item in foods:
-    #         if re.findall(key_word, item):
-    #             loc.append(True)
-    #         else:
-    #             loc.append(False)
-    #
-    #     search_result = df[loc]
-    #     tabel = DataTable(search_result)
-    #     self.foodData.ClearGrid()
-    #     self.foodData.SetTable(tabel,True)
-    #     self.foodData.EnableEditing(False)
-
-    #     self.foodData.SetColSize(0, 350)
-    ## self.foodData.AutoSize()
-    #
-    #     num_rows = sum(loc)
-    #     label_to_static_txt = "The number of rows: "+str(num_rows)
-    #     self.extraInfo.SetLabel(label_to_static_txt)
-    #
-    #     self.Layout()
-
     def searchFood( self, event ):
-        # sets the df to the table
-        df = self.table.data
+        key_word = self.searchInput.GetValue()
+        key_word = key_word.lower()
 
-        # initalises the filter condition
-        filter_condition = pd.Series([True] * len(df))
+        # Ensures that only the food row is shown in the table.
+        df = pd.read_csv(r".\Food_Nutrition_Dataset.csv")
+        df = df[["food"]]
 
-        # pulls the min and the max values
-        minValueInput = self.minValueInput.GetValue()
-        maxValueInput = self.maxValueInput.GetValue()
+        foods = df["food"]
+        loc = []
+        for item in foods:
+            if re.findall(key_word, item):
+                loc.append(True)
+            else:
+                loc.append(False)
 
-        # chacks for if the min value is empty or not
-        if minValueInput == "":
-            # if its left empty set it to 0
-            minValueInput = 0
-        else:
-            # loops through and checks if it has letter
-            for i in minValueInput:
-                if i.isalpha():
-                    # if its left empty set it to 0
-                    minValueInput = 0
-            # makes the value a float inseatd of a string
-            minValueInput = float(minValueInput)
-
-        # chacks for if the max value is empty or not
-        if maxValueInput == "":
-            maxValueInput = 99999
-
-        else:
-            for i in maxValueInput:
-                # loops through and checks if it has a letter
-                if i.isalpha():
-                    # if its left empty set it to a high number
-                    maxValueInput = 99999
-            # makes the value a float inseatd of a string
-            maxValueInput = float(maxValueInput)
-
-        # adds all the filtered options to the search if there not empty (aka the defult was selected)
-        if FilterOther != "":
-            filter_condition &= (df[FilterOther] >= minValueInput) & (df[FilterOther] <= maxValueInput)
-
-        if FilterMineral != "":
-            filter_condition &= (df[FilterMineral] >= minValueInput) & (df[FilterMineral] <= maxValueInput)
-
-        if FilterVitamin != "":
-            filter_condition &= (df[FilterVitamin] >= minValueInput) & (df[FilterVitamin] <= maxValueInput)
-
-        if FilterMacro != "":
-            filter_condition &= (df[FilterMacro] >= minValueInput) & (df[FilterMacro] <= maxValueInput)
-
-
-        #Diet option filters
-        if diet != 0:
-            #filter for keto diets
-            if diet == 1:
-                filter_condition &= ((df["Carbohydrates"]) <= ((df["Caloric Value"])*0.1))
-            #filter for low sodium diets
-            if diet == 2:
-                filter_condition &= (df["Sodium"] < 140)
-            #for the low colesterol diets
-            if diet == 3:
-                filter_condition &= (df["Cholesterol"] < 20)
-
-
-                # searchess based on the key word uses strip and lower to remove case sensitivity
-        key_word = self.searchInput.GetValue().strip().lower()
-        # runs only if key word is not empty
-        if key_word:
-            filter_condition &= df['food'].str.contains(key_word, case=False, na=False)
-
-        # runs the search using the made filter conditions
-        filtered_df = df[filter_condition]
-        #print(filtered_df)
-
-        # make the table of data
+        search_result = df[loc]
+        tabel = DataTable(search_result)
         self.foodData.ClearGrid()
-        self.foodData.BeginBatch()
-        self.foodData.SetTable(DataTable(filtered_df), True)
-        self.foodData.EndBatch()
-        #self.foodData.AutoSize()
+        self.foodData.SetTable(tabel,True)
+        self.foodData.EnableEditing(False)
 
         self.foodData.SetColSize(0, 350)
+        # self.foodData.AutoSize()
 
-        # returns  the result of the number of results
-        self.extraInfo.SetLabel(f"Results found: {len(filtered_df)}")
+        num_rows = sum(loc)
+        label_to_static_txt = "The number of rows: "+str(num_rows)
+        self.extraInfo.SetLabel(label_to_static_txt)
 
         self.Layout()
+
+    # def searchFood( self, event ):
+    #     # sets the df to the table
+    #     df = self.table.data
+    #
+    #     # initalises the filter condition
+    #     filter_condition = pd.Series([True] * len(df))
+    #
+    #     # pulls the min and the max values
+    #     minValueInput = self.minValueInput.GetValue()
+    #     maxValueInput = self.maxValueInput.GetValue()
+    #
+    #     # chacks for if the min value is empty or not
+    #     if minValueInput == "":
+    #         # if its left empty set it to 0
+    #         minValueInput = 0
+    #     else:
+    #         # loops through and checks if it has letter
+    #         for i in minValueInput:
+    #             if i.isalpha():
+    #                 # if its left empty set it to 0
+    #                 minValueInput = 0
+    #         # makes the value a float inseatd of a string
+    #         minValueInput = float(minValueInput)
+    #
+    #     # chacks for if the max value is empty or not
+    #     if maxValueInput == "":
+    #         maxValueInput = 99999
+    #
+    #     else:
+    #         for i in maxValueInput:
+    #             # loops through and checks if it has a letter
+    #             if i.isalpha():
+    #                 # if its left empty set it to a high number
+    #                 maxValueInput = 99999
+    #         # makes the value a float inseatd of a string
+    #         maxValueInput = float(maxValueInput)
+    #
+    #     # adds all the filtered options to the search if there not empty (aka the defult was selected)
+    #     if FilterOther != "":
+    #         filter_condition &= (df[FilterOther] >= minValueInput) & (df[FilterOther] <= maxValueInput)
+    #
+    #     if FilterMineral != "":
+    #         filter_condition &= (df[FilterMineral] >= minValueInput) & (df[FilterMineral] <= maxValueInput)
+    #
+    #     if FilterVitamin != "":
+    #         filter_condition &= (df[FilterVitamin] >= minValueInput) & (df[FilterVitamin] <= maxValueInput)
+    #
+    #     if FilterMacro != "":
+    #         filter_condition &= (df[FilterMacro] >= minValueInput) & (df[FilterMacro] <= maxValueInput)
+    #
+    #
+    #     #Diet option filters
+    #     if diet != 0:
+    #         #filter for keto diets
+    #         if diet == 1:
+    #             filter_condition &= ((df["Carbohydrates"]) <= ((df["Caloric Value"])*0.1))
+    #         #filter for low sodium diets
+    #         if diet == 2:
+    #             filter_condition &= (df["Sodium"] < 140)
+    #         #for the low colesterol diets
+    #         if diet == 3:
+    #             filter_condition &= (df["Cholesterol"] < 20)
+    #
+    #
+    #             # searchess based on the key word uses strip and lower to remove case sensitivity
+    #     key_word = self.searchInput.GetValue().strip().lower()
+    #     # runs only if key word is not empty
+    #     if key_word:
+    #         filter_condition &= df['food'].str.contains(key_word, case=False, na=False)
+    #
+    #     # runs the search using the made filter conditions
+    #     filtered_df = df[filter_condition]
+    #     #print(filtered_df)
+    #
+    #     # make the table of data
+    #     self.foodData.ClearGrid()
+    #     self.foodData.BeginBatch()
+    #     self.foodData.SetTable(DataTable(filtered_df), True)
+    #     self.foodData.EndBatch()
+    #     #self.foodData.AutoSize()
+    #
+    #     self.foodData.SetColSize(0, 350)
+    #
+    #     # returns  the result of the number of results
+    #     self.extraInfo.SetLabel(f"Results found: {len(filtered_df)}")
+    #
+    #     self.Layout()
 
     def filterFood(self, event):
         # .GetStringCollection() -> Gets the string
@@ -427,6 +427,7 @@ class CalcFrame(Frame1):
         self.searchResult_level = pd.DataFrame(self.searchResult_level, columns=["food"])
         self.searchResult_diet = pd.DataFrame(self.searchResult_diet, columns=["food"])
 
+        searchResultMsg = ""
         mergeResult = []
 
         macro = self.choiceMacro.GetStringSelection()
@@ -436,6 +437,7 @@ class CalcFrame(Frame1):
         nutritionLevel = self.nutritionLevelFilter.GetStringSelection()
         nutrientFilter = self.choiceNutrient.GetStringSelection()
         diet = self.choiceDiet.GetStringSelection()
+
 
         # Only 1 filter is allowed
         filterCounter = 0
@@ -496,21 +498,31 @@ class CalcFrame(Frame1):
         self.errorMsg_level1.SetLabel(errorRadio)
         self.errorMsg_level2.SetLabel(errorDropdown)
 
+        errorMessages = [errorMsgOne, errorMsgTwo, errorMsgThree, errorRadio, errorDropdown]
+
         # Ensures that the filters only happen if there are no errors
         if not isError_filterValue:
             self.searchResult_valueFinal = self.mergeResult_filterRange(self.searchResult_value)
             # print("FILTER VALUE:", self.searchResult_value)
-        elif not isError_filterLevel:
+        if not isError_filterLevel:
             self.searchResult_level = self.filterLevel(self.maxValueDict, nutrientFilter, nutritionLevel)
             # print("FILTER LEVEL:", self.searchResult_level)
-        elif not isNotChosen_filterDiet:
+        if not isNotChosen_filterDiet:
             self.searchResult_diet = self.filterDiet(diet)
             # print("FILTER DIET:", self.searchResult_diet)
-        else:
-            pass
 
-        mergeResult = self.mergeResult_everything(self.searchResult_valueFinal, self.searchResult_level, self.searchResult_diet)
+        # print(self.searchResult_level)
 
+        if all(errorMessage == "" for errorMessage in errorMessages):
+            mergeResult = self.mergeResult_everything(self.searchResult_valueFinal, self.searchResult_level, self.searchResult_diet)
+
+            if mergeResult is not None:
+                searchResultMsg = self.checkResult(mergeResult)
+                self.text_filterResult.SetLabel(searchResultMsg)
+                self.df = mergeResult
+                self.foodData.ClearGrid()
+                self.loadTable(self.df)
+                self.Layout()
         print("FINAL RESULT:", mergeResult)
 
         # DISPLAY SEARCH RESULT TO TABLE
@@ -545,25 +557,24 @@ class CalcFrame(Frame1):
         errorComparisonValue = []
 
         # ERROR HANDLING
-        if dropdownArray != defaultDropdown:
-            for i in range(len(dropdownArray)):
-                # checks if the value for said dropdown is default or not
-                if dropdownArray[i] in defaultDropdown and (minArray[i] or maxArray[i]):
-                    errorChooseNutrient.append(dropdownArray[i])
+        for i in range(len(dropdownArray)):
+            # checks if the value for said dropdown is default or not
+            if dropdownArray[i] in defaultDropdown and (minArray[i] or maxArray[i]):
+                errorChooseNutrient.append(dropdownArray[i])
 
-                # checks if the min/max value is empty or not
-                elif dropdownArray[i] not in defaultDropdown and (not minArray[i] or not maxArray[i]):
+            # checks if the min/max value is empty or not
+            elif dropdownArray[i] not in defaultDropdown and (not minArray[i] or not maxArray[i]):
+                errorInputValue.append(dropdownArray[i])
+
+            elif dropdownArray[i] not in defaultDropdown and (minArray[i] and maxArray[i]):
+                if minArray[i].isalpha() or maxArray[i].isalpha():
                     errorInputValue.append(dropdownArray[i])
-
-                elif dropdownArray[i] not in defaultDropdown and (minArray[i] and maxArray[i]):
-                    if minArray[i].isalpha() or maxArray[i].isalpha():
-                        errorInputValue.append(dropdownArray[i])
-                    elif float(minArray[i]) > float(maxArray[i]):
-                        errorComparisonValue.append(dropdownArray[i])
-                    else:
-                        self.filterRange(dropdownArray[i], float(minArray[i]), float(maxArray[i]), self.searchResult_value)
-                        counter += 1
-                        isError = False
+                elif float(minArray[i]) > float(maxArray[i]):
+                    errorComparisonValue.append(dropdownArray[i])
+                else:
+                    self.filterRange(dropdownArray[i], float(minArray[i]), float(maxArray[i]), self.searchResult_value)
+                    counter += 1
+                    isError = False
 
         return errorChooseNutrient, errorInputValue, errorComparisonValue, isError, counter
 
@@ -632,6 +643,12 @@ class CalcFrame(Frame1):
         searchResult = searchResult[["food"]]
         return searchResult
 
+    def checkResult(self, finalResult):
+        if len(finalResult) > 0:
+            return f"{len(finalResult)} result(s) were found!"
+        else:
+            return "No result(s) were found."
+
     def filterRange(self, dropdownArrayIndex, minValueIndex, maxValueIndex, searchResult_filter):
         dataFrame = self.loadData(r".\Food_Nutrition_Dataset.csv")
 
@@ -647,14 +664,7 @@ class CalcFrame(Frame1):
         searchResult = dataFrame[loc]
         searchResult = searchResult[["food"]]
         searchResult_filter.append(searchResult)
-        return searchResult
-        # ^ This is still a DataFrame
 
-        # Updates self.df to the current result, so it works :)))))
-        # self.df = searchResult
-        # self.foodData.ClearGrid()
-        # self.loadTable(self.df)
-        # self.Layout()
 
     def filterLevel(self, maxValueDict, dropdownValue, levelFilter):
         # print(maxValueDict, dropdownValue)
@@ -681,6 +691,7 @@ class CalcFrame(Frame1):
         return searchResult
 
     def mergeResult_filterRange(self, searchResultArray_value):
+        print(searchResultArray_value)
         mergedResult = []
         if len(searchResultArray_value) > 1:
             for i in range(1, len(searchResultArray_value)):
@@ -692,25 +703,31 @@ class CalcFrame(Frame1):
     def mergeResult_everything(self, searchResult_value, searchResult_level, searchResult_diet):
         # Basically prevents empty array being used as the "base" for the merge
         mergedDataframe = []
-        print("1", searchResult_value.columns)
-        print("2", searchResult_level.columns)
-        print("3", searchResult_diet.columns)
+
+        print("BEFORE:", len(mergedDataframe))
 
         if not searchResult_value.empty:
+            print("VALUE:", searchResult_value)
             mergedDataframe.append(searchResult_value)
         if not searchResult_level.empty:
+            print("LEVEL:", searchResult_level)
             mergedDataframe.append(searchResult_level)
         if not searchResult_diet.empty:
+            print("DIET:", searchResult_diet)
             mergedDataframe.append(searchResult_diet)
+        print("AFTER:", len(mergedDataframe))
 
-        if len(mergedDataframe) > 1:
-            for i in range(1, len(mergedDataframe)):
-                mergedDataframe = mergedDataframe[0].merge(mergedDataframe[i], on="food", how="inner")
-        elif len(mergedDataframe) == 0:
+        if len(mergedDataframe) == 0:
             return None
-        else:
-            mergedDataframe = mergedDataframe[0]
-        return mergedDataframe
+
+        # I geniunely dunno why I had to this.
+        # mergedDataFrame = mergedDataFrame[0] doesn't work and it took me 2-3 hours to figure it out.
+        mergedResult = mergedDataframe[0]
+
+        for i in range(1, len(mergedDataframe)):
+            mergedResult = mergedDataframe[0].merge(mergedDataframe[i], on="food", how="inner")
+
+        return mergedResult
 
     # def checkCounter(self):
     #     if counter > 1

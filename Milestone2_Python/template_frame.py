@@ -331,14 +331,8 @@ class NutritionApp ( wx.Frame ):
 
         bSizer14 = wx.BoxSizer( wx.HORIZONTAL )
 
-        self.filterButton = wx.Button( self.filter, wx.ID_ANY, _(u"Filter"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.filterButton = wx.Button( self.filter, wx.ID_ANY, _(u"Filter"), wx.DefaultPosition, wx.Size( 140,-1 ), 0 )
         bSizer14.Add( self.filterButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
-
-
-        bSizer14.Add( ( 30, 0), 0, wx.EXPAND, 5 )
-
-        self.resetButton = wx.Button( self.filter, wx.ID_ANY, _(u"Reset"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer14.Add( self.resetButton, 0, wx.ALL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
         filterContainer.Add( bSizer14, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
@@ -359,7 +353,7 @@ class NutritionApp ( wx.Frame ):
 
         # Connect Events
         self.searchButton.Bind( wx.EVT_BUTTON, self.searchFood )
-        self.foodData.Bind( wx.grid.EVT_GRID_CELL_LEFT_CLICK, self.test )
+        self.foodData.Bind( wx.grid.EVT_GRID_CELL_LEFT_CLICK, self.nutritionBreakdown )
         self.nutritionLevelFilter.Bind( wx.EVT_RADIOBOX, self.explanationText )
         self.choiceDiet.Bind( wx.EVT_CHOICE, self.explanationText_diet )
         self.filterButton.Bind( wx.EVT_BUTTON, self.filterFood )
@@ -372,7 +366,7 @@ class NutritionApp ( wx.Frame ):
     def searchFood( self, event ):
         event.Skip()
 
-    def test( self, event ):
+    def nutritionBreakdown( self, event ):
         event.Skip()
 
     def explanationText( self, event ):

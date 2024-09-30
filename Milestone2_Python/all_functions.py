@@ -208,25 +208,28 @@ def filterRange(dropdownArrayIndex, minValueIndex, maxValueIndex, searchResult_f
 def filterLevel(maxValueDict, dropdownValue, levelFilter):
     # print(maxValueDict, dropdownValue)
     # print("Max for", dropdownValue, ":", maxValueDict[dropdownValue])
-    maxValueNutrient = maxValueDict[dropdownValue]
-    lowThreshold = 0.33 * maxValueNutrient
-    highThreshold = 0.66 * maxValueNutrient
-    dataFrame = loadData(r".\Food_Nutrition_Dataset.csv")
-    nutrients = dataFrame[dropdownValue]
-    loc = []
+    searchResult = pd.DataFrame(columns=["food"])
 
-    for nutrient in nutrients:
-        if levelFilter == "Low" and nutrient < lowThreshold:
-            loc.append(True)
-        elif levelFilter == "Medium" and (lowThreshold <= nutrient <= highThreshold):
-            loc.append(True)
-        elif levelFilter == "High" and nutrient > highThreshold:
-            loc.append(True)
-        else:
-            loc.append(False)
+    if dropdownValue != "Choose a nutrient":
+        maxValueNutrient = maxValueDict[dropdownValue]
+        lowThreshold = 0.33 * maxValueNutrient
+        highThreshold = 0.66 * maxValueNutrient
+        dataFrame = loadData(r".\Food_Nutrition_Dataset.csv")
+        nutrients = dataFrame[dropdownValue]
+        loc = []
 
-    searchResult = dataFrame[loc]
-    searchResult = searchResult[["food"]]
+        for nutrient in nutrients:
+            if levelFilter == "Low" and nutrient < lowThreshold:
+                loc.append(True)
+            elif levelFilter == "Medium" and (lowThreshold <= nutrient <= highThreshold):
+                loc.append(True)
+            elif levelFilter == "High" and nutrient > highThreshold:
+                loc.append(True)
+            else:
+                loc.append(False)
+
+        searchResult = dataFrame[loc]
+        searchResult = searchResult[["food"]]
     return searchResult
 
 def mergeResult_filterRange(searchResultArray_value):

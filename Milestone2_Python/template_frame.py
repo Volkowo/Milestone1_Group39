@@ -21,7 +21,7 @@ _ = gettext.gettext
 class NutritionApp ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 1200,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = _(u"Nutrition Checker"), pos = wx.DefaultPosition, size = wx.Size( 1200,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
         self.SetBackgroundColour( wx.Colour( 255, 255, 255 ) )
@@ -100,7 +100,7 @@ class NutritionApp ( wx.Frame ):
         self.searchAndTable.SetSizer( PageOneContainer )
         self.searchAndTable.Layout()
         PageOneContainer.Fit( self.searchAndTable )
-        self.notebook.AddPage( self.searchAndTable, _(u"Search"), False )
+        self.notebook.AddPage( self.searchAndTable, _(u"Search"), True )
         self.filter = wx.Panel( self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         filterContainer = wx.BoxSizer( wx.VERTICAL )
 
@@ -273,7 +273,7 @@ class NutritionApp ( wx.Frame ):
 
         choiceNutrientChoices = [ _(u"Choose a nutrient"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Dietary Fiber"), _(u"Vitamin A"), _(u"Vitamin B1"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosphorus"), _(u"Potassium"), _(u"Selenium"), _(u"Sodium"), _(u"Zinc"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density"), _(u"Caloric Value") ]
         self.choiceNutrient = wx.Choice( self.filter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceNutrientChoices, 0 )
-        self.choiceNutrient.SetSelection( 3 )
+        self.choiceNutrient.SetSelection( 0 )
         filter_nutritionLevel.Add( self.choiceNutrient, 0, wx.ALL|wx.EXPAND, 5 )
 
 
@@ -292,12 +292,12 @@ class NutritionApp ( wx.Frame ):
 
         filterContainer.Add( ( 0, 10), 0, wx.EXPAND, 5 )
 
-        self.filter_nutritionLevel1 = wx.StaticText( self.filter, wx.ID_ANY, _(u"Filter by Dietary Needs"), wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.filter_nutritionLevel1.Wrap( -1 )
+        self.filter_dietaryNeeds = wx.StaticText( self.filter, wx.ID_ANY, _(u"Filter by Dietary Needs"), wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.filter_dietaryNeeds.Wrap( -1 )
 
-        self.filter_nutritionLevel1.SetFont( wx.Font( 13, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
+        self.filter_dietaryNeeds.SetFont( wx.Font( 13, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, False, wx.EmptyString ) )
 
-        filterContainer.Add( self.filter_nutritionLevel1, 0, wx.ALL, 5 )
+        filterContainer.Add( self.filter_dietaryNeeds, 0, wx.ALL, 5 )
 
         filter_dietaryNeeds = wx.BoxSizer( wx.HORIZONTAL )
 
@@ -347,7 +347,7 @@ class NutritionApp ( wx.Frame ):
         self.filter.SetSizer( filterContainer )
         self.filter.Layout()
         filterContainer.Fit( self.filter )
-        self.notebook.AddPage( self.filter, _(u"Filter"), True )
+        self.notebook.AddPage( self.filter, _(u"Filter"), False )
 
         everything.Add( self.notebook, 1, wx.EXPAND |wx.ALL, 5 )
 

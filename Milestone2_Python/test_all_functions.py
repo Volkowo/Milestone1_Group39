@@ -548,6 +548,16 @@ def test_GEM_everyError():
     assert inputMsg == "Please fill the min/max value (Numerical values) for Macronutrients"
     assert comparisonMsg == "Please make sure the min value is not higher than the max value for Vitamins, Minerals"
 
+def test_GEM_noError(): # NEW TESTCASE
+    errorChooseNutrient = []
+    errorInputValue = []
+    errorComparisonValue = []
+
+    nutrientMsg, inputMsg, comparisonMsg = generateErrorMessage_value(errorChooseNutrient, errorInputValue, errorComparisonValue)
+    assert nutrientMsg == ""
+    assert inputMsg == ""
+    assert comparisonMsg == ""
+
 # TESTCASE: checkRadioAndDropdown_level()
 def test_checkRAD_radio():
     # TEST -> Chose "None" for radio button but chose a value for the dropdown
@@ -605,7 +615,7 @@ def test_checkResult_empty():
 
     assert message == "No result(s) were found."
 
-# filterRange
+# filterLevel
 def test_filterLevel_low():
     # We need to emulate the process of finding the highest value of each nutrient for this.
     dataFrameForDict = loadData(r"Food_Nutrition_Dataset.csv")
@@ -660,6 +670,21 @@ def test_filterLevel_high():
     for i in results.index:
         fat = dataFrameForDict.loc[i, "Fat"]
         assert fat > highThreshold
+
+def test_filterLevel_wrongValue(): # NEW TESTCASE
+    # We need to emulate the process of finding the highest value of each nutrient for this.
+    dataFrameForDict = loadData(r"Food_Nutrition_Dataset.csv")
+    maxDict = findNutritionValue(allLabel, dataFrameForDict)
+
+    maxValueNutrient = maxDict["Fat"]
+    highThreshold = 0.66 * maxValueNutrient
+
+    dropdownValue = "Choose a nutrient"
+    levelFilter = "High"
+
+    results = filterLevel(maxDict, dropdownValue, levelFilter)
+
+    assert results.empty
 
 # TESTCASE: mergeResult_filterRange()
 def test_mergeResult_moreThanOne():
@@ -731,7 +756,7 @@ def test_mergeResult_one():
     assert mergedResult.equals(searchResultArray[0])
 
 def test_mergeResult_none(): # NEW TESTCASE
-    # We need to emulate the user filtering the food with 1 nutrient.
+    # We need to emulate the user filtering the food
     searchResultArray = []
     mergedResult = []
     errorChooseNutrient = []
@@ -933,6 +958,89 @@ def test_ME_noValue():
 
     assert mergedResult.empty
 
+def test_ME_falseLevel(): # NEW TESTCASE
+    """
+    In the actual software, this function will only run after the required checks are done.
+
+    Checks what happens if the searchResult_level is empty, while the other filters aren't empty.
+    """
+
+    isError_value = False
+    minValueArray = ["8", "", "", ""]
+    isError_level = False
+
+    # We need to emulate the user doing the whole filter except the third one.
+    searchResultArray = []
+    mergedResult = []
+    errorChooseNutrient = []
+    errorInputValue = []
+    errorComparisonValue = []
+    isError = True
+    dropdownArray = ["Fat", "Vitamins", "Minerals", "Others"]
+    minArray = ["3", "", "", ""]
+    maxArray = ["8", "", "", ""]
+
+    errorChooseNutrient, errorInputValue, errorComparisonValue, isError = checkDropdownAndInput_value(dropdownArray,
+                                                                                                      minArray,
+                                                                                                      maxArray, isError,
+                                                                                                      searchResultArray)
+    results_value = mergeResult_filterRange(searchResultArray)
+
+    dataFrameForDict = loadData(r"Food_Nutrition_Dataset.csv")
+
+    levelFilter = "None"
+    searchResults_level = []
+    results_level = pd.DataFrame(searchResults_level, columns=["food"])
+    # print(results_level)
+
+    results_diet = filterDiet("Ketogenic Diet")
+
+    mergedResult_expected = results_value.merge(results_diet, on="food", how="inner").merge(results_level, on="food", how="inner")
+
+    mergedResult = mergeResult_everything(isError_value, minValueArray, isError_level, levelFilter, results_value, results_level, results_diet)
+    assert not mergedResult.empty
+
+def test_ME_noMerge(): #NEW TESTCASE
+    """
+    In the actual software, this function will only run after the required checks are done.
+
+    Combines every result.
+    """
+    isError_value = True
+    minValueArray = ["", "", "", ""]
+    isError_level = True
+    searchResultArray = []
+    mergedResult = []
+    errorChooseNutrient = []
+    errorInputValue = []
+    errorComparisonValue = []
+    isError = True
+    dropdownArray = ["Fat", "Vitamins", "Minerals", "Others"]
+    minArray = ["", "", "", ""]
+    maxArray = ["", "", "", ""]
+
+    errorChooseNutrient, errorInputValue, errorComparisonValue, isError = checkDropdownAndInput_value(dropdownArray,
+                                                                                                      minArray,
+                                                                                                      maxArray, isError,
+                                                                                                      searchResultArray)
+    results_value = mergeResult_filterRange(searchResultArray)
+
+    dataFrameForDict = loadData(r"Food_Nutrition_Dataset.csv")
+    maxDict = findNutritionValue(allLabel, dataFrameForDict)
+    maxValueNutrient = maxDict["Fat"]
+    lowThreshold = 0.33 * maxValueNutrient
+    dropdownValue = "Choose a nutrient"
+    levelFilter = "None"
+
+    results_level = filterLevel(maxDict, dropdownValue, levelFilter)
+    results_diet = pd.DataFrame(columns=["food"])
+
+    mergedResult_expected = results_value.merge(results_diet, on="food", how="inner").merge(results_level, on="food", how="inner")
+
+    mergedResult = mergeResult_everything(isError_value, minValueArray, isError_level, levelFilter, results_value, results_level, results_diet)
+
+    assert mergedResult.empty
+
 # TESTCASE: checkDiet()
 def test_CD_default():
     # TEST -> Checks returned string if dropdown value is the default one.
@@ -1002,7 +1110,7 @@ def test_ECF_errorLevel():
 
     nutrientFilter = "Choose a nutrient"
     nutrientLevel = "None"
-    diet = "Dietary Needs"
+    diet = "Low Cholesterol Diet"
 
     searchResult_valueFinal, searchResult_level, searchResult_diet = errorChecking_filters(
         isError_value,
@@ -1015,7 +1123,7 @@ def test_ECF_errorLevel():
     )
 
     assert searchResult_level.empty
-    assert searchResult_diet.empty
+    assert not searchResult_diet.empty
     assert not searchResult_valueFinal.empty
 
 def test_ECF_errorFilter():
@@ -1034,7 +1142,7 @@ def test_ECF_errorFilter():
 
     nutrientFilter = "Fat"
     nutrientLevel = "Low"
-    diet = "Dietary Needs"
+    diet = "Low Cholesterol Diet"
 
     searchResult_valueFinal, searchResult_level, searchResult_diet = errorChecking_filters(
         isError_value,
@@ -1047,7 +1155,7 @@ def test_ECF_errorFilter():
     )
 
     assert not searchResult_level.empty
-    assert searchResult_diet.empty
+    assert not searchResult_diet.empty
     assert searchResult_valueFinal.empty
 
 def test_ECF_onlyDiet():

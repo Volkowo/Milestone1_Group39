@@ -138,29 +138,12 @@ class CalcFrame(Frame1):
         # Ensures that only the food row is shown in the table.
         dataFrame = loadData(r".\Food_Nutrition_Dataset.csv", True)
 
-        search_result = self.determineFoodSearch(dataFrame, self.dfMergeResult, keyWord)
+        search_result = determineFoodSearch(dataFrame, self.dfMergeResult, keyWord)
 
         self.df = search_result
         self.foodData.ClearGrid()
         self.loadTable(search_result)
         self.Layout()
-
-    def determineFoodSearch(self, dataFrame, mergedResult, keyword):
-        """
-        Checks whether the user have done a filter or not.
-        If not, then use the whole dataframe to search through the user's input.
-        Else, use the filtered result to search through the user's input.
-        """
-        if mergedResult.empty:
-            foods = dataFrame["food"]
-            loc = findResult_generic(keyword, foods)
-            searchResult = dataFrame[loc]
-            return searchResult
-        else:
-            foods = mergedResult["food"]
-            loc = findResult_generic(keyword, foods)
-            searchResult = mergedResult[loc]
-            return searchResult
 
     def nutritionBreakdown(self, event):
         """
@@ -377,8 +360,8 @@ class CalcFrame(Frame1):
         self.choiceDiet.SetSelection(0)
 
         self.errorMsg_filterValue2.SetLabel("")
-        self.errorMsg_filterValue1.setLabel("")
-        self.errorMsg_filterValue3.setLabel("")
+        self.errorMsg_filterValue1.SetLabel("")
+        self.errorMsg_filterValue3.SetLabel("")
         self.errorMsg_level1.SetLabel("")
         self.errorMsg_level2.SetLabel("")
         self.text_extraFilterInfo.SetLabel("")

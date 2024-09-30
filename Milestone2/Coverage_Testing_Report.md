@@ -1,14 +1,16 @@
 # Coverage Testing Report
 
-Please provide your GitHub repository link.
+[//]: # (Please provide your GitHub repository link.)
 ### GitHub Repository URL: https://github.com/Volkowo/Milestone1_Group39.git
 
 ---
 
-The testing report should focus solely on <span style="color:red"> testing all the self-defined functions related to 
-the five required features.</span> There is no need to test the GUI components. Therefore, it is essential to decouple your code and separate the logic from the GUI-related code.
+[//]: # (The testing report should focus solely on <span style="color:red"> testing all the self-defined functions related to )
 
-You should perform statement coverage testing and branch coverage testing. For each type, provide a description and an analysis explaining how you evaluated the coverage.
+[//]: # (the five required features.</span> There is no need to test the GUI components. Therefore, it is essential to decouple your code and separate the logic from the GUI-related code.)
+
+[//]: # ()
+[//]: # (You should perform statement coverage testing and branch coverage testing. For each type, provide a description and an analysis explaining how you evaluated the coverage.)
 
 ## 1. **Test Summary**
 list all tested functions related to the five required features, for example:

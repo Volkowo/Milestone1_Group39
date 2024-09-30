@@ -91,7 +91,8 @@ The tool will let users search for foods by name and break down their nutritiona
     - Ketogenic (Keto) Diet \
     Low in carbohydrates, which is less than 5-10% of caloric intake.
     - Low Sodium Diet \
-    Foods with low sodium content, which usually is less than 140mg per serving.
+    Foods with low sodium content, which usually is less than 140mg per serving.\
+    <span style="color:red"> The condition has been changed to from less than 140mg per serving to 40mg per serving. This is because every food in the `.csv` file falls under the initial condition. </span>
     - Low Cholesterol Diet \
     Low cholestrol foods that have less than 20mg per serving. \
   Additional dietary needs will be added if the system can be finished before the due date.
@@ -254,7 +255,7 @@ The following is a series of different use cases that can happen when a user it 
   - foodOutput: dict \
   The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
 - Side Effects:
-  - No side effects from this function
+  - No side effects from this function\ <br>
 #### 3.2.2 Data Structures / Data Sources
 - **foodNutrition**
   - **Type**: dict

@@ -5,10 +5,9 @@
 
 ---
 
-[//]: # (The testing report should focus solely on <span style="color:red"> testing all the self-defined functions related to )
+[//]: # (The testing report should focus solely on <span style="color:red"> testing all the self-defined functions related to the five required features.</span> There is no need to test the GUI components. Therefore, it is essential to decouple your code and separate the logic from the GUI-related code.)
 
-[//]: # (the five required features.</span> There is no need to test the GUI components. Therefore, it is essential to decouple your code and separate the logic from the GUI-related code.)
-
+[//]: # ()
 [//]: # ()
 [//]: # (You should perform statement coverage testing and branch coverage testing. For each type, provide a description and an analysis explaining how you evaluated the coverage.)
 

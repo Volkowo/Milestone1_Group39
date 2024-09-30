@@ -273,7 +273,7 @@ class NutritionApp ( wx.Frame ):
 
         choiceNutrientChoices = [ _(u"Choose a nutrient"), _(u"Fat"), _(u"Saturated Fats"), _(u"Monounsaturated Fats"), _(u"Polyunsaturated Fats"), _(u"Carbohydrates"), _(u"Sugars"), _(u"Protein"), _(u"Dietary Fiber"), _(u"Vitamin A"), _(u"Vitamin B1"), _(u"Vitamin B11"), _(u"Vitamin B12"), _(u"Vitamin B2"), _(u"Vitamin B3"), _(u"Vitamin B5"), _(u"Vitamin B6"), _(u"Vitamin C"), _(u"Vitamin D"), _(u"Vitamin E"), _(u"Vitamin K"), _(u"Calcium"), _(u"Copper"), _(u"Iron"), _(u"Magnesium"), _(u"Manganese"), _(u"Phosphorus"), _(u"Potassium"), _(u"Selenium"), _(u"Sodium"), _(u"Zinc"), _(u"Cholesterol"), _(u"Water"), _(u"Nutrition Density"), _(u"Caloric Value") ]
         self.choiceNutrient = wx.Choice( self.filter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, choiceNutrientChoices, 0 )
-        self.choiceNutrient.SetSelection( 0 )
+        self.choiceNutrient.SetSelection( 3 )
         filter_nutritionLevel.Add( self.choiceNutrient, 0, wx.ALL|wx.EXPAND, 5 )
 
 
@@ -335,6 +335,12 @@ class NutritionApp ( wx.Frame ):
         bSizer14.Add( self.filterButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL|wx.ALIGN_CENTER_VERTICAL, 5 )
 
 
+        bSizer14.Add( ( 25, 0), 1, wx.EXPAND, 5 )
+
+        self.resetButton = wx.Button( self.filter, wx.ID_ANY, _(u"Reset Filter"), wx.DefaultPosition, wx.Size( 140,-1 ), 0 )
+        bSizer14.Add( self.resetButton, 0, wx.ALL, 5 )
+
+
         filterContainer.Add( bSizer14, 0, wx.ALIGN_CENTER_HORIZONTAL, 5 )
 
 
@@ -357,6 +363,7 @@ class NutritionApp ( wx.Frame ):
         self.nutritionLevelFilter.Bind( wx.EVT_RADIOBOX, self.explanationText )
         self.choiceDiet.Bind( wx.EVT_CHOICE, self.explanationText_diet )
         self.filterButton.Bind( wx.EVT_BUTTON, self.filterFood )
+        self.resetButton.Bind( wx.EVT_BUTTON, self.resetFilter )
 
     def __del__( self ):
         pass
@@ -376,6 +383,9 @@ class NutritionApp ( wx.Frame ):
         event.Skip()
 
     def filterFood( self, event ):
+        event.Skip()
+
+    def resetFilter( self, event ):
         event.Skip()
 
 

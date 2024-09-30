@@ -87,6 +87,8 @@ class CalcFrame(Frame1):
     def __init__(self, parent=None):
         super().__init__(parent)
 
+        self.dfMergeResult = pd.DataFrame(columns=["food"])
+
         self.dfMacro_value = []
         self.dfVitamin_value = []
         self.dfMineral_value = []
@@ -136,15 +138,29 @@ class CalcFrame(Frame1):
         # Ensures that only the food row is shown in the table.
         dataFrame = loadData(r".\Food_Nutrition_Dataset.csv", True)
 
-        foods = dataFrame["food"]
-        loc = []
-        loc = findResult_generic(keyWord, loc, foods)
+        search_result = self.determineFoodSearch(dataFrame, self.dfMergeResult, keyWord)
 
-        search_result = dataFrame[loc]
         self.df = search_result
         self.foodData.ClearGrid()
         self.loadTable(search_result)
         self.Layout()
+
+    def determineFoodSearch(self, dataFrame, mergedResult, keyword):
+        """
+        Checks whether the user have done a filter or not.
+        If not, then use the whole dataframe to search through the user's input.
+        Else, use the filtered result to search through the user's input.
+        """
+        if mergedResult.empty:
+            foods = dataFrame["food"]
+            loc = findResult_generic(keyword, foods)
+            searchResult = dataFrame[loc]
+            return searchResult
+        else:
+            foods = mergedResult["food"]
+            loc = findResult_generic(keyword, foods)
+            searchResult = mergedResult[loc]
+            return searchResult
 
     def nutritionBreakdown(self, event):
         """
@@ -173,7 +189,7 @@ class CalcFrame(Frame1):
         searchData = dataFrame["food"]
 
         loc = []
-        loc = findResult_generic(foodName, loc, searchData)
+        loc = findResult_generic(foodName, searchData)
         search_result = dataFrame[loc]
 
         # Iterate and store each nutrient to the appropriate place.
@@ -186,7 +202,7 @@ class CalcFrame(Frame1):
 
         # print(search_result.iloc[0])
 
-        valueBar, valuePie = findResult_breakdown(labelAll, self.labelBar, self.labelPie, search_result)
+        valueBar, valuePie = findResult_breakdown(labelAll, self.labelBar, search_result)
         # print(valueBar, valuePie)
 
         valueBar = concatBarX(valueBar)
@@ -270,14 +286,21 @@ class CalcFrame(Frame1):
         searchResultArray_value = []
 
         errorNutrient, errorValue, errorComparison, isError_filterValue = checkDropdownAndInput_value(
-            dropdownArray, minArray, maxArray, isError_filterValue, searchResultArray_value)
-        errorMsgOne, errorMsgTwo, errorMsgThree = generateErrorMessage_value(errorNutrient, errorValue,
-                                                                                  errorComparison)
+            dropdownArray,
+            minArray,
+            maxArray,
+            isError_filterValue,
+            searchResultArray_value
+        )
+
+        errorMsgOne, errorMsgTwo, errorMsgThree = generateErrorMessage_value(
+            errorNutrient,
+            errorValue,
+            errorComparison)
 
         # B. Nutrition Level
         errorRadio, errorDropdown, isError_filterLevel = checkRadioAndDropdown_level(nutritionLevel,
                                                                                           nutrientFilter)
-
 
         # SETTING THE ERROR MESSAGE
         self.errorMsg_filterValue1.SetLabel(errorMsgOne)
@@ -288,45 +311,79 @@ class CalcFrame(Frame1):
 
         errorMessages = [errorMsgOne, errorMsgTwo, errorMsgThree, errorRadio, errorDropdown]
 
-        # Ensures that the filters only happen if there are no errors
-        if not isError_filterValue:
-            self.searchResult_valueFinal = mergeResult_filterRange(searchResultArray_value)
-            # print("FILTER VALUE:", self.searchResult_value)
-        if not isError_filterLevel:
-            self.searchResult_level = filterLevel(self.maxValueDict, nutrientFilter, nutritionLevel)
-            # print("FILTER LEVEL:", self.searchResult_level)
-        self.searchResult_diet = filterDiet(diet)
-            # print("FILTER DIET:", self.searchResult_diet)
+        # Checks for error and do the filter (if there are no errors)
+        self.searchResult_valueFinal, self.searchResult_level, self.searchResult_diet = errorChecking_filters(
+            isError_filterValue,
+            isError_filterLevel,
+            searchResultArray_value,
+            self.maxValueDict,
+            nutrientFilter,
+            nutritionLevel,
+            diet
+        )
 
-        # print(self.searchResult_level)
+        # MERGE RESULT(S); Yeah there are a lot of parameters for this one.
+        mergeResult, searchResultMsg = processFinalResult(
+            isError_filterValue,
+            minArray,
+            isError_filterLevel,
+            nutritionLevel,
+            self.searchResult_valueFinal,
+            self.searchResult_level,
+            self.searchResult_diet,
+            errorMessages,
+            defaultDropdown,
+            dropdownArray,
+            minArray,
+            maxArray,
+            nutritionLevel,
+            nutrientFilter,
+            diet
+        )
 
-        # MERGE RESULT(S)
-        if all(errorMessage == "" for errorMessage in errorMessages):
-            mergeResult = mergeResult_everything(self.searchResult_valueFinal, self.searchResult_level,
-                                                      self.searchResult_diet)
+        if mergeResult is not None:
+            self.text_filterResult.SetLabel(searchResultMsg)
+            self.dfMergeResult = mergeResult
+            self.df = mergeResult
 
-            # CHECKS IF THE RESULT IS None OR NOT
-            if mergeResult is not None:
-                searchResultMsg = checkResult(mergeResult)
-                self.text_filterResult.SetLabel(searchResultMsg)
-                self.df = mergeResult
-
-            # CHECKS IF THE RESULT ISN'T EMPTY
-            if mergeResult is not None and len(mergeResult) > 0:
+            if len(mergeResult) > 0:
                 self.foodData.ClearGrid()
-                self.loadTable(self.df)
+                self.loadTable(self.dfMergeResult)
                 self.Layout()
 
-        # SETTING EVERYTHING AS DEFAULT -> GIVES THE WHOLE TABLE
-        if all(value == "" for value in minArray) and all(value == "" for value in maxArray) and defaultDropdown == dropdownArray and nutritionLevel == "None" and nutrientFilter == "Choose a nutrient" and diet == "Dietary Needs":
-            dataFrame = loadData(r"Food_Nutrition_Dataset.csv", True)
-            searchResultMsg = "No filter was chosen."
-            self.df = dataFrame
-            self.foodData.ClearGrid()
-            self.loadTable(dataFrame)
-            self.Layout()
         self.text_filterResult.SetLabel(searchResultMsg)
         print("FINAL RESULT:", mergeResult)
+
+    def resetFilter( self, event ):
+        self.choiceMacro.SetSelection(0)
+        self.minValueInput_macro.SetLabelText("")
+        self.maxValueInput_macro.SetLabelText("")
+
+        self.choiceVitamin.SetSelection(0)
+        self.minValueInput_vitamin.SetLabelText("")
+        self.maxValueInput_vitamin.SetLabelText("")
+
+        self.choiceMineral.SetSelection(0)
+        self.minValueInput_mineral.SetLabelText("")
+        self.maxValueInput_mineral.SetLabelText("")
+
+        self.choiceOther.SetSelection(0)
+        self.minValueInput_other.SetLabelText("")
+        self.maxValueInput_other.SetLabelText("")
+
+        self.nutritionLevelFilter.SetSelection(0)
+        self.choiceNutrient.SetSelection(0)
+
+        self.choiceDiet.SetSelection(0)
+
+        self.errorMsg_filterValue2.SetLabel("")
+        self.errorMsg_filterValue1.setLabel("")
+        self.errorMsg_filterValue3.setLabel("")
+        self.errorMsg_level1.SetLabel("")
+        self.errorMsg_level2.SetLabel("")
+        self.text_extraFilterInfo.SetLabel("")
+        self.text_filterResult.SetLabel("")
+
 
 # UI Related
     def createChart(self, plotChart, panel):

@@ -11,7 +11,6 @@
 | s5330262     | Jason Kenaz | Volkowo             | 50%             | 
 
 ### Brief Description of Contribution
-
 Please Describe what you have accomplished in this group project.
 - s5340805, Toby Nilson
   - Participated in the initial meeting set up by Jason to plan the parts of the project we will both undertake.
@@ -22,8 +21,12 @@ Please Describe what you have accomplished in this group project.
   - Started the initial meeting with Toby to decide which part each of us will do for both project plan and software design document.
   - Wrote project overview and gantt chart for the project plan.
   - Wrote system vision and software design and software component for software design document.
-  - Gave feedback to Toby and also revised my part based on his feedback.
-
+  - Gave feedback to Toby and also revised my part based on his feedback. <br><br>
+  <span style="color: red"> Below is my contribution for the 2nd milestone: </span>
+  - <span style="color: red"> Designed the GUI, search function, and nutrition breakdown for the software. </span>
+  - <span style="color: red"> Slightly change Toby's code for filter to make it more robust. </span>
+  - <span style="color: red"> Performed unit testing for every function that is relevant with the main features. </span>
+  - <span style="color: red"> Wrote coverage testing report and unit testing report. </span>
 <div style="page-break-after: always;"></div>
 
 
@@ -128,4 +131,8 @@ Use the provided Gantt chart template to list all items from the Activity Defini
 and scheduling. Ensure that the Gantt chart reflects the activity definitions from Section 3. Track actual start 
 times and durations. Besides including Gantt chart here, you should also submit your Gantt chart file separately. -->
 ![Gantt Chart](./Gantt_chart.png)
+
+<span style="color:red"> Below is the latest Gantt Chart for this project based on the WBS and activity estimation. As seen below, the development for the software and the initial unit testing was done in periods, which is much faster than the initial duration.</span>
+
+![Gantt Chart Updated](./Gantt_chart_milestone2.png)
 

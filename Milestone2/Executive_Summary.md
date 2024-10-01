@@ -17,9 +17,9 @@ Enable users to search for foods by name and display all the nutritional informa
 
 ### Screenshots
 step 1
-![1](/FSstep1.png)
+![1](./FSstep1.png)
 step 2
-![2](/FSstep2.png)
+![2](./FSstep2.png)
 
 
 

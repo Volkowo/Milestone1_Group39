@@ -18,6 +18,8 @@ Enable users to search for foods by name and display all the nutritional informa
 ### Screenshots
 step 1
 ![1](./FSstep1.png)
+
+
 step 2
 ![2](./FSstep2.png)
 
@@ -34,6 +36,8 @@ Enable users to select one food, and display pie charts & bar graphs showing the
 ### Screenshots
 step 1
 ![1](./NBstep1.png)
+
+
 step 2
 ![2](./NBstep2.png)
 
@@ -54,17 +58,22 @@ Enable users to filter foods by nutritional content levelsâ€”low, mid, and highâ
 step 1
 ![1](./NLstep1.png)
 
+
 step 2
 ![1](./NLstep2.png)
+
 
 step 3
 ![1](./NLstep3.png)
 
+
 step 4
 ![1](./NLstep4.png)
 
+
 step 5
 ![1](./NLstep5.png)
+
 
 ---
 
@@ -80,12 +89,20 @@ Enable users to select one of nutrition and input minimum & maximum values, and 
 ### Screenshots
 step 1
 ![1](./NLstep1.png)
+
+
 step 2
 ![1](./NRstep2.png)
+
+
 step 3
 ![1](./NLstep4.png)
+
+
 step 4
 ![1](./NLstep5.png)
+
+
 
 
 ---
@@ -103,17 +120,22 @@ Enable users to filter foods based on the three dietary needs that the software 
 ### Screenshots
 step 1
 ![1](./NLstep1.png)
+
+
 step 2
 ![1](./DNstep2.png)
+
+
 step 3
 ![1](./NLstep4.png)
+
+
 step 4
 ![1](./NLstep5.png)
 
 
----
-
-![2](./visual_design.png)
 
 
 ---
+
+

@@ -403,16 +403,19 @@ Below is how the screen will look like when the user clicks on one of the food. 
 This is how the screen will look after the user clicks on the button that will display the charts.
 ![Visual Design](./visual_design4.png)
 
-<code style="color : red">
-### 4.2	Updated Visual Design
-the following covers the changes made the the wireframes for the project as the initial design was made before we were introduced to wxFormBuilder and ass such a new design was made.
-	
-this is the first page and shows a lost of food items it also has the search bar along with a open space that when a food item isselected will display a pie chart and a bar graph.	
-![Visual Design](./new_visual_design1.png)
+<span style="color : red">
+The following covers the changes that were made to the wireframes for the project. We did major changes to our design as the initial one was made before we were introduced to wxFormBuilder.
+Below is the first page and it shows a list of food names. The page also has a search bar along with a open space that display a pie chart and a bar graph when a food item is selected.	
 
-this is the second page and has several options to select form to filter down the selection of food items shown. these options are four collections of nutrients with min and max values, a filter to select by a low medium and high range of any of the nutrients and finally a dietary needs selector containing hings like keto.
 ![Visual Design](./new_visual_design2.png)
-</code>
+
+Next is the second page and it has several filter options to select from. The filters will filter down the selection of food names shown in the table. These options are:
+- Four collections of nutrients with min and max range, 
+- A filter that filters food based on a nutrient's level of content,
+- Dietary needs that filters food based on certain condition.
+
+![Visual Design](./new_visual_design1.png)
+</span>
 
 
 

@@ -17,6 +17,11 @@ Please Describe what you have accomplished in this group project.
   - Wrote adnn designed the Work Breakdown Structure and the activity definition estimation for the project plan.
   - Wrote and designed the system requirements section and the user interface section for the software design documement.
   - Gave feedback to Jason throughout the procces as he requested and also revised and fixed parts of my sections baseed on feedback provided by Jason.
+  <span style="color: red"> Below is my contribution for the 2nd milestone: </span>
+  - <span style="color: red"> Designed the code to filter deon the food items but user set conditions.</span>
+  - <span style="color: red"> Tweaked jasons search code to fit with the filter.</span>
+  - <span style="color: red"> developed the new wireframes needed</span>
+  
 - s5330262, Jason Kenaz
   - Started the initial meeting with Toby to decide which part each of us will do for both project plan and software design document.
   - Wrote project overview and gantt chart for the project plan.

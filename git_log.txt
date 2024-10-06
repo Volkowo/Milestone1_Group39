@@ -1,4 +1,44 @@
-* 4351fa9 2024-09-08 by [Volkowo] | Final touches. Project Plan and Software Design Document have been finished. (HEAD -> main, origin/main, origin/jasonBranch, origin/HEAD, jasonBranch)
+* 627ca25 2024-10-06 by [Volkowo] | GUI fpb and pdf (HEAD -> main, origin/main, origin/HEAD)
+* 5ad1b33 2024-10-06 by [Volkowo] | Updated what's required for Software Design Document and Project Plan. Revised Executive Summary
+* d2752bc 2024-10-02 by [venrin-04] | Update Project Plan.md
+* c8dbcbf 2024-10-02 by [venrin-04] | Update Project Plan.md
+* adf9d88 2024-10-02 by [Volkowo] | Fixed some typos on the document.
+* d789a39 2024-10-01 by [venrin-04] | Add files via upload
+* c1f4889 2024-10-01 by [venrin-04] | Update Software Design Document.md
+* 8ee88d5 2024-10-01 by [venrin-04] | Update Executive_Summary.md
+* 83f489b 2024-10-01 by [venrin-04] | fixed image links
+* b2df00d 2024-10-01 by [venrin-04] | Update Executive_Summary.md
+* 0c9ab46 2024-10-01 by [venrin-04] | Add files via upload
+*   e943407 2024-10-01 by [Volkowo] | Merge branch 'jasonBranch' I thought I already merged???
+|\  
+| * a901439 2024-10-01 by [Volkowo] | Updated Gantt Chart, Project Plan, and Software Design Document. idk if I need to change anymore thing for now. (origin/jasonBranch, jasonBranch)
+* | 5887931 2024-10-01 by [Volkowo] | idk whats happening here
+|/  
+* f20977d 2024-10-01 by [Volkowo] | Forgot to remove the instructions for the report, whoops.
+* 560f5d2 2024-10-01 by [Volkowo] | Finished Coverage_Testing_Report and Unit_Testing_Report.
+* 68eb889 2024-09-30 by [Volkowo] | Testing and test reports. Will update more later
+* 0a86696 2024-09-28 by [Volkowo] | Moved non-UI related functions to their own file. Generated testing report as well.
+* 8390cd4 2024-09-28 by [Volkowo] | fixed filter frfr ong
+* 2e8695f 2024-09-27 by [Volkowo] | fixed filter. will continyue soon
+*   d5eb220 2024-09-26 by [Volkowo] | fixed conflict
+|\  
+| * d42738f 2024-09-25 by [venrin-04] | diet options (origin/TobyBranch)
+| * 47baaae 2024-09-25 by [venrin-04] | working filter
+| * 6708ec9 2024-09-25 by [venrin-04] | new run
+* | 3a3fae1 2024-09-25 by [Volk] | Temporary .fbp file
+* | ebee3ed 2024-09-25 by [Volkowo] | Updated GUI
+* | 12144cf 2024-09-25 by [Volkowo] | Added notebook, will revise more tonight.
+* | a5fc88b 2024-09-25 by [Volkowo] | Added pie chart and bar chart. Yipepeeeeeeeee
+|/  
+* 638b626 2024-09-24 by [Volkowo] | Revised run_app.py to help Toby with testing on his end.
+* f656fe4 2024-09-24 by [Volkowo] | updated .fbp as well
+* d97e597 2024-09-24 by [Volkowo] | Added .csv and relevant python files
+* 996c1b9 2024-09-23 by [Volkowo] | Uploaded initial GUI.fbp.
+* 0aef119 2024-09-23 by [Volk] | Add files via upload
+* 13ac746 2024-09-23 by [Volk] | Add files via upload
+* 8439888 2024-09-23 by [Volk] | Create test.txt
+* 5ef1960 2024-09-08 by [Volkowo] | Added git_log.txt. Will update in future.
+* 4351fa9 2024-09-08 by [Volkowo] | Final touches. Project Plan and Software Design Document have been finished.
 * 4964af0 2024-09-08 by [Volkowo] | Fixed more markdown formatting.
 * ba4e36f 2024-09-08 by [Volkowo] | MORE MARKDOWN FIXES
 * 7d1be6a 2024-09-08 by [Volkowo] | again more typo fixes

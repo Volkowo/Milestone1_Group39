@@ -192,92 +192,114 @@ The following is a series of different use cases that can happen when a user it 
 - Input Parameters: List parameters, their data types, and their use.
 - Return Value: Describe what the function returns.
 - Side Effects: Note any side effects, such as changes to global variables or data passed by reference. -->
-1. **foodSearch()**
+<span style="color:red"> </span>
+1. **searchFood()**
 - Description: Searches the database for foods that match with user's input and return both the foods' name and nutritional information.
 - Input Parameters:
   - foodName: string \
   The user enters the name of the food in the search bar. The string is then used to query through the database to get the foods that have the same string as user's input.
 - Return Value: 
-  - foodOutput: dict \
-  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
+  - foodOutput: <span style="color:red"> Dataframe </span> \
+  The function returns a dataframe of foods that match the user's input.
 - Side Effects:
-  - No side effects from this function
-2. **displayPieChart()**
-- Description: Display pie chart showing the breakdown of different nutrients for the food that the user chose.
+  - <span style="color:red"> The table below the search bar will change based on the search result. </span>
+2. <span style="color:red"> nutritionBreakdown()</span>
+- Description: <span style="color:red">Displays both pie chart and bar chart showing the breakdown of nutrients of the food that the user clicked. Also highlights the column that the user chose.</span>
 - Input Parameters:
   - foodName: string\
   The name of the food the user selects. This input will be used to return the corresponding nutritional data from the database.
 - Return Value:
-  - Returns the pie chart with the help of mathplotlib.
+  - <span style="color:red"> Returns both pie and bar chart with the help of mathplotlib. </span>
 - Side Effects:
-  - The pie chart is directly displayed to the user interface.
-3. **displayBarChart()**
-- Description: Display bar chart showing the breakdown of different nutrients for the food that the user chose.
+  - <span style="color:red"> Both pie and bar chart are displayed directly in the software. </span>
+3. <span style="color:red"> filterFood()</span>
+- Description: <span style="color:red"> Handles the general error validation for all of the food filters. The functions that do the actual filtering is inside filterFood() as well. For additional context, it is important to note that every nutrient is grouped into one of four categories: Macronutrients, Vitamins, Minerals, and Others.</span>
 - Input Parameters:
-  - foodName: string\
-  The name of the food the user selects. This input will be used to return the corresponding nutritional data from the database.
+- <span style="color:red">macro</span>: string  
+  <span style="color:red">The name of the nutrition the user selects for macronutrient. This is for the nutrient range filter.</span>
+- <span style="color:red">vitamin</span>: string  
+  <span style="color:red">The name of the nutrition the user selects for vitamin. This is for the nutrient range filter.</span>
+- <span style="color:red">mineral</span>: string  
+  <span style="color:red">The name of the nutrition the user selects for mineral. This is for the nutrient range filter.</span>
+- <span style="color:red">other</span>: string  
+  <span style="color:red">The name of the nutrition the user selects for other. This is for the nutrient range filter.</span>
+- <span style="color:red">nutrientLevel</span>: string  
+  <span style="color:red">The level of filter that user chose for nutrient level filter.</span>
+- <span style="color:red">nutrientFilter</span>: string  
+  <span style="color:red">The name of nutrient that the user chose for nutrient level filter.</span>
+- <span style="color:red">minMacro</span>: string  
+  <span style="color:red">The minimum range user has put for macronutrient. This is for the nutrient range filter.</span>
+- <span style="color:red">maxMacro</span>: string  
+  <span style="color:red">The maximum range user has put for macronutrient. This is for the nutrient range filter.</span>
+- <span style="color:red">minVitamin</span>: string  
+  <span style="color:red">The minimum range user has put for vitamin. This is for the nutrient range filter.</span>
+- <span style="color:red">maxVitamin</span>: string  
+  <span style="color:red">The maximum range user has put for vitamin. This is for the nutrient range filter.</span>
+- <span style="color:red">minMineral</span>: string  
+  <span style="color:red">The minimum range user has put for mineral. This is for the nutrient range filter.</span>
+- <span style="color:red">maxMineral</span>: string  
+  <span style="color:red">The maximum range user has put for mineral. This is for the nutrient range filter.</span>
+- <span style="color:red">minOther</span>: string  
+  <span style="color:red">The minimum range user has put for other. This is for the nutrient range filter.</span>
+- <span style="color:red">maxOther</span>: string  
+  <span style="color:red">The maximum range user has put for other. This is for the nutrient range filter.</span>
+
 - Return Value:
-  - Returns the bar chart with the help of mathplotlib.
+  - <span style="color:red">mergeResult</span>: Dataframe  
+  <span style="color:red">The search result after applying every filter that passed the error validation.</span>
+  - <span style="color:red">searchResultMsg</span>: string  
+  <span style="color:red">A string that shows how many foods were found with said filters.</span>
 - Side Effects:
-  - The bar chart is directly displayed to the user interface.
-4. **filter_nutritionRange()**
+  - <span style="color:red"> Display searchResultMsg as a label for one of the text.</span>.
+4. **filterRange()**
 - Description: Filters and display list of foods that are within a specified range of minimum & maximum values of a chosen nutrient. Users will select a nutrient and define the minimum and maximum value. The function will then search through the database to find foods that meet these criteria.
 - Input Parameters:
-  - nutritionName: string\
-  The name of the nutrition to filter by.
-  - minVal: float\
-  The minimum value of the nutrition value that the food must meet.
-  - maxVal: float\
-  The maximum value of the nutrition value that the food must meet. \
+  - <span style="color:red">dropdownNutrient</span>: string  
+    <span style="color:red">The name of the nutrient. The value is obtained from the dropdown menu related to this filter</span>
+  - <span style="color:red">minValue</span>: float  
+    <span style="color:red">The minimum range user has put for the nutrient.</span>
+  - <span style="color:red">maxValue</span>: float  
+    <span style="color:red">The maximum range user has put for the nutrient.</span>
 - Return Value:
-  - foodOutput: dict \
-  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
+  - <span style="color:red">mergeResult_filter</span>: Dataframe  
+  <span style="color:red">The search result after applying the filter. </span>
 - Side Effects:
   - No side effects from this function.
-5. **filter_nutritionLevel()**
+5. **filterLevel()**
 - Description: Filters and display list of foods by choosing a nutrient and its content level.
 - Input Parameters:
-  - nutritionName: string\
-  The name of the nutrition to filter by.
-  - nutritionLevel: string\
-  The level of nutrient content the food must meet.
+    <span style="color:red">
+    - **maxValueDict**: Dict\
+    Contains a collection of the highest value for each nutrient.
+    - **dropdownValue**: String\
+    The name of the nutrient that is obtained from the dropdown menu.
+    - **levelFilter**: String\
+    The level for the filter. The value is obtained from the radio button.
+    </span>
 - Return Value:
-  - foodOutput: dict \
-  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
+  - <span style="color:red">searchResult_level</span>: Dataframe \
+  The function returns a <span style="color:red">dataframe </span> of foods that match the user's input.
 - Side Effects:
   - No side effects from this function
-6. **filter_dietary()**
+6. **filterDiet()**
 - Description: Filters and display list of foods based on the three tags for dietary needs.
 - Input Parameters:
-  - dietaryNeed: string\
-  The dietary needs that the user chose.
+  - <span style="color:red">dropdownValue</span>: string\
+  The dietary needs that the user chose. <span style="color:red">The value comes from the dropdown menu for this filter.</span>
 - Return Value:
-  - foodOutput: dict \
-  The function returns a dictionary of foods, together with its nurtitional information, that match the user's input.
+  - <span style="color:red">searchResult_diet</span>: Dataframe \
+  The function returns a <span style="color:red">dataframe </span> of foods that match the user's input.
 - Side Effects:
   - No side effects from this function\ <br>
 #### 3.2.2 Data Structures / Data Sources
 - **foodNutrition**
-  - **Type**: dict
+  - **Type**: <span style="color:red"> Dataframe </span>
   - **Usage**: 
     The main data that is used for this software. This contains the food name and all the nutritional content it have. The nutrition name will be the key, and whatever value inside each nutrition is the value.\
     This data is used to display all the food in the main page, and will also be used to find food that matches the users' input and/or filter as well.
-  - **Functions**: foodSearch(), displayPieChart(), displayBarChart(), filter_nutritionRange(), filter_nutritionLevel(), filter_dietary()
-- **userPreference_nutritionRange**
-  - **type****: dict
-  - **Usage**:
-    Stores users' selected preference when they choose to filter food based on nutrition range. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name, minimum value, and maximum value will be the keys, while the users' input will be the value.
-  - **Functions**: filter_nutritionRange(), foodSearch()
-- **userPreference_nutritionLevel**
-  - **type**: dict
-  - **Usage**:
-    Stores users' selected preference when they choose to filter food based on nutrition level. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference. The nutrition name and nutrition level will be the keys, while the users' input will be the value.
-  - **Functions**: filter_nutritionRange(), foodSearch()
-- **userPreference_dietary**
-  - **type**: dict
-  - **Usage**:
-    Stores users' selected preference when they choose to filter food based on their dietary needs. This preference will be used throughout the session to ensure consistency in the displayed food results unless the user changed their preference.
-  - **Functions**: filter_nutritionRange(), foodSearch()
+  - **Functions**: foodSearch(), <span style="color:red">nutritionBreakdown(), filterRange(), filterLevel(), filterDiet()</span>
+
+<span style="color:red">The only data source the software use is the initial Dataframe called foodNutrition. The other data comes from user input.</span>
 
 <!-- List all data structures or sources used in the software. For each, provide:
 
@@ -287,91 +309,24 @@ The following is a series of different use cases that can happen when a user it 
 
 #### 3.2.3 Detailed Design
 <!-- Provide pseudocode or flowcharts for all functions listed in Section 3.2.1 that operate on data structures. For instance, include pseudocode or a flowchart for a custom searching function. -->
-1. foodSearch(foodName)
-```
-if(foodNutrition[i][foodName] == userInput):
-    return foodOutput = foodNutrition[i]
-	else:
-    return “No food found.”
-```
+<span style="color:red"> The pseudocodes have been replaced with flowcharts for easier viewing. </span>
+1. <span style="color:red"> foodSearch() </span>
+![Food Search](./Flowchart_searchFood.png)
 
-2. displayPieChart(foodName)
-```
-foodData = {}
-foodData = foodNutrition[foodName]
+2. <span style="color:red"> nutritionBreakdown() </span>
+![Nutrition Breakdown](./Flowchart_nutritionBreakdown.png)
 
-labels = list(foodData.keys())
-sizes = list(foodData.values())
-color = colorList
-explode = explodeList
-pieChart = pie(sizes, explode=explode, labels=labels, colors=coloes, autopct=”%1.1f%%”, shadow=True)
-return pieChart
-```
+3. <span style="color:red"> filterFood() </span>
+![Filter Food](./Flowchart_filterFood.png)
 
-3. displayBarChart(foodName)
-```
-foodData = {}
-foodData = foodNutrition[foodName]
+4. <span style="color:red"> filterRange() </span>
+![Filter Range](./Flowchart_filterRange.png)
 
-labels = list(foodData.keys())
-sizes = list(foodData.values())
-color = colorList
-barChart = bar(categories, values, colors= colors)
-return barChart
-```
+5. <span style="color:red"> filterLevel() </span>
+![Filter Level](./Flowchart_filterLevel.png)
 
-4. filter_nutritionRange(nutritionName, minVal, maxVal)
-```
-foodOutput = {}
-for food in foodNutrition.keys():
-  value = foodNutrition[food][nutritionName]
-  if(value  >= minVal AND value <= MaxVal):
-    foodOutput[food] = foodNutrition[food]
-
-return foodOutput
-```
-
-5. filter_nutritionLevel(nutritionName, nutritionLevel)
-```
-max_value = 0
-foodOutput = {}
-nutritionThreshold = {'low': None, 'mid': None, 'high': None}
-
-for food in foodNutrition.keys():
-  value = foodNutrition[food][nutritionName]
-  if value > max_value:
-  max_value = value
-    
-nutritionThreshold ['low'] = 0.33 * max_value
-nutritionThreshold ['mid'] = 0.66 * max_value
-nutritionThreshold ['high'] = max_value
-
-for food in foodNutrition.keys():
-  value = foodNutrition[food][nutritionName]
-  if nutritonLevel == 'low' AND value < nutritionThreshold ['low']:
-    foodOutput[food] = foodNutrition[food]
-  elif nutritonLevel == 'mid' AND nutritionThreshold ['low'] <= value <= nutritionThreshold ['mid']:
-    foodOutput[food] = foodNutrition[food]
-  elif nutritonLevel == 'high' AND value > nutritionThreshold ['high']:
-    foodOutput[food] = foodNutrition[food]
-return foodOutput
-```
-
-6. filter_dietary(dietaryNeed)
-```
-foodOutput = {}
-for food in foodNutrition.keys():
-  minCaloricIntake = 5% * foodNutrition[food][‘Caloric Value’]
-  maxCaloricIntake = 10% * foodNutrition[food][‘Caloric Value’]
-  if dietaryNeed == “ketoDiet” AND minCaloricIntake <= foodNutrition[food][“Carbohydrate”] <= maxCaloricIntake):
-    foodOutput[food] = foodNutrition[food]
-  elif dietaryNeed == “lowSodium” AND foodNutrition[food][“Sodium”] < 140:
-    foodOutput[food] = foodNutrition[food]
-  elif dietaryNeed == “lowCholesterol” AND foodNutrition[food][“Cholesterol”] < 20:
-    foodOutput[food] = foodNutrition[food]
-
-return foodOutput
-```
+6. <span style="color:red"> filterDiet() </span>
+![Filter Range](./Flowchart_filterDiet.png)
 
 ## 4. User Interface Design
 

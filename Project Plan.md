@@ -7,8 +7,8 @@
 
 | Student No. | Full Name | GitHub Username | Contribution (sum to 100%) | 
 |-------------|-----------|-----------------|----------------------------|
-| s5340805     | Toby Nilson | Venrin-04             | 50%             |
-| s5330262     | Jason Kenaz | Volkowo             | 50%             | 
+| s5340805     | Toby Nilson | Venrin-04             | <span style="color: red">40%</span>             |
+| s5330262     | Jason Kenaz | Volkowo             | <span style="color: red">60%</span>             |             | 
 
 ### Brief Description of Contribution
 Please Describe what you have accomplished in this group project.
@@ -19,9 +19,10 @@ Please Describe what you have accomplished in this group project.
   - Gave feedback to Jason throughout the procces as he requested and also revised and fixed parts of my sections baseed on feedback provided by Jason.
     <br><br>
   <span style="color: red"> Below is my contribution for the 2nd milestone: </span>
-  - <span style="color: red"> Designed the code to filter deon the food items but user set conditions.</span>
-  - <span style="color: red"> Tweaked jasons search code to fit with the filter.</span>
-  - <span style="color: red"> developed the new wireframes needed</span>
+  - <span style="color: red"> Designed the code to filter the food items with user set conditions.</span>
+  - <span style="color: red"> Tweaked Jason's search code to fit with the filter.</span>
+  - <span style="color: red"> Developed the new wireframes needed</span>
+  <br>
   
 - s5330262, Jason Kenaz
   - Started the initial meeting with Toby to decide which part each of us will do for both project plan and software design document.

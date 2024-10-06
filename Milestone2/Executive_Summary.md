@@ -1,106 +1,104 @@
 # Executive Summary
 
-Please provide your GitHub repository link.
 ### GitHub Repository URL: https://github.com/Volkowo/Milestone1_Group39.git
 
 ---
 
-You should use your software to prepare an executive summary as outlined below for the five required features.
+<!-- You should use your software to prepare an executive summary as outlined below for the five required features. -->
 
 ## 1. Food Search
 ### Description  
-Enable users to search for foods by name and display all the nutritional information;
+Enable users to search for foods by name and display all the results in the table. 
 
 ### Steps
-1. Enter name of food item into provided text box.
-2. press the search button nect to the text input to search food item.
+1. Enter name of food item into the provided text box.
+2. Press the search button nect to the text input to search.
 
 ### Screenshots
 step 1
-![1](./FSstep1.png)
+![1](./searchFood_1.png)
 
 
 step 2
-![2](./FSstep2.png)
+![2](./searchFood_2.png)
 
 
 
 ## 2. Nutrition Breakdown
 ### Description  
-Enable users to select one food, and display pie charts & bar graphs showing the breakdown of different nutrients for the selected food.
+Enable users to select a food, and visualize the nutrition breakdown with pie charts & bar graphs.
 
 ### Steps
-1. Select a food item from the list of food items.
-2. brows the pie chart and bar graph.
+1. Select a food from the list of food items in the table.
+2. The software will show the pie chart and bar graph on the right side of the page.
 
 ### Screenshots
 step 1
-![1](./NBstep1.png)
+![1](./searchFood_2.png)
 
 
 step 2
-![2](./NBstep2.png)
+![2](./nutritionBreakdown.png)
 
 ---
 
 ## 3. Nutrition Level Filter
 ### Description  
-Enable users to filter foods by nutritional content levels—low, mid, and high—including fat, protein, carbohydrates, sugar, and nutritional density.
+Enable users to filter foods by nutritional content levels—low, mid, and high.
+The three levels are defined as follows:
+- Low: Less than 33% of the highest value.
+- Mid: Between 33% and 66% of the highest value.
+- High: Greater than 66% of the highest value.
 
 ### Steps
 1. Navigate to the filter page.
-2. Select a level to filter by.
-3. Select a nutrient to be filtered.
-4. Press the filter button.
-5. Navigate to the search page to see results.
+2. Select a level to filter and nutrient to be filtered with.
+3. Press the filter button.
+4. Navigate to the search page to see results.
 
 ### Screenshots
-step 1
-![1](./NLstep1.png)
+Step 1
+![1](./filter.png)
 
 
-step 2
-![1](./NLstep2.png)
+Step 2
+![2](./filter_nutritionLevel1.png)
 
 
-step 3
-![1](./NLstep3.png)
+Step 3
+![3](./filter_nutritionLevel2.png)
 
 
-step 4
-![1](./NLstep4.png)
-
-
-step 5
-![1](./NLstep5.png)
+Step 4
+![4](./filter_nutritionLevel3.png)
 
 
 ---
 
 ## 4. Nutrition Range Filter
 ### Description  
-Enable users to select one of nutrition and input minimum & maximum values, and the tool will display a list of foods that fall within those ranges
+Enable users to select one of the nutrition and input minimum & maximum values. 
 
 ### Steps
 1. Navigate to the filter page.
-2. Set what values you wish to filter using ethr one or more options and set the values for the min and max for thoes options
+2. Set what nutrients you wish to filter with and set the values for the minimum and maximum range for thoes nutrients.
 3. Press the filter button.
 4. Navigate to the search page to see results.
 ### Screenshots
 step 1
-![1](./NLstep1.png)
+![1](./filter.png)
 
 
 step 2
-![1](./NRstep2.png)
+![2](./filter_nutritionValue1.png)
 
 
 step 3
-![1](./NLstep4.png)
+![3](./filter_nutritionValue2.png)
 
 
 step 4
-![1](./NLstep5.png)
+![4](./filter_nutritionValue3.png)
 
 
 
@@ -110,28 +108,36 @@ step 4
 ## 5. Dietary Filter
 ### Description  
 Enable users to filter foods based on the three dietary needs that the software have provided.
+The requirements for these dietary needs are defined as follow:
+- Ketogenic (Keto) Diet \
+Low in carbohydrates, which is less than 5-10% of caloric intake.
+- Low Sodium Diet \
+Foods with low sodium content, which usually is less than 40mg per serving.\
+
+- Low Cholesterol Diet \
+Low cholestrol foods that have less than 20mg per serving. \
 
 ### Steps
 1. Navigate to the filter page.
-2. Add additional steps as needed.
+2. Select the dropdown menu below "Filter by Dietary Needs" to choose which diet to filter the food with..
 3. Press the filter button.
 4. Navigate to the search page to see results.
 
 ### Screenshots
 step 1
-![1](./NLstep1.png)
+![1](./filter.png)
 
 
 step 2
-![1](./DNstep2.png)
+![2](./filter_diet1.png)
 
 
 step 3
-![1](./NLstep4.png)
+![3](./filter_diet2.png)
 
 
 step 4
-![1](./NLstep5.png)
+![4](./filter_diet3.png)
 
 
 
